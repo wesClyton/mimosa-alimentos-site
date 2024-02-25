@@ -1,4 +1,4 @@
-import { SideNavItemGroup } from "@/types/type";
+import { SideNavItemGroup } from "@/app/painel/types/type";
 import { BsEnvelope, BsGear, BsHouseDoor, BsKanban, BsListUl, BsQuestionCircle } from "react-icons/bs";
 
 export const SIDENAV_ITEMS: SideNavItemGroup[] = [

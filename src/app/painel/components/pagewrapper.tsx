@@ -1,5 +1,5 @@
 'use client'
-import { useSideBarToggle } from '@/hooks/use-sidebar-toggle';
+import { useSideBarToggle } from '@/app/painel/hooks/use-sidebar-toggle';
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 

@@ -1,5 +1,5 @@
-import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
-import { SideNavItemGroup } from '@/types/type'
+import { useSideBarToggle } from '@/app/painel/hooks/use-sidebar-toggle'
+import { SideNavItemGroup } from '@/app/painel/types/type'
 import React from 'react'
 import { SideBarMenuItem } from './sidebar-menu-item';
 import classNames from 'classnames';

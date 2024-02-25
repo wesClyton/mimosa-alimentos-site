@@ -1,7 +1,7 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Overview } from '../components/overview'
-import { RecentSales } from '../components/recent-sales'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/painel/components/ui/card'
+import { Overview } from '../custom_components/overview'
+import { RecentSales } from '../custom_components/recent-sales'
 
 export default function DashboardPage() {
   return (

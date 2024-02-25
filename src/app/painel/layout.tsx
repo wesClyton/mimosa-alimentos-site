@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import { Karla } from "next/font/google";
 import "./painel.css";
 import { AuthProvider } from "./provider/auth-provider";
-import { ThemeProvider } from "@/components/theme-provider";
-import { SideBar } from "@/components/sidebar";
-import Header from "@/components/header";
-import PageWrapper from "@/components/pagewrapper";
+import { ThemeProvider } from "@/app/painel/components/theme-provider";
+import { SideBar } from "@/app/painel/components/sidebar";
+import Header from "@/app/painel/components/header";
+import PageWrapper from "@/app/painel/components/pagewrapper";
 
 const karla = Karla({
   weight: ["200", "300", "400", "500", "600", "700", "800"],

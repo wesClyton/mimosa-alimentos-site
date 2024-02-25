@@ -5,7 +5,7 @@ import {
   ColumnDef
 } from "@tanstack/react-table"
 
-import { DataTable } from "@/components/ui/custom/data-table"
+import { DataTable } from "@/app/painel/components/ui/custom/data-table"
 
 const data: Sales[] = [
   {

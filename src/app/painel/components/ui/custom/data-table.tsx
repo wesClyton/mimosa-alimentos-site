@@ -17,9 +17,9 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+} from "@/app/painel/components/ui/table"
+import { Button } from "@/app/painel/components/ui/button"
+import { Input } from "@/app/painel/components/ui/input"
 
 
 interface DataTableProps<TData, TValue> {

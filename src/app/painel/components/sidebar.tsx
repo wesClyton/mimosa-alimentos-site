@@ -2,7 +2,7 @@
 import { SIDENAV_ITEMS } from '@/app/painel/menu_constants';
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react'
-import { useSideBarToggle } from '@/hooks/use-sidebar-toggle';
+import { useSideBarToggle } from '@/app/painel/hooks/use-sidebar-toggle';
 import SideBarMenuGroup from './sidebar-menu-group';
 import { SideBarLogo } from './sidebar-logo';
 
