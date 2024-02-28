@@ -1,55 +1,62 @@
-import { SideNavItemGroup } from "@/app/painel/types/type";
-import { BsEnvelope, BsGear, BsHouseDoor, BsKanban, BsListUl, BsQuestionCircle } from "react-icons/bs";
+import { SideNavItemGroup } from "@/app/painel/types/type"
+import {
+  BsBuildingFill,
+  BsClockHistory,
+  BsCloudArrowDownFill,
+  BsFillBoxSeamFill,
+  BsFillPeopleFill,
+  BsKanban,
+} from "react-icons/bs"
 
 export const SIDENAV_ITEMS: SideNavItemGroup[] = [
-
-    {
-        title: "Dashboards",
-        menuList: [{
-            title: 'Dashboard',
-            path: '/painel/dashboard',
-            icon: <BsHouseDoor size={20} />,
-        }]
-    },
-    {
-        title: "Manage",
-        menuList: [
-            {
-                title: 'Usuarios',
-                path: '/painel/usuarios',
-                icon: <BsKanban size={20} />,
-                // submenu: true,
-                // subMenuItems: [
-                //     { title: 'All', path: '/products' },
-                //     { title: 'New', path: '/products/new' },
-                // ],
-            },
-            {
-                title: 'Orders',
-                path: '/orders',
-                icon: <BsListUl size={20} />,
-            },
-            {
-                title: 'Feedbacks',
-                path: '/feedbacks',
-                icon: <BsEnvelope size={20} />,
-            }
-        ]
-    },
-    {
-        title: "Others",
-        menuList: [
-            {
-                title: 'Account',
-                path: '/account',
-                icon: <BsGear size={20} />,
-            },
-            {
-                title: 'Help',
-                path: '/help',
-                icon: <BsQuestionCircle size={20} />,
-            }
-        ]
-    }
-
-];
+  {
+    title: "Inicio",
+    menuList: [
+      {
+        title: "Dashboard",
+        path: "/painel/dashboard",
+        icon: <BsKanban size={20} />,
+      },
+    ],
+  },
+  {
+    title: "Site",
+    menuList: [
+      {
+        title: "Clientes",
+        path: "/clientes",
+        icon: <BsBuildingFill size={20} />,
+      },
+      {
+        title: "Dowloads",
+        path: "/downloads",
+        icon: <BsCloudArrowDownFill size={20} />,
+      },
+      {
+        title: "Produtos",
+        path: "/produtos",
+        icon: <BsFillBoxSeamFill size={20} />,
+      },
+      {
+        title: "Linha do tempo",
+        path: "/timeline",
+        icon: <BsClockHistory size={20} />,
+      },
+    ],
+  },
+  {
+    title: "Manage",
+    menuList: [
+      {
+        title: "Usuarios",
+        path: "/painel/usuarios",
+        icon: <BsFillPeopleFill size={20} />,
+        // submenu: true,
+        // subMenuItems: [
+        //     { title: 'All', path: '/products' },
+        //     { title: 'New', path: '/products/new' },
+        // ],
+      },
+    ],
+  },
+]

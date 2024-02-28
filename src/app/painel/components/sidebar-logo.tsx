@@ -9,7 +9,7 @@ export const SideBarLogo = () => {
       alt=""
       className="w-12 mx-3.5 min-h-fit"
       height={35}
-      src={theme === "dark" || theme === "custom" ? "/DZ-logos_white.png" : "/DZ-logos_black.png"}
+      src={theme === "dark" || theme === "custom" ? "/sm_white.svg" : "/sm_black.svg"}
     />
   )
 }
