@@ -11,9 +11,11 @@ import {
 } from "./ui/dropdown-menu"
 import { Button } from "./ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { signOut } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 
 export function UserNav() {
+  const { data } = useSession()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -27,8 +29,8 @@ export function UserNav() {
       <DropdownMenuContent className="w-56 z-[99998]">
         <DropdownMenuLabel>
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Sijin Raj</p>
-            <p className="text-xs leading-none text-muted-foreground">sijin@outlook.com</p>
+            <p className="text-sm font-medium leading-none">{data?.user?.name}</p>
+            <p className="text-xs leading-none text-muted-foreground">{data?.user?.email}</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -36,10 +38,6 @@ export function UserNav() {
           <DropdownMenuItem>
             Perfil
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Configurações
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
