@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/painel/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/painel/shared/components/ui/card"
 import { Overview } from "./components/overview"
 import { RecentSales } from "./components/recent-sales"
 

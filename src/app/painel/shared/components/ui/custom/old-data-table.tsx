@@ -12,9 +12,9 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/painel/components/ui/table"
-import { Button } from "@/app/painel/components/ui/button"
-import { Input } from "@/app/painel/components/ui/input"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/painel/shared/components/ui/table"
+import { Button } from "@/app/painel/shared/components/ui/button"
+import { Input } from "@/app/painel/shared/components/ui/input"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

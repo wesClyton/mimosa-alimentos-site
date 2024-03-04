@@ -1,4 +1,4 @@
-import Breadcrumbs from "../../components/breadcrumb"
+import HeaderPage from "../../shared/components/ui/custom/headerPage"
 
 export default function UserCadastroPage() {
   const breadcrumbs = [
@@ -17,8 +17,8 @@ export default function UserCadastroPage() {
 
   return (
     <div>
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <h2 className="text-3xl font-bold tracking-tight my-4">Cadastro de Usuário</h2>
+      <HeaderPage breadcrumbs={breadcrumbs} title="Cadastro de usuário" />
+      <div className="w-full">formulario de cadastro</div>
     </div>
   )
 }

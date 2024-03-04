@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ColumnDef } from "@tanstack/react-table"
 
-import { DataTable } from "@/app/painel/components/ui/custom/data-table"
+import { DataTable } from "@/app/painel/shared/components/ui/custom/old-data-table"
 
 const data: Sales[] = [
   {

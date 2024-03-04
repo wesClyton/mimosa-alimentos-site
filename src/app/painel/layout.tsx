@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import { Karla } from "next/font/google"
 import "./painel.css"
-import { AuthProvider } from "./provider/auth-provider"
-import { ThemeProvider } from "@/app/painel/components/theme-provider"
-import { SideBar } from "@/app/painel/components/sidebar"
-import Header from "@/app/painel/components/header"
-import PageWrapper from "@/app/painel/components/pagewrapper"
+import { AuthProvider } from "./shared/provider/auth-provider"
+import { ThemeProvider } from "@/app/painel/shared/components/theme-provider"
+import { SideBar } from "@/app/painel/shared/components/sidebar"
+import Header from "@/app/painel/shared/components/header"
+import PageWrapper from "@/app/painel/shared/components/pagewrapper"
 
 const karla = Karla({
   weight: ["200", "300", "400", "500", "600", "700", "800"],

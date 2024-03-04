@@ -1,4 +1,4 @@
-import { SideNavItemGroup } from "@/app/painel/types/type"
+import { SideNavItemGroup } from "@/app/painel/shared/types/type"
 import {
   BsBuildingFill,
   BsClockHistory,

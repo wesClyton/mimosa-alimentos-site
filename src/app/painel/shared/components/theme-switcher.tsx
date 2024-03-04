@@ -3,13 +3,13 @@
 import * as React from "react"
 import { useTheme } from "next-themes"
 
-import { Button } from "@/app/painel/components/ui/button"
+import { Button } from "@/app/painel/shared/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/app/painel/components/ui/dropdown-menu"
+} from "@/app/painel/shared/components/ui/dropdown-menu"
 import { CheckIcon, Palette } from "lucide-react"
 
 export function ThemeSwitcher() {

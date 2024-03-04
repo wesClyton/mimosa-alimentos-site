@@ -1,6 +1,6 @@
 "use client"
-import { useSideBarToggle } from "@/app/painel/hooks/use-sidebar-toggle"
-import { SideNavItem } from "@/app/painel/types/type"
+import { useSideBarToggle } from "@/app/painel/shared/hooks/use-sidebar-toggle"
+import { SideNavItem } from "@/app/painel/shared/types/type"
 import classNames from "classnames"
 import Link from "next/link"
 import { usePathname } from "next/navigation"

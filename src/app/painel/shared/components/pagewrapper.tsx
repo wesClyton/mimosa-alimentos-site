@@ -1,5 +1,5 @@
 "use client"
-import { useSideBarToggle } from "@/app/painel/hooks/use-sidebar-toggle"
+import { useSideBarToggle } from "@/app/painel/shared/hooks/use-sidebar-toggle"
 import classNames from "classnames"
 import { ReactNode } from "react"
 
@@ -10,5 +10,9 @@ export default function PageWrapper({ children }: { children: ReactNode }) {
     ["sm:pl-[6.4rem]"]: toggleCollapse,
   })
 
-  return <div className={bodyStyle}>{children}</div>
+  return (
+    <div className={bodyStyle}>
+      <div className="p-10">{children}</div>
+    </div>
+  )
 }

@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/app/painel/components/ui/button"
-import { Input } from "@/app/painel/components/ui/input"
+import { Button } from "@/app/painel/shared/components/ui/button"
+import { Input } from "@/app/painel/shared/components/ui/input"
 import { Loader2 } from "lucide-react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"

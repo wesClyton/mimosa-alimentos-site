@@ -1,5 +1,5 @@
 "use client"
-import { useSideBarToggle } from "@/app/painel/hooks/use-sidebar-toggle"
+import { useSideBarToggle } from "@/app/painel/shared/hooks/use-sidebar-toggle"
 import classNames from "classnames"
 import { BsList } from "react-icons/bs"
 import { UserNav } from "./usernav"
