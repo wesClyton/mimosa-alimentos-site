@@ -1,12 +1,12 @@
+import Header from "@/components/header/header"
 import Image from "next/image"
 import Link from "next/link"
-import HeaderSite from "../components/header/header-site"
 import styles from "./page.module.scss"
 
 export default function HomePage() {
   return (
     <>
-      <HeaderSite />
+      <Header />
       <section className={styles.introduction}>
         <Link href={"./"}>
           <Image

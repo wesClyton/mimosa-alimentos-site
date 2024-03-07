@@ -1,8 +1,8 @@
-import { HeaderMenuItens } from "./header-menu-site.interface"
+import { HeaderMenuItens } from "./header-menu.interface"
 
-const ID = "header-menu-site"
+const ID = "header-menu"
 
-export const HEADER_MENU_SITE: HeaderMenuItens = {
+export const HEADER_MENU: HeaderMenuItens = {
   itens: [
     {
       id: `${ID}-institucional`,

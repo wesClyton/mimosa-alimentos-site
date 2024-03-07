@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import { HEADER_MENU_SITE } from "./header-menu-site"
+import { HEADER_MENU } from "./header-menu"
 
-export default function HeaderMenuSite() {
+export default function HeaderMenu() {
   return (
     <nav id="header-menu-nav">
       <ul>
@@ -12,7 +12,7 @@ export default function HeaderMenuSite() {
           </Link>
         </li>
 
-        {HEADER_MENU_SITE.itens.map((item) => (
+        {HEADER_MENU.itens.map((item) => (
           <li key={item.id} id={item.id}>
             <Link href={item.href}>{item.label}</Link>
 

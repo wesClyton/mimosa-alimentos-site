@@ -2,11 +2,11 @@ interface HeaderMenuItem {
   id: string
   label: string
   href: string
-  submenuItens?: HeaderSubMenuItem[]
+  submenuItens?: HeaderSubmenuItem[]
 }
 
 export interface HeaderMenuItens {
   itens: HeaderMenuItem[]
 }
 
-interface HeaderSubMenuItem extends Omit<HeaderMenuItem, "submenuItens"> {}
+interface HeaderSubmenuItem extends Omit<HeaderMenuItem, "submenuItens"> {}
