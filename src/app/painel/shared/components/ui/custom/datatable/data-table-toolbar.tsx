@@ -14,12 +14,12 @@ interface DataTableToolbarProps<TData> {
 
 export const statuses = [
   {
-    value: "ativo",
+    value: true,
     label: "Ativo",
     // icon: ArrowDownIcon,
   },
   {
-    value: "inativo",
+    value: false,
     label: "Inativo",
     // icon: ArrowDownIcon,
   },
@@ -37,8 +37,8 @@ export function DataTableToolbar<TData>({ table }: DataTableToolbarProps<TData>)
           onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {table.getColumn("status") && (
-          <DataTableFacetedFilter column={table.getColumn("status")} title="Status" options={statuses} />
+        {table.getColumn("active") && (
+          <DataTableFacetedFilter column={table.getColumn("active")} title="Status" options={statuses} />
         )}
         {isFiltered && (
           <Button variant="ghost" onClick={() => table.resetColumnFilters()} className="h-8 px-2 lg:px-3">

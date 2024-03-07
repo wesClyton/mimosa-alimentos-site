@@ -4,6 +4,10 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { cookies } from "next/headers"
 
 const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+    maxAge: 24 * 60 * 60, // 4 hours
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",

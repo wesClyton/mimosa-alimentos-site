@@ -2,7 +2,7 @@ import { DataTable } from "../shared/components/ui/custom/datatable/data-table"
 import { GetService } from "@/app/painel/shared/services/api.service"
 
 import { columns } from "./components/columns"
-import HeaderPage from "../shared/components/ui/custom/headerPage"
+import HeaderPage from "../shared/components/ui/custom/header-page"
 
 const breadcrumbs = [
   {

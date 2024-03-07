@@ -29,9 +29,9 @@ export const columns: ColumnDef<IUSerList>[] = [
     enableHiding: true,
   },
   {
-    accessorKey: "status",
+    accessorKey: "active",
     header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("status")}</div>,
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("active") ? "Ativo" : "Inativo"}</div>,
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },

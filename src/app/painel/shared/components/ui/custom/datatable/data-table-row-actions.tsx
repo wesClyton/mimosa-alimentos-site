@@ -12,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "../../dropdown-menu"
 import { Button } from "../../button"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
@@ -19,6 +21,7 @@ interface DataTableRowActionsProps<TData> {
 
 export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TData>) {
   const task: any = row.original
+  const currentPage = usePathname()
 
   return (
     <DropdownMenu>
@@ -29,7 +32,9 @@ export function DataTableRowActions<TData>({ row }: DataTableRowActionsProps<TDa
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem>Editar</DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href={`${currentPage}/update/${task?.id}`}>Editar</Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           Excluir
