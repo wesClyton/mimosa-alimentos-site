@@ -20,7 +20,7 @@ export default function HeaderPage({ title, breadcrumbs, buttonNew = false }: IH
     <>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
       <div className="flex justify-between items-center py-10">
-        <h2 className="text-3xl font-bold tracking-tight my-4">{title}</h2>
+        {title && <h2 className="text-3xl font-bold tracking-tight my-4">{title}</h2>}
         {buttonNew && (
           <Link href={`${currentPage}/new`}>
             <Button variant="outline">

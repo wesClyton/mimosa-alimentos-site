@@ -1,7 +1,6 @@
 import NextAuth from "next-auth/next"
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { cookies } from "next/headers"
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -16,8 +15,6 @@ const authOptions: NextAuthOptions = {
         password: { label: "Senha", type: "password" },
       },
       async authorize(credentials) {
-        const cookesStore = cookies()
-
         const response = await fetch(`${process.env.API_URL}/login`, {
           method: "POST",
           headers: {
@@ -32,7 +29,7 @@ const authOptions: NextAuthOptions = {
         const user = await response.json()
 
         if (user && response.ok) {
-          cookesStore.set(`token`, user.access_token)
+          // window.sessionStorage.setItem(`token`, user.access_token)
           return user
         }
 
