@@ -1,0 +1,121 @@
+.header {
+  background-color: var(--primary);
+  padding: 1.5rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .nav {
+    transform: translateX(-110%);
+    background-color: rgba(var(--primary-d-rgb), 0.9);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    transition: 0.25s all;
+
+    > ul {
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      > li a {
+        font-weight: 600;
+        font-size: 1.25rem;
+        text-decoration: none;
+        color: var(--white);
+      }
+    }
+    ul.submenu {
+      opacity: 0;
+      transition: 0.25s all;
+      transform: scaleY(0);
+      height: 0;
+    }
+    ul.submenu-active {
+      opacity: 1;
+      height: auto;
+      transform: scaleY(1) translateX(1rem) translateY(1.5rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      a {
+        font-size: 1rem;
+        font-weight: 500;
+        &::before {
+          display: none;
+        }
+      }
+    }
+    li.has-submenu a {
+      position: relative;
+      &::before {
+        content: ">";
+        position: absolute;
+        top: 1.5px;
+        right: -1.5rem;
+        transform: scaleY(0.5) rotate(90deg);
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--secondary);
+        transition: 0.25s all;
+      }
+      &.link-submenu-active {
+        &::before {
+          transform: scaleY(0.5) rotate(-90deg);
+        }
+      }
+    }
+  }
+  .nav-active {
+    transform: translateX(0);
+  }
+}
+
+@mixin hamburger-menu {
+  background-color: var(--white);
+  width: 30px;
+  height: 3.3px;
+  display: block;
+  transform: translate(-0.35rem, -0.2rem);
+  transition: 0.25s all;
+}
+
+.hamburger,
+.hamburger-active {
+  border: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border-top: 3px solid var(--white);
+  transition: 0.25s all;
+  &::before {
+    content: "";
+    @include hamburger-menu;
+  }
+  &::after {
+    content: "";
+    @include hamburger-menu;
+    transform: translate(-0.35rem, 0.2rem) !important;
+  }
+}
+.hamburger-active {
+  border-color: transparent;
+  transform: rotate(180deg);
+  top: 0.5rem;
+  &::before {
+    transform: translate(-0.35rem, -0.2rem) rotate(45deg);
+  }
+  &::after {
+    transform: translate(-0.35rem, -0.4rem) rotate(-45deg) !important;
+  }
+}

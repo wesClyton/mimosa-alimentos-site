@@ -12,7 +12,7 @@ export const HEADER_MENU: HeaderMenuItens = {
     {
       id: `${ID}-produtos`,
       label: "Produtos",
-      href: "/produtos",
+      href: "/",
       submenuItens: [
         {
           id: `${ID}-linguicas`,

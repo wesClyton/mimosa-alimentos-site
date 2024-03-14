@@ -1,10 +1,18 @@
+@import "./css/reset.css";
+@import "./css/variables.css";
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
-html, body {
+
+html,
+body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
-@import url("reset.css")

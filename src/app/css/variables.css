@@ -1,0 +1,33 @@
+:root {
+  --primary: #e20514;
+  --primary-d: #99040f;
+  --primary-l: #fb2c3a;
+  --primary-rgb: 226, 5, 20;
+  --primary-d-rgb: 153, 4, 15;
+  --primary-l-rgb: 251, 44, 58;
+
+  --secondary: #ffd324;
+  --secondary-d: #dfb302;
+  --secondary-l: #ffdb4a;
+  --secondary-rgb: 255, 211, 36;
+  --secondary-d-rgb: 223, 179, 2;
+  --secondary-l-rgb: 255, 219, 74;
+
+  --black: #000000;
+  --gray-0: #333333;
+  --gray-1: #555555;
+  --gray-2: #999999;
+  --gray-3: #cccccc;
+  --gray-4: #f0f0f0;
+  --white: #ffffff;
+  --black-rgb: 0, 0, 0;
+  --gray-0-rgb: 51, 51, 51;
+  --gray-1-rgb: 85, 85, 85;
+  --gray-2-rgb: 153, 153, 153;
+  --gray-3-rgb: 204, 204, 204;
+  --gray-4-rgb: 240, 240, 240;
+  --white-rgb: 255, 255, 255;
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;800&display=swap");
+  --font-family: "Poppins", Helvetica, Arial, sans-serif;
+}

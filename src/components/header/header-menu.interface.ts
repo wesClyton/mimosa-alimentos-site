@@ -1,4 +1,4 @@
-interface HeaderMenuItem {
+export interface HeaderMenuItem {
   id: string
   label: string
   href: string
@@ -9,4 +9,4 @@ export interface HeaderMenuItens {
   itens: HeaderMenuItem[]
 }
 
-interface HeaderSubmenuItem extends Omit<HeaderMenuItem, "submenuItens"> {}
+export interface HeaderSubmenuItem extends Omit<HeaderMenuItem, "submenuItens"> {}

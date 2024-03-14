@@ -1,35 +1,50 @@
-import Image from "next/image"
+import { HEADER_MENU_CONTEXT } from "@/context/context.util"
 import Link from "next/link"
+import { useContext, useState } from "react"
 import { HEADER_MENU } from "./header-menu"
+import { HeaderSubmenuItem } from "./header-menu.interface"
+import styles from "./header.module.scss"
 
 export default function HeaderMenu() {
+  let collapsed = useContext(HEADER_MENU_CONTEXT)
+
+  const [shouldShowSubmenu, setShouldShowSubmenu] = useState(false)
+
+  function hasSubmenu(submenuItens: HeaderSubmenuItem[] | undefined) {
+    return submenuItens?.length
+  }
+
+  const showSubmenu = () => {
+    setShouldShowSubmenu(!shouldShowSubmenu)
+  }
+
   return (
-    <nav id="header-menu-nav">
-      <ul>
-        <li>
-          <Link href={"./"}>
-            <Image width={155} height={51} src={"./site/mimosa-alimentos-logo.svg"} alt="Mimosa Alimentos"></Image>
-          </Link>
-        </li>
+    <>
+      <nav className={`${styles["nav"]} ${collapsed === "true" ? styles["nav-active"] : ""}`}>
+        <ul>
+          {HEADER_MENU.itens.map((item) => (
+            <li key={item.id} className={hasSubmenu(item.submenuItens) ? styles["has-submenu"] : ""}>
+              <Link
+                className={`${shouldShowSubmenu ? styles["link-submenu-active"] : ""}`}
+                onClick={showSubmenu}
+                href={hasSubmenu(item.submenuItens) ? "#" : item.href}
+              >
+                {item.label}
+              </Link>
 
-        {HEADER_MENU.itens.map((item) => (
-          <li key={item.id} id={item.id}>
-            <Link href={item.href}>{item.label}</Link>
-
-            {item.submenuItens?.length ? (
-              <ul className="header-submenu">
-                {item.submenuItens?.map((submenuItem) => (
-                  <li key={submenuItem.id} id={item.id}>
-                    <Link href={submenuItem.href}>{submenuItem.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              ""
-            )}
-          </li>
-        ))}
-      </ul>
-    </nav>
+              {hasSubmenu(item.submenuItens) ? (
+                <ul className={`${styles["submenu"]} ${shouldShowSubmenu ? styles["submenu-active"] : ""}`}>
+                  {item.submenuItens?.map((submenuItem) => (
+                    <li key={submenuItem.id} id={item.id}>
+                      <Link href={submenuItem.href}>{submenuItem.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : undefined}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   )
 }
