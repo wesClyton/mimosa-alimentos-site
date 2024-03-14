@@ -10,39 +10,65 @@ import { Input } from "../../shared/components/ui/input"
 import { IUserFormProps } from "../interface/IUserFormProps"
 import { FunctionComponent, useEffect, useMemo, useState } from "react"
 import { IUserForm } from "../interface/IUserForm"
-
-const defaultUserFormValues: IUserForm = {
-  active: false,
-  email: "",
-  name: "",
-  password: "",
-  confirmPassword: "",
-}
+import { Switch } from "../../shared/components/ui/switch"
 
 export const UserForm: FunctionComponent<IUserFormProps> = (props: IUserFormProps) => {
-  const [defaultValues, setDefaultValues] = useState<IUserForm>(defaultUserFormValues)
+  const [defaultValues, setDefaultValues] = useState<IUserForm>({
+    active: false,
+    email: "",
+    name: "",
+    password: "",
+    confirmPassword: "",
+    changePassword: true,
+  })
 
   const FormSchema = z
     .object({
       name: z.string().min(1, {
         message: "Campo requerido",
       }),
-      email: z
-        .string()
-        .email({
-          message: "Email inválido",
-        })
-        .optional(),
-      password: z.string().min(8, {
-        message: "Seua senha deve ter no minimo 8 caracteres",
+      email: z.string().email({
+        message: "Email inválido",
       }),
-      confirmPassword: z.string(),
+      password: z.string().optional(),
+      confirmPassword: z.string().optional(),
       active: z.boolean(),
+      changePassword: z.boolean(),
     })
-    .refine((data) => data.password === data.confirmPassword, {
-      message: "Senhas não coincidem",
-      path: ["confirmPassword"],
+    .superRefine((data, ctx) => {
+      if (data.changePassword) {
+        if (!data.password || !data.confirmPassword) {
+          ctx.addIssue({
+            code: "custom",
+            message: "Campo requerido",
+            path: ["password"],
+          })
+        }
+        if (data.password !== data.confirmPassword) {
+          ctx.addIssue({
+            code: "custom",
+            message: "Senhas não coincidem",
+            path: ["confirmPassword"],
+          })
+        }
+        if (data.password && data.password.length < 8) {
+          ctx.addIssue({
+            code: "custom",
+            message: "Seua senha deve ter no minimo 8 caracteres",
+            path: ["password"],
+          })
+        }
+      }
+      return true
     })
+
+  // .refine((data) => {
+  //   data.password === data.confirmPassword,
+  //     {
+  //       message: "Senhas não coincidem",
+  //       path: ["confirmPassword"],
+  //     }
+  // })
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -61,6 +87,7 @@ export const UserForm: FunctionComponent<IUserFormProps> = (props: IUserFormProp
         active: props.defaultValues?.active || false,
         password: "",
         confirmPassword: "",
+        changePassword: props.defaultValues.id ? false : true,
       })
     }
   }, [props.defaultValues])
@@ -82,7 +109,7 @@ export const UserForm: FunctionComponent<IUserFormProps> = (props: IUserFormProp
                   <FormItem>
                     <FormLabel>Nome</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nome" {...field} />
+                      <Input placeholder="Nome" {...field} autoComplete="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -98,7 +125,7 @@ export const UserForm: FunctionComponent<IUserFormProps> = (props: IUserFormProp
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="Email" {...field} />
+                      <Input type="email" placeholder="Email" {...field} autoComplete="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -106,37 +133,59 @@ export const UserForm: FunctionComponent<IUserFormProps> = (props: IUserFormProp
               />
             </div>
 
-            <div className="md:col-span-12">
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Senha</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="Senha" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+            {props.defaultValues?.id && (
+              <div className="md:col-span-12">
+                <FormField
+                  control={form.control}
+                  name="changePassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Mudar senha?</FormLabel>
+                      <FormControl>
+                        <Switch checked={field.value} onCheckedChange={field.onChange} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
 
-            <div className="md:col-span-12">
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Repita a senha</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="Repita a senha" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+            {form.getValues("changePassword") && (
+              <>
+                <div className="md:col-span-12">
+                  <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Senha</FormLabel>
+                        <FormControl>
+                          <Input type="password" placeholder="Senha" {...field} autoComplete="off" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="md:col-span-12">
+                  <FormField
+                    control={form.control}
+                    name="confirmPassword"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Repita a senha</FormLabel>
+                        <FormControl>
+                          <Input type="password" placeholder="Repita a senha" {...field} autoComplete="off" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
 

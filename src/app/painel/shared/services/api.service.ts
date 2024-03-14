@@ -1,5 +1,7 @@
 "use client"
 
+import { getSession } from "next-auth/react"
+
 interface IServiceApi {
   method: HttpMethod
   endpoint: string
@@ -22,17 +24,14 @@ enum HttpMethod {
   PATCH = "PATCH",
 }
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhODJhNGRjOS1hMjAyLTQ2MDktYmViNC04MGUwZTE4MDk5NjQiLCJlbWFpbCI6Indlcy5oaW5zY2hAZ21haWwuY29tIiwibmFtZSI6Ildlc2xsZXkgSGluc2NoIDEzIiwiaWF0IjoxNzEwMTk4NzU2LCJleHAiOjE3MTAyODUxNTZ9.cHpWwS1QPk98JcF8_jmc--eoMGUPAL5_m0ia3g1A8Tw"
-
 async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {} }: IServiceApi) {
-  const headers =
-    method === HttpMethod.GET
-      ? new Headers({
-          Authorization: `Bearer ${token}`,
-          ...headersOptions,
-        })
-      : {}
+  const session = await getSession()
+
+  const headers = new Headers({
+    // @ts-ignore
+    Authorization: `Bearer ${session?.user.access_token}`,
+    ...headersOptions,
+  })
 
   let body
 
@@ -52,7 +51,7 @@ async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {}
 }
 
 async function GetService(endpoint: string, params = {}) {
-  const endpointUrl = params ? endpoint + "?" + new URLSearchParams(params).toString() : endpoint
+  const endpointUrl = Object.keys(params).length ? endpoint + "?" + new URLSearchParams(params).toString() : endpoint
 
   return await serviceApi({
     method: HttpMethod.GET,

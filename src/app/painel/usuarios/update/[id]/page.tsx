@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import HeaderPage from "../../../shared/components/ui/custom/header-page"
-import { GetService } from "@/app/painel/shared/services/api.service"
+import { GetService, PatchService } from "@/app/painel/shared/services/api.service"
 import { UserForm } from "../../components/form-user"
 import { IUserForm } from "../../interface/IUserForm"
 
@@ -21,23 +21,23 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
     },
   ]
 
-  const [user, setUser] = useState<Array<IUserForm>>([])
+  const [user, setUser] = useState<IUserForm>()
 
-  const handleSubmit = (e: any) => {
-    console.log(e)
+  const handleSubmit = (data: IUserForm) => {
+    PatchService(`user/${params.id}`, data).then((data) => console.log(`data update`, data))
   }
 
   useEffect(() => {
-    GetService("user", { id: params.id }).then((data) => setUser(data.data))
+    GetService(`user/${params.id}`).then((data) => setUser(data))
   }, [params])
 
   return (
     <div>
       <HeaderPage breadcrumbs={breadcrumbs} title="Editar Usuário" />
 
-      <UserForm handleSubmit={handleSubmit} defaultValues={user[0]} />
+      <UserForm handleSubmit={handleSubmit} defaultValues={user} />
 
-      <div className="w-full">
+      <div className="w-full mt-20">
         Editar Usuário: <pre>{JSON.stringify(user, null, 2)}</pre>
       </div>
     </div>

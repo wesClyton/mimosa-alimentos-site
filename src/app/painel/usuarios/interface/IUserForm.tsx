@@ -5,4 +5,5 @@ export interface IUserForm {
   password?: string
   confirmPassword?: string
   active: boolean
+  changePassword?: boolean
 }
