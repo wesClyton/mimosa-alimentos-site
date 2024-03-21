@@ -1,6 +1,7 @@
 "use client"
 
 import { getSession } from "next-auth/react"
+import errorHandling from "./error-handling"
 
 interface IServiceApi {
   method: HttpMethod
@@ -44,9 +45,17 @@ async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {}
     headers,
     body,
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status === 200) {
+        return response.json()
+      } else {
+        response.json().then((data) => {
+          errorHandling(data)
+        })
+      }
+    })
     .catch((err) => {
-      console.log(`erro na requisição: `, err)
+      errorHandling(err)
     })
 }
 
@@ -78,8 +87,6 @@ async function PutService(endpoint: string, body = {}, contentType = ContentType
 }
 
 async function PatchService(endpoint: string, body = {}, contentType = ContentType.JSON) {
-  const headers = new Headers({})
-
   return await serviceApi({
     method: HttpMethod.PATCH,
     endpoint,

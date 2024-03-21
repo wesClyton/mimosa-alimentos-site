@@ -5,6 +5,7 @@ import HeaderPage from "../../../shared/components/ui/custom/header-page"
 import { GetService, PatchService } from "@/app/painel/shared/services/api.service"
 import { UserForm } from "../../components/form-user"
 import { IUserForm } from "../../interface/IUserForm"
+import { removeEmptyProperty } from "@/app/painel/shared/utils/utils"
 
 export default function UserUpdatePage({ params }: { params: { id: string } }) {
   const breadcrumbs = [
@@ -24,7 +25,8 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
   const [user, setUser] = useState<IUserForm>()
 
   const handleSubmit = (data: IUserForm) => {
-    PatchService(`user/${params.id}`, data).then((data) => console.log(`data update`, data))
+    const cleamData = removeEmptyProperty(data)
+    PatchService(`user/${params.id}`, cleamData).then((data) => console.log(`data update`, data))
   }
 
   useEffect(() => {
@@ -36,10 +38,6 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
       <HeaderPage breadcrumbs={breadcrumbs} title="Editar Usuário" />
 
       <UserForm handleSubmit={handleSubmit} defaultValues={user} />
-
-      <div className="w-full mt-20">
-        Editar Usuário: <pre>{JSON.stringify(user, null, 2)}</pre>
-      </div>
     </div>
   )
 }

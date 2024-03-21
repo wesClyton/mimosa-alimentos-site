@@ -134,13 +134,13 @@ export const UserForm: FunctionComponent<IUserFormProps> = (props: IUserFormProp
             </div>
 
             {props.defaultValues?.id && (
-              <div className="md:col-span-12">
+              <div className="md:col-span-12 mt-5">
                 <FormField
                   control={form.control}
                   name="changePassword"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Mudar senha?</FormLabel>
+                    <FormItem className="flex items-center space-y-0">
+                      <FormLabel className="pr-5">Mudar senha?</FormLabel>
                       <FormControl>
                         <Switch checked={field.value} onCheckedChange={field.onChange} />
                       </FormControl>
