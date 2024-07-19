@@ -2,27 +2,14 @@
 
 import { getSession } from "next-auth/react"
 import errorHandling from "./error-handling"
+import { MimeTypes } from "../enum/mime-types.enum"
+import { HttpMethod } from "../enum/http-method.enum"
 
 interface IServiceApi {
   method: HttpMethod
   endpoint: string
   headersOptions?: object
   bodyData?: object
-}
-
-export enum ContentType {
-  JSON = "application/json",
-  FORM = "application/x-www-form-urlencoded",
-  TEXT = "text/plain",
-  FORM_DATA = "multipart/form-data",
-}
-
-enum HttpMethod {
-  PUT = "PUT",
-  POST = "POST",
-  GET = "GET",
-  DELETE = "DELETE",
-  PATCH = "PATCH",
 }
 
 async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {} }: IServiceApi) {
@@ -46,16 +33,19 @@ async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {}
     body,
   })
     .then((response) => {
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         return response.json()
       } else {
         response.json().then((data) => {
           errorHandling(data)
         })
       }
+
+      return
     })
     .catch((err) => {
       errorHandling(err)
+      return
     })
 }
 
@@ -68,7 +58,7 @@ async function GetService(endpoint: string, params = {}) {
   })
 }
 
-async function PostService(endpoint: string, body = {}, contentType = ContentType.JSON) {
+async function PostService(endpoint: string, body = {}, contentType = MimeTypes.Json) {
   return await serviceApi({
     method: HttpMethod.POST,
     endpoint,
@@ -77,7 +67,7 @@ async function PostService(endpoint: string, body = {}, contentType = ContentTyp
   })
 }
 
-async function PutService(endpoint: string, body = {}, contentType = ContentType.JSON) {
+async function PutService(endpoint: string, body = {}, contentType = MimeTypes.Json) {
   return await serviceApi({
     method: HttpMethod.PUT,
     endpoint,
@@ -86,7 +76,7 @@ async function PutService(endpoint: string, body = {}, contentType = ContentType
   })
 }
 
-async function PatchService(endpoint: string, body = {}, contentType = ContentType.JSON) {
+async function PatchService(endpoint: string, body = {}, contentType = MimeTypes.Json) {
   return await serviceApi({
     method: HttpMethod.PATCH,
     endpoint,

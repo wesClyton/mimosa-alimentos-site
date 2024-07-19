@@ -6,6 +6,7 @@ import { GetService, PatchService } from "@/app/painel/shared/services/api.servi
 import { UserForm } from "../../components/form-user"
 import { IUserForm } from "../../interface/IUserForm"
 import { removeEmptyProperty } from "@/app/painel/shared/utils/utils"
+import { toast } from "@/app/painel/shared/components/ui/use-toast"
 
 export default function UserUpdatePage({ params }: { params: { id: string } }) {
   const breadcrumbs = [
@@ -26,7 +27,12 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
 
   const handleSubmit = (data: IUserForm) => {
     const cleamData = removeEmptyProperty(data)
-    PatchService(`user/${params.id}`, cleamData).then((data) => console.log(`data update`, data))
+    PatchService(`user/${params.id}`, cleamData).then(() => {
+      toast({
+        variant: "success",
+        title: "Usuário atualizado com sucesso!",
+      })
+    })
   }
 
   useEffect(() => {
@@ -36,7 +42,6 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
   return (
     <div>
       <HeaderPage breadcrumbs={breadcrumbs} title="Editar Usuário" />
-
       <UserForm handleSubmit={handleSubmit} defaultValues={user} />
     </div>
   )

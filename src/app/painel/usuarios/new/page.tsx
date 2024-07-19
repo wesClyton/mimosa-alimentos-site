@@ -6,6 +6,7 @@ import { Card, CardContent } from "../../shared/components/ui/card"
 import { IUserForm } from "../interface/IUserForm"
 import { PostService } from "../../shared/services/api.service"
 import { UserForm } from "../components/form-user"
+import { useRouter } from "next/navigation"
 
 export default function UserCadastroPage() {
   const breadcrumbs = [
@@ -22,14 +23,20 @@ export default function UserCadastroPage() {
     },
   ]
 
+  const router = useRouter()
+
   const handleSubmit = async (data: IUserForm) => {
     const { active, email, name, password } = data
 
-    await PostService("user", { active, email, name, password })
+    await PostService("user", { active, email, name, password }).then((data) => {
+      if (data) {
+        toast({
+          variant: "success",
+          title: "Usuário cadastrado com sucesso!",
+        })
 
-    toast({
-      title: "Usuário cadastrado com sucesso!",
-      description: "data: " + JSON.stringify(data),
+        router.push("/painel/usuarios")
+      }
     })
   }
 

@@ -6,14 +6,18 @@ export default function errorHandling(response: any): void {
   if (response.statusCode === HttpStatusCode.NotFound) {
     toast({
       title: "Erro!",
-      description: `#${response.status} - Requisição não encontrada.`,
+      description: `#${response.statusCode} - Requisição não encontrada.`,
       variant: "destructive",
     })
     return
   }
 
   if (response.statusCode === HttpStatusCode.InternalServerError) {
-    console.log(`bora redirecionar`)
+    toast({
+      title: "Erro!",
+      description: `#${response.statusCode} - Erro interno.`,
+      variant: "destructive",
+    })
     return
   }
 
@@ -39,14 +43,16 @@ export default function errorHandling(response: any): void {
   if (response.error && response) {
     let errors = ""
 
-    response.message.map((erro: string) => {
-      errors += "-" + erro + "\n"
-    })
+    response.message instanceof Array
+      ? response.message.map((erro: string) => {
+          errors += "-" + erro + "\n"
+        })
+      : (errors = response.message)
 
     toast({
       title: "Ouve um erro na requisição",
       description: errors,
-      className: "border-2 border-rose-500",
+      variant: "warning",
     })
 
     return
