@@ -3,6 +3,8 @@ import { HttpStatusCode } from "../enum/http-status-code.enum"
 import { signOut } from "next-auth/react"
 
 export default function errorHandling(response: any): void {
+  console.log("response: ", response)
+
   if (response.statusCode === HttpStatusCode.NotFound) {
     toast({
       title: "Erro!",

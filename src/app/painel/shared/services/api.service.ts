@@ -25,6 +25,8 @@ async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {}
 
   if (Object.keys(bodyData).length !== 0 && bodyData.constructor === Object) {
     body = JSON.stringify(bodyData)
+  } else if (bodyData instanceof FormData) {
+    body = bodyData
   }
 
   return await fetch(`http://localhost:3000/${endpoint}`, {
@@ -33,7 +35,7 @@ async function serviceApi({ method, endpoint, headersOptions = {}, bodyData = {}
     body,
   })
     .then((response) => {
-      if (response.status === 200 || response.status === 201) {
+      if (response.status === 200 || response.status === 201 || response.status === 204) {
         return response.json()
       } else {
         response.json().then((data) => {
@@ -58,30 +60,36 @@ async function GetService(endpoint: string, params = {}) {
   })
 }
 
-async function PostService(endpoint: string, body = {}, contentType = MimeTypes.Json) {
+async function PostService(endpoint: string, body = {}, contentType: MimeTypes | undefined) {
+  const headersOptions = contentType ? { "Content-Type": contentType } : {}
+
   return await serviceApi({
     method: HttpMethod.POST,
     endpoint,
     bodyData: body,
-    headersOptions: { "Content-Type": contentType },
+    headersOptions,
   })
 }
 
-async function PutService(endpoint: string, body = {}, contentType = MimeTypes.Json) {
+async function PutService(endpoint: string, body = {}, contentType: MimeTypes.Json | undefined) {
+  const headersOptions = contentType ? { "Content-Type": contentType } : {}
+
   return await serviceApi({
     method: HttpMethod.PUT,
     endpoint,
     bodyData: body,
-    headersOptions: { "Content-Type": contentType },
+    headersOptions,
   })
 }
 
-async function PatchService(endpoint: string, body = {}, contentType = MimeTypes.Json) {
+async function PatchService(endpoint: string, body = {}, contentType: MimeTypes.Json | undefined) {
+  const headersOptions = contentType ? { "Content-Type": contentType } : {}
+
   return await serviceApi({
     method: HttpMethod.PATCH,
     endpoint,
     bodyData: body,
-    headersOptions: { "Content-Type": contentType },
+    headersOptions,
   })
 }
 
