@@ -1,6 +1,8 @@
+import { ChangeEvent } from "react"
+
 export function removeEmptyProperty(objeto: any) {
   Object.keys(objeto).forEach(function (chave) {
-    if (!objeto[chave]) {
+    if (!objeto[chave] && objeto[chave] !== false) {
       delete objeto[chave]
     }
   })
@@ -37,4 +39,15 @@ export function jsonToFormData(data) {
   buildFormData(formData, data)
 
   return formData
+}
+
+export function getImageData(event: ChangeEvent<HTMLInputElement>) {
+  const dataTransfer = new DataTransfer()
+
+  Array.from(event.target.files!).forEach((image) => dataTransfer.items.add(image))
+
+  const files = dataTransfer.files
+  const displayUrl = files.length ? URL.createObjectURL(event.target.files![0]) : ""
+
+  return { files, displayUrl }
 }

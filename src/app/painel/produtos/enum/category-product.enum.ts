@@ -1,0 +1,5 @@
+export enum ProdutcCategory {
+  COM_QUEIJO = "COM QUEIJO",
+  LINGUICA = "LINGUICA",
+  CHURRASQUITA = "CHURRASQUITA",
+}

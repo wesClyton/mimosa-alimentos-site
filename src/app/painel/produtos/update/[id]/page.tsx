@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react"
 import HeaderPage from "../../../shared/components/ui/custom/header-page"
 import { GetService, PatchService } from "@/app/painel/shared/services/api.service"
-import { CustomerForm } from "../../components/form-cliente"
-import { ICustomerForm } from "../../interface/ICustomerForm.interface"
-import { removeEmptyProperty } from "@/app/painel/shared/utils/utils"
+import { ProductForm } from "../../components/form-product"
+import { IProductForm } from "../../interface/IProductForm.interface"
+import { jsonToFormData, removeEmptyProperty } from "@/app/painel/shared/utils/utils"
 import { toast } from "@/app/painel/shared/components/ui/use-toast"
 import { MimeTypes } from "@/app/painel/shared/enum/mime-types.enum"
-import { ICustomerGetResponse } from "../../interface/ICustomerGetResponse.interface"
+import { IProductGetResponse } from "../../interface/IProductGetResponse.interface"
 
 export default function UserUpdatePage({ params }: { params: { id: string } }) {
   const breadcrumbs = [
@@ -17,40 +17,42 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
       path: "./",
     },
     {
-      title: "Clientes",
-      path: "../clientes",
+      title: "Produtos",
+      path: "../produtos",
     },
     {
       title: "Cadastro",
     },
   ]
 
-  const [customer, setCustomer] = useState<ICustomerGetResponse>()
+  const [product, setProduct] = useState<IProductGetResponse>()
   const [disableForm, setDisableForm] = useState(true)
 
-  const handleSubmit = (data: ICustomerForm) => {
+  const handleSubmit = (data: IProductForm) => {
     setDisableForm(true)
     const cleamData = removeEmptyProperty(data)
-    PatchService(`customer/${params.id}`, cleamData, MimeTypes.Json).then(() => {
+    const formData = jsonToFormData(cleamData)
+
+    PatchService(`product/${params.id}`, formData, undefined).then(() => {
       toast({
         variant: "success",
-        title: "Cliente atualizado com sucesso!",
+        title: "Produto atualizado com sucesso!",
       })
       setDisableForm(false)
     })
   }
 
   useEffect(() => {
-    GetService(`customer/${params.id}`).then((data) => {
-      setCustomer(data)
+    GetService(`product/${params.id}`).then((data) => {
+      setProduct(data)
       setDisableForm(false)
     })
   }, [params])
 
   return (
     <div>
-      <HeaderPage breadcrumbs={breadcrumbs} title="Editar cliente" />
-      <CustomerForm handleSubmit={handleSubmit} defaultValues={customer} disableForm={disableForm} />
+      <HeaderPage breadcrumbs={breadcrumbs} title="Editar produto" />
+      <ProductForm handleSubmit={handleSubmit} defaultValues={product} disableForm={disableForm} />
     </div>
   )
 }

@@ -7,31 +7,45 @@ import { Button } from "../../shared/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../shared/components/ui/form"
 import { Input } from "../../shared/components/ui/input"
 
-import { ITimelineFormProps } from "../interface/ITimelineFormProps"
+import { IProductFormProps } from "../interface/IProductFormProps.interface"
 import { FunctionComponent, useEffect, useMemo, useState } from "react"
-import { ITimelineForm } from "../interface/ITimelineForm"
+import { IProductForm } from "../interface/IProductForm.interface"
 import { Switch } from "../../shared/components/ui/switch"
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import { getImageData } from "../../shared/utils/utils"
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
 import { BsCardImage } from "react-icons/bs"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../../shared/components/ui/select"
+import { ProdutcCategory } from "../enum/category-product.enum"
 
-export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITimelineFormProps) => {
-  const [defaultValues, setDefaultValues] = useState<ITimelineForm>({
-    title: "",
+export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProductFormProps) => {
+  const [defaultValues, setDefaultValues] = useState<IProductForm>({
+    category: "",
+    name: "",
+    size: "",
     description: "",
-    date: "",
     active: true,
     image: "",
   })
 
   const FormSchema = z.object({
-    title: z.string().min(1, {
+    category: z.string().min(1, {
+      message: "Campo requerido",
+    }),
+    name: z.string().min(1, {
+      message: "Campo requerido",
+    }),
+    size: z.string().min(1, {
       message: "Campo requerido",
     }),
     description: z.string().min(1, {
-      message: "Campo requerido",
-    }),
-    date: z.string().min(1, {
       message: "Campo requerido",
     }),
     image: z.any().optional(),
@@ -43,6 +57,7 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: useMemo(() => defaultValues, [defaultValues]),
+    disabled: props.disableForm,
   })
 
   useEffect(() => {
@@ -56,10 +71,11 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
       }
 
       setDefaultValues({
-        title: props.defaultValues?.title || "",
+        category: props.defaultValues?.category || "",
         description: props.defaultValues?.description || "",
-        date: new Date(props.defaultValues?.date).toISOString().slice(0, 10) || "",
-        active: props.defaultValues?.active || false,
+        name: props.defaultValues?.name || "",
+        size: props.defaultValues?.size || "",
+        active: props.defaultValues?.active || true,
       })
     }
   }, [props.defaultValues])
@@ -73,15 +89,15 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
         <div className="lg:col-span-2">
           <div className="grid gap-4 gap-y-6 text-sm grid-cols-1 md:grid-cols-12">
-            <div className="md:col-span-12">
+            <div className="md:col-span-6">
               <FormField
                 control={form.control}
-                name="title"
+                name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Titulo</FormLabel>
+                    <FormLabel>Nome</FormLabel>
                     <FormControl>
-                      <Input placeholder="Titulo" {...field} autoComplete="off" />
+                      <Input placeholder="Nome do produto" {...field} autoComplete="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -89,7 +105,34 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
               />
             </div>
 
-            <div className="md:col-span-12">
+            <div className="md:col-span-6">
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Categoria</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger {...field}>
+                          <SelectValue placeholder="Selecione a categoria" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {Object.values(ProdutcCategory).map((categoria) => (
+                          <SelectItem key={categoria} value={categoria}>
+                            {categoria}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="md:col-span-6">
               <FormField
                 control={form.control}
                 name="description"
@@ -97,7 +140,7 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
                   <FormItem>
                     <FormLabel>Descrição</FormLabel>
                     <FormControl>
-                      <Input type="text" placeholder="Descrição" {...field} autoComplete="off" />
+                      <Input placeholder="Descrição do produto" {...field} autoComplete="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -105,15 +148,15 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
               />
             </div>
 
-            <div className="md:col-span-12">
+            <div className="md:col-span-6">
               <FormField
                 control={form.control}
-                name="date"
+                name="size"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Data</FormLabel>
+                    <FormLabel>Tamanho</FormLabel>
                     <FormControl>
-                      <Input type="date" placeholder="Data" {...field} autoComplete="off" />
+                      <Input placeholder="1 Kg e 5 Kg" {...field} autoComplete="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -155,22 +198,22 @@ export const TimelineForm: FunctionComponent<ITimelineFormProps> = (props: ITime
                 )}
               />
             </div>
-          </div>
-        </div>
 
-        <div className="md:col-span-12">
-          <FormField
-            control={form.control}
-            name="active"
-            render={({ field }) => (
-              <FormItem className="flex flex-row items-center">
-                <FormControl>
-                  <Switch checked={field.value} onCheckedChange={field.onChange} />
-                </FormControl>
-                <FormLabel className="mx-3">Ativo</FormLabel>
-              </FormItem>
-            )}
-          />
+            <div className="md:col-span-12">
+              <FormField
+                control={form.control}
+                name="active"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center">
+                    <FormControl>
+                      <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel className="mx-3">Ativo</FormLabel>
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
         </div>
 
         <Button type="submit">Enviar</Button>
