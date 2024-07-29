@@ -27,7 +27,7 @@ export default function UserUpdatePage({ params }: { params: { id: string } }) {
 
   const handleSubmit = (data: IUserForm) => {
     const cleamData = removeEmptyProperty(data)
-    PatchService(`user/${params.id}`, cleamData).then(() => {
+    PatchService(`user/${params.id}`, cleamData, undefined).then(() => {
       toast({
         variant: "success",
         title: "Usuário atualizado com sucesso!",
