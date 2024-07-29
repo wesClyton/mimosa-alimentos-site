@@ -51,3 +51,11 @@ export function getImageData(event: ChangeEvent<HTMLInputElement>) {
 
   return { files, displayUrl }
 }
+
+export function dateIsoToDMY(d: string) {
+  const date = new Date(d)
+  function pad(n) {
+    return (n < 10 ? "0" : "") + n
+  }
+  return pad(date.getUTCDate()) + "/" + pad(date.getUTCMonth() + 1) + "/" + date.getUTCFullYear()
+}

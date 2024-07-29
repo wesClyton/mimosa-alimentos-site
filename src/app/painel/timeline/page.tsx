@@ -9,6 +9,7 @@ import { TableActionRows } from "./components/table-action-rows"
 import { DataTableColumnHeader } from "../shared/components/ui/custom/datatable/data-table-column-header"
 import { ColumnDef } from "@tanstack/react-table"
 import { ITimelineList } from "./interface/ITimelineList.interface"
+import { dateIsoToDMY } from "../shared/utils/utils"
 
 const breadcrumbs = [
   {
@@ -41,7 +42,7 @@ export default function UserPage() {
     {
       accessorKey: "date",
       header: ({ column }) => <DataTableColumnHeader column={column} title="Data" />,
-      cell: ({ row }) => <div>{row.getValue("date")}</div>,
+      cell: ({ row }) => <div>{dateIsoToDMY(row.getValue("date"))}</div>,
       enableSorting: true,
       enableHiding: true,
     },

@@ -7,48 +7,34 @@ import { Button } from "../../shared/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../shared/components/ui/form"
 import { Input } from "../../shared/components/ui/input"
 
-import { IProductFormProps } from "../interface/IProductFormProps.interface"
+import { IDownloadFormProps } from "../interface/IDownloadFormProps.interface"
 import { FunctionComponent, useEffect, useMemo, useState } from "react"
-import { IProductForm } from "../interface/IProductForm.interface"
+import { IDownloadForm } from "../interface/IDownloadForm.interface"
 import { Switch } from "../../shared/components/ui/switch"
 import { getImageData } from "../../shared/utils/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
-import { BsCardImage } from "react-icons/bs"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "../../shared/components/ui/select"
-import { ProdutcCategory } from "../enum/category-product.enum"
+import { BsCardImage, BsCloudDownload } from "react-icons/bs"
+import { CategoryDownload } from "../enum/category-download.enum"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../shared/components/ui/select"
 
-export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProductFormProps) => {
-  const [defaultValues, setDefaultValues] = useState<IProductForm>({
+export const DownloadForm: FunctionComponent<IDownloadFormProps> = (props: IDownloadFormProps) => {
+  const [defaultValues, setDefaultValues] = useState<IDownloadForm>({
     category: "",
-    name: "",
-    size: "",
-    description: "",
+    title: "",
     active: true,
     image: "",
+    file: "",
   })
 
   const FormSchema = z.object({
     category: z.string().min(1, {
       message: "Campo requerido",
     }),
-    name: z.string().min(1, {
-      message: "Campo requerido",
-    }),
-    size: z.string().min(1, {
-      message: "Campo requerido",
-    }),
-    description: z.string().min(1, {
+    title: z.string().min(1, {
       message: "Campo requerido",
     }),
     image: z.any().optional(),
+    file: z.any().optional(),
     active: z.boolean(),
   })
 
@@ -72,9 +58,7 @@ export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProduc
 
       setDefaultValues({
         category: props.defaultValues?.category || "",
-        description: props.defaultValues?.description || "",
-        name: props.defaultValues?.name || "",
-        size: props.defaultValues?.size || "",
+        title: props.defaultValues?.title || "",
         active: props.defaultValues?.active || true,
       })
     }
@@ -92,12 +76,12 @@ export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProduc
             <div className="md:col-span-6">
               <FormField
                 control={form.control}
-                name="name"
+                name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nome</FormLabel>
+                    <FormLabel>Titulo</FormLabel>
                     <FormControl>
-                      <Input placeholder="Nome do produto" {...field} autoComplete="off" />
+                      <Input placeholder="Titulo do download" {...field} autoComplete="off" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -119,7 +103,7 @@ export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProduc
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {Object.values(ProdutcCategory).map((categoria) => (
+                        {Object.values(CategoryDownload).map((categoria) => (
                           <SelectItem key={categoria} value={categoria}>
                             {categoria}
                           </SelectItem>
@@ -132,45 +116,13 @@ export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProduc
               />
             </div>
 
-            <div className="md:col-span-6">
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Descrição</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Descrição do produto" {...field} autoComplete="off" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <div className="md:col-span-6">
-              <FormField
-                control={form.control}
-                name="size"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Tamanho</FormLabel>
-                    <FormControl>
-                      <Input placeholder="1 Kg e 5 Kg" {...field} autoComplete="off" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
             <div className="md:col-span-12">
               <FormField
                 control={form.control}
                 name="image"
                 render={({ field: { onChange, value, ...rest } }) => (
                   <FormItem>
-                    <FormLabel>Imagem</FormLabel>
+                    <FormLabel>Miniatura</FormLabel>
                     <FormControl>
                       <div className="flex items-center border-dashed border rounded">
                         <Avatar className="w-24 h-24 flex items-center justify-center border-r border border-dashed">
@@ -188,6 +140,39 @@ export const ProductForm: FunctionComponent<IProductFormProps> = (props: IProduc
                           onChange={(event) => {
                             const { files, displayUrl } = getImageData(event)
                             setPreview(displayUrl || "")
+                            onChange(files[0])
+                          }}
+                        />
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="md:col-span-12">
+              <FormField
+                control={form.control}
+                name="file"
+                render={({ field: { onChange, value, ...rest } }) => (
+                  <FormItem>
+                    <FormLabel>Arquivo para download</FormLabel>
+                    <FormControl>
+                      <div className="flex items-center border-dashed border rounded">
+                        <Avatar className="w-24 h-24 flex items-center justify-center border-r border border-dashed">
+                          <AvatarFallback>
+                            <BsCloudDownload className="h-4 w-4" />
+                          </AvatarFallback>
+                        </Avatar>
+
+                        <Input
+                          type="file"
+                          className="border-0"
+                          placeholder="Imagem"
+                          {...rest}
+                          onChange={(event) => {
+                            const { files, displayUrl } = getImageData(event)
                             onChange(files[0])
                           }}
                         />
