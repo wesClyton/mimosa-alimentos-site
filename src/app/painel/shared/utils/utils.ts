@@ -15,7 +15,7 @@ export function dateToIso(date: string) {
   return newDate.toISOString()
 }
 
-function buildFormData(formData, data, parentKey = "") {
+function buildFormData(formData: any, data: any, parentKey = "") {
   if (
     data &&
     typeof data === "object" &&
@@ -33,7 +33,7 @@ function buildFormData(formData, data, parentKey = "") {
   }
 }
 
-export function jsonToFormData(data) {
+export function jsonToFormData(data: any) {
   const formData = new FormData()
 
   buildFormData(formData, data)
