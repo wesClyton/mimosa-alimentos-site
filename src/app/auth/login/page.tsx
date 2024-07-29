@@ -1,4 +1,11 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/painel/shared/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/painel/shared/components/ui/card"
 import { LoginForm } from "../component/form-login"
 import { Button } from "@/app/painel/shared/components/ui/button"
 

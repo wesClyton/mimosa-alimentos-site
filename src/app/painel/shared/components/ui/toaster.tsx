@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 "use client"
 
 import {
@@ -19,7 +20,7 @@ export function Toaster() {
         return (
           <Toast key={id} {...props}>
             <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
+              {title && <ToastTitle>{title}</ToastTitle>}cl
               {description && (
                 <ToastDescription>{description}</ToastDescription>
               )}
