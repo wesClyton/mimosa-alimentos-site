@@ -10,12 +10,12 @@ export default function HeaderMenu() {
 
   const [shouldShowSubmenu, setShouldShowSubmenu] = useState(false)
 
-  function hasSubmenu(submenuItens: HeaderSubmenuItem[] | undefined) {
-    return submenuItens?.length
+  function hasSubmenu(submenuItens: HeaderSubmenuItem[] | undefined): boolean {
+    return submenuItens?.length! > 0
   }
 
-  const showSubmenu = () => {
-    setShouldShowSubmenu(!shouldShowSubmenu)
+  const showSubmenu = (hasSubmenu: boolean) => {
+    if (hasSubmenu) setShouldShowSubmenu(!shouldShowSubmenu)
   }
 
   return (
@@ -26,7 +26,7 @@ export default function HeaderMenu() {
             <li key={item.id} className={hasSubmenu(item.submenuItens) ? styles["has-submenu"] : ""}>
               <Link
                 className={`${shouldShowSubmenu ? styles["link-submenu-active"] : ""}`}
-                onClick={showSubmenu}
+                onClick={() => showSubmenu(hasSubmenu(item.submenuItens))}
                 href={hasSubmenu(item.submenuItens) ? "#" : item.href}
               >
                 {item.label}

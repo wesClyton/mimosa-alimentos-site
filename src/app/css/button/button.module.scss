@@ -1,0 +1,44 @@
+@import "./button.mixins.scss";
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  color: var(--white);
+  text-decoration: none;
+  width: fit-content;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn-small {
+  @include btnSmall()
+}
+
+.btn-medium {
+  @include btnMedium()
+}
+
+.btn-large {
+  @include btnLarge()
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  &:hover {
+    background-color: var(--primary-d);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  &:hover {
+    background-color: var(--secondary-d);
+  }
+}
+
+.btn-fill {
+  width: 100%;
+}

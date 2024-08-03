@@ -1,18 +1,9 @@
-import Image from "next/image"
-import Link from "next/link"
-import styles from "./page.module.scss"
+import Banner from "../components/banner/banner.component"
 
 export default function HomePage() {
   return (
-    <section className={styles.introduction}>
-      <Link href={"./"}>
-        <Image
-          width={1920}
-          height={960}
-          src={"/site/home/banner.jpg"}
-          alt="Não dá para explicar, tem que experimentar. Saiba mais"
-        ></Image>
-      </Link>
-    </section>
+    <>
+      <Banner />
+    </>
   )
 }

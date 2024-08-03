@@ -1,0 +1,14 @@
+@mixin btnSmall() {
+  padding: 8px 16px;
+  font-size: 10px;
+}
+
+@mixin btnMedium() {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+@mixin btnLarge() {
+  padding: 16px 32px;
+  font-size: 18px;
+}

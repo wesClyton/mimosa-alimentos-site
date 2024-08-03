@@ -74,6 +74,7 @@
   }
   .nav-active {
     transform: translateX(0);
+    z-index: 500;
   }
 }
 
@@ -84,6 +85,7 @@
   display: block;
   transform: translate(-0.35rem, -0.2rem);
   transition: 0.25s all;
+  z-index: 1000;
 }
 
 .hamburger,
@@ -117,5 +119,98 @@
   }
   &::after {
     transform: translate(-0.35rem, -0.4rem) rotate(-45deg) !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header-container {
+    padding: 0 2rem;
+  }
+
+  .header {
+    max-width: 1352px;
+    border-radius: 20px;
+    margin: 36px auto 0 auto;
+    z-index: 10;
+    position: relative;
+    padding: 0 1rem;
+    height: 100px;
+    max-height: 100px;
+    align-items: center;
+
+    .nav {
+      height: auto;
+      position: relative;
+      transform: translateX(0);
+      background-color: transparent;
+
+      > ul {
+        flex-direction: row;
+        padding: 0 2rem;
+        height: auto;
+        gap: 1.5rem;
+        > li a {
+          font-size: 0.85rem;
+          padding: 0.5rem 0.5rem;
+          &:hover {
+            color: var(--secondary);
+          }
+        }
+        > li:last-child a {
+          background-color: var(--primary-d);
+          border-radius: 10px;
+        }
+      }
+
+      ul.submenu {
+        margin-bottom: 0;
+        background-color: var(--white);
+        position: absolute;
+        padding: 2rem;
+        border-radius: 20px;
+        transform: scaleY(1) translateX(-2.5rem) translateY(1rem);
+        a {
+          color: var(--primary);
+          &:hover {
+            color: var(--primary);
+            text-decoration: underline;
+          }
+        }
+      }
+
+      li.has-submenu a {
+        &::before {
+          right: -1rem;
+          top: 5px;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header {
+    padding: 0 3rem;
+
+    .nav {
+      > ul {
+        gap: 3.5rem;
+        padding: 0 2rem 0 8rem;
+        > li a {
+          font-size: 0.9rem;
+        }
+        > li:last-child a {
+          padding: 0.75rem 2rem;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
   }
 }

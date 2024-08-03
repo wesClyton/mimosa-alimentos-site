@@ -1,0 +1,79 @@
+@import "../../app/css/button/button.mixins.scss";
+
+.banners {
+  width: 100%;
+  height: auto;
+
+  .content {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .content-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-text {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    width: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 0 0 auto;
+    height: 100%;
+    top: 0;
+
+    > img {
+      width: 80%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    > button[class^="button_btn"] {
+      @include btnSmall()
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .banners {
+    position: fixed;
+    inset: 0;
+
+    .content {
+      > img {
+        width: 150%;
+        left: -25%;
+        position: relative;
+      }
+    }
+
+    .content-text {
+      > button[class^="button_btn"] {
+        @include btnMedium();
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .banners {
+    .content {
+      > img {
+        width: 100%;
+        left: 0%;
+      }
+    }
+
+    .content-text {
+      > button[class^="button_btn"] {
+        @include btnLarge();
+      }
+    }
+  }
+}
