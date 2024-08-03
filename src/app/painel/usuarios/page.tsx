@@ -1,6 +1,14 @@
-import Breadcrumbs from "../components/breadcrumb"
-import { DataTable } from "../components/ui/custom/data-table"
+"use client"
+
+import { DataTable } from "../shared/components/ui/custom/datatable/data-table"
+import { DeleteService, GetService } from "@/app/painel/shared/services/api.service"
+
+import HeaderPage from "../shared/components/ui/custom/header-page"
+import { useEffect, useState } from "react"
+import { DataTableColumnHeader } from "../shared/components/ui/custom/datatable/data-table-column-header"
 import { ColumnDef } from "@tanstack/react-table"
+import { IUSerList } from "./interface/IUserList.interface"
+import { TableActionRows } from "./components/table-action-rows"
 
 const breadcrumbs = [
   {
@@ -12,114 +20,69 @@ const breadcrumbs = [
   },
 ]
 
-const data: Sales[] = [
-  {
-    id: "1",
-    product: "Laptop Dell",
-    quantity: 2,
-    amount: 55000,
-    status: "success",
-  },
-  {
-    id: "2",
-    product: "PlayStation",
-    quantity: 5,
-    amount: 35000,
-    status: "processing",
-  },
-  {
-    id: "3",
-    product: "Mobile Samsung Galaxy S23",
-    quantity: 2,
-    amount: 75000,
-    status: "success",
-  },
-  {
-    id: "4",
-    product: "Gaming PC",
-    quantity: 2,
-    amount: 155000,
-    status: "success",
-  },
-  {
-    id: "5",
-    product: "Mac",
-    quantity: 2,
-    amount: 55000,
-    status: "failed",
-  },
-  {
-    id: "6",
-    product: "Smart Watch",
-    quantity: 4,
-    amount: 55000,
-    status: "success",
-  },
-  {
-    id: "7",
-    product: "XBox",
-    quantity: 5,
-    amount: 45000,
-    status: "processing",
-  },
-  {
-    id: "8",
-    product: "IPad",
-    quantity: 2,
-    amount: 55000,
-    status: "success",
-  },
-  {
-    id: "9",
-    product: "Ear Buds",
-    quantity: 2,
-    amount: 10000,
-    status: "success",
-  },
-  {
-    id: "10",
-    product: "SSD",
-    quantity: 2,
-    amount: 15000,
-    status: "failed",
-  },
-]
-
-export type Sales = {
-  id: string
-  product: string
-  amount: number
-  quantity: number
-  status: "pending" | "processing" | "success" | "failed"
-}
-
-export const columns: ColumnDef<Sales>[] = [
-  {
-    accessorKey: "product",
-    header: "Product",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
-  },
-  {
-    accessorKey: "quantity",
-    header: "Quantity",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
-]
-
 export default function UserPage() {
+  const [users, setUsers] = useState([])
+
+  const columns: ColumnDef<IUSerList>[] = [
+    {
+      accessorKey: "id",
+      header: ({ column }) => <DataTableColumnHeader column={column} title="ID" />,
+      cell: ({ row }) => <div>{row.getValue("id")}</div>,
+      enableSorting: false,
+      enableHiding: false,
+    },
+    {
+      accessorKey: "name",
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Nome" />,
+      cell: ({ row }) => <div>{row.getValue("name")}</div>,
+      enableSorting: true,
+      enableHiding: true,
+    },
+    {
+      accessorKey: "email",
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Email" />,
+      cell: ({ row }) => <div>{row.getValue("email")}</div>,
+      enableSorting: true,
+      enableHiding: true,
+    },
+    {
+      accessorKey: "active",
+      header: ({ column }) => <DataTableColumnHeader column={column} title="Status" />,
+      cell: ({ row }) => <div className="w-[80px]">{row.getValue("active") ? "Ativo" : "Inativo"}</div>,
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id))
+      },
+    },
+    {
+      id: "actions",
+      cell: ({ row }) => (
+        <div className="w-[20px]">
+          <TableActionRows row={row} handleDelete={deleteUser} />
+        </div>
+      ),
+    },
+  ]
+
+  const getUsers = async () => {
+    GetService("user", { perPage: 999 }).then((data) => setUsers(data.data))
+  }
+
+  const deleteUser = (id: string) => {
+    DeleteService("user", id).then(() => {
+      getUsers()
+    })
+  }
+
+  useEffect(() => {
+    getUsers()
+  }, [])
+
   return (
     <div>
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <h2 className="text-3xl font-bold tracking-tight my-4">Usuarios</h2>
+      <HeaderPage breadcrumbs={breadcrumbs} title="Listagem de usuários" buttonNew={true} />
 
       <div className="w-full">
-        <DataTable data={data} columns={columns}></DataTable>
+        <DataTable data={users} columns={columns} />
       </div>
     </div>
   )

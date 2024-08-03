@@ -1,5 +1,3 @@
 export default function HomePainelPage() {
-  return (
-    <h1>HomePainelPage</h1>
-  )
+  return <h1>HomePainelPage</h1>
 }

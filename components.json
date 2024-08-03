@@ -11,7 +11,7 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@/app/painel/components",
-    "utils": "@/app/painel/lib/utils"
+    "components": "@/app/painel/shared/components",
+    "utils": "@/app/painel/shared/lib/utils"
   }
 }

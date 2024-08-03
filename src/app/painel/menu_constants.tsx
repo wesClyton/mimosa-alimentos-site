@@ -1,4 +1,4 @@
-import { SideNavItemGroup } from "@/app/painel/types/type"
+import { SideNavItemGroup } from "@/app/painel/shared/types/type"
 import {
   BsBuildingFill,
   BsClockHistory,
@@ -24,22 +24,22 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
     menuList: [
       {
         title: "Clientes",
-        path: "/clientes",
+        path: "/painel/clientes",
         icon: <BsBuildingFill size={20} />,
       },
       {
         title: "Dowloads",
-        path: "/downloads",
+        path: "/painel/downloads",
         icon: <BsCloudArrowDownFill size={20} />,
       },
       {
         title: "Produtos",
-        path: "/produtos",
+        path: "/painel/produtos",
         icon: <BsFillBoxSeamFill size={20} />,
       },
       {
         title: "Linha do tempo",
-        path: "/timeline",
+        path: "/painel/timeline",
         icon: <BsClockHistory size={20} />,
       },
     ],

@@ -1,19 +1,17 @@
-import NextAuth from "next-auth/next"
-import { NextAuthOptions } from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-const authOptions: NextAuthOptions = {
+const nextAuthOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Senha", type: "password" },
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
       },
-      async authorize(credentials) {
-        console.log("credentials: ", credentials)
 
-        const response = await fetch("http://localhost:3000/login", {
+      async authorize(credentials, req) {
+        const response = await fetch(`${process.env.API_URL}/login`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -34,36 +32,23 @@ const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  pages: {
+    signIn: process.env.NEXTAUTH_URL,
+  },
   callbacks: {
-    jwt: ({ token, user }) => {
-      const customUser = user as unknown as any
-
-      if (user) {
-        return {
-          ...token,
-          sub: user.id,
-          email: user.email,
-          name: user.name,
-        }
-      }
-
+    async jwt({ token, user }) {
+      user && (token.user = user)
       return token
     },
-    session: async ({ session, token }) => {
+    async session({ session, token }) {
       return {
         ...session,
-        user: {
-          name: token.name,
-          email: token.email,
-        },
+        ...token,
       }
     },
-  },
-  pages: {
-    signIn: "/auth/login",
   },
 }
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(nextAuthOptions)
 
 export { handler as GET, handler as POST }
