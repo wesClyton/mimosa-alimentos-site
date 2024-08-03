@@ -33,7 +33,7 @@ const nextAuthOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/login",
+    signIn: process.env.NEXTAUTH_URL,
   },
   callbacks: {
     async jwt({ token, user }) {
