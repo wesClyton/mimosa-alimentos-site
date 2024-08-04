@@ -2,7 +2,7 @@ import classNames from "classnames"
 import Image from "next/image"
 import Link from "next/link"
 import button from "../../app/css/button/button.module.scss"
-import { generateId } from "../../lib/utils"
+import { generateId } from "../../app/painel/shared/lib/utils"
 import styles from "./banner.module.scss"
 
 interface Banner {
@@ -15,8 +15,6 @@ interface Banner {
 }
 
 export default function Banner() {
-  const BTN_CLASS_NAMES = classNames(button.btn, button["btn-primary"])
-
   const PATH_BANNERS = "/site/home/banners"
 
   const BANNERS: Banner[] = [
@@ -53,7 +51,7 @@ export default function Banner() {
               ></Image>
               <div className={styles["content-text"]}>
                 <Image width={687} height={513} alt={banner.alt} src={`${PATH_BANNERS}/${banner.imageText}`}></Image>
-                <button className={BTN_CLASS_NAMES}>{banner.btnLabel}</button>
+                <button className={classNames(button.btn, button["btn-primary"])}>{banner.btnLabel}</button>
               </div>
             </div>
           </Link>

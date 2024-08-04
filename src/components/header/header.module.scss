@@ -57,7 +57,7 @@
       &::before {
         content: ">";
         position: absolute;
-        top: 1.5px;
+        top: -4.5px;
         right: -1.5rem;
         transform: scaleY(0.5) rotate(90deg);
         font-weight: 800;
@@ -83,7 +83,7 @@
   width: 30px;
   height: 3.3px;
   display: block;
-  transform: translate(-0.35rem, -0.2rem);
+  transform: translate(0, -0.2rem);
   transition: 0.25s all;
   z-index: 1000;
 }
@@ -107,7 +107,7 @@
   &::after {
     content: "";
     @include hamburger-menu;
-    transform: translate(-0.35rem, 0.2rem) !important;
+    transform: translate(0, 0.2rem) !important;
   }
 }
 .hamburger-active {
@@ -115,10 +115,10 @@
   transform: rotate(180deg);
   top: 0.5rem;
   &::before {
-    transform: translate(-0.35rem, -0.2rem) rotate(45deg);
+    transform: translate(0, -0.2rem) rotate(45deg);
   }
   &::after {
-    transform: translate(-0.35rem, -0.4rem) rotate(-45deg) !important;
+    transform: translate(0, -0.4rem) rotate(-45deg) !important;
   }
 }
 
@@ -181,7 +181,7 @@
       li.has-submenu a {
         &::before {
           right: -1rem;
-          top: 5px;
+          top: -1px;
         }
       }
     }

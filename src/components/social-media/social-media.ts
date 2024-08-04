@@ -1,4 +1,4 @@
-import { generateId } from "../../lib/utils"
+import { generateId } from "../../app/painel/shared/lib/utils"
 
 type socialType = "facebook" | "instagram"
 
@@ -9,7 +9,6 @@ interface SocialMediaItem {
 
 interface SocialMedia {
   id: string
-  icon: string
   link: string
   type: socialType
 }
@@ -17,13 +16,11 @@ interface SocialMedia {
 const SOCIAL_MEDIA: SocialMediaItem = {
   facebook: {
     id: generateId("facebook"),
-    icon: "facebook.svg",
     link: "https://www.facebook.com/mimosaalimentos",
     type: "facebook",
   },
   instagram: {
     id: generateId("instagram"),
-    icon: "instagram.svg",
     link: "https://www.instagram.com/mimosaalimentos",
     type: "instagram",
   },

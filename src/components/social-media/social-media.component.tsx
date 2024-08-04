@@ -5,20 +5,18 @@ import { SOCIAL_MEDIA_HEADER } from "./social-media"
 import styles from "./social-media.module.scss"
 
 interface SocialMediaProps {
-  locationRender: LocationRender
+  locationRender: "header" | "footer"
 }
 
-type LocationRender = "header" | "footer"
-
 export default function SocialMedia({ locationRender }: SocialMediaProps) {
-  const UL_CLASS_NAMES = classNames(styles["social-media"], styles[locationRender])
+  const ICON_COLOR = locationRender === "header" ? "white" : "red"
 
   return (
-    <ul className={UL_CLASS_NAMES}>
+    <ul className={classNames(styles["social-media"], styles[locationRender])}>
       {SOCIAL_MEDIA_HEADER.itens.map((item) => (
         <li key={item.id}>
           <Link href={item.link} target="_blank">
-            <Image src={`site/social/${item.icon}`} alt={item.type} width={20} height={22}></Image>
+            <Image src={`site/social/${item.type}-${ICON_COLOR}.svg`} alt={item.type} width={20} height={22}></Image>
           </Link>
         </li>
       ))}

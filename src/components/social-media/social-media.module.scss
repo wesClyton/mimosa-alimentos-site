@@ -18,7 +18,15 @@
   }
 
   &.footer {
-    background-color: var(--primary);
+    li {
+      color: var(--primary);
+      border-radius: 10px;
+      background-color: var(--secondary);
+    }
+  }
+
+  img {
+    height: 22px;
   }
 }
 

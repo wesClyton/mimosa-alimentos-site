@@ -1,0 +1,43 @@
+.footer {
+  background-color: var(--primary);
+  text-align: center;
+  text-transform: uppercase;
+
+  .nav {
+    color: var(--secondary);
+
+    a {
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+  }
+
+  > .content {
+    max-width: 1352px;
+    margin: 0 auto;
+  }
+
+  .address {
+    > address {
+      color: var(--white);
+      font-style: normal;
+      font-size: 0.85rem;
+    }
+
+    > strong {
+      color: var(--secondary);
+    }
+  }
+
+  .sac {
+    color: var(--white);
+
+    > p {
+      font-size: 0.85rem;
+    }
+
+    > strong {
+      color: var(--secondary);
+    }
+  }
+}
