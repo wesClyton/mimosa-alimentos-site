@@ -37,26 +37,24 @@ export default function Banner() {
   ]
 
   return (
-    <>
-      <section className={styles.banners}>
-        {BANNERS.map((banner) => (
-          <Link key={banner.id} href={banner.link} target="_self">
-            <div className={styles.content}>
-              <Image
-                className={styles["content-image"]}
-                width={1920}
-                height={960}
-                src={`${PATH_BANNERS}/${banner.imagePath}`}
-                alt={banner.alt}
-              ></Image>
-              <div className={styles["content-text"]}>
-                <Image width={687} height={513} alt={banner.alt} src={`${PATH_BANNERS}/${banner.imageText}`}></Image>
-                <button className={classNames(button.btn, button["btn-primary"])}>{banner.btnLabel}</button>
-              </div>
+    <section className={styles.banners}>
+      {BANNERS.map((banner) => (
+        <Link key={banner.id} href={banner.link} target="_self">
+          <div className={styles.content}>
+            <Image
+              className={styles["content-image"]}
+              width={1920}
+              height={960}
+              src={`${PATH_BANNERS}/${banner.imagePath}`}
+              alt={banner.alt}
+            ></Image>
+            <div className={styles["content-text"]}>
+              <Image width={687} height={513} alt={banner.alt} src={`${PATH_BANNERS}/${banner.imageText}`}></Image>
+              <button className={classNames(button.btn, button["btn-primary"])}>{banner.btnLabel}</button>
             </div>
-          </Link>
-        ))}
-      </section>
-    </>
+          </div>
+        </Link>
+      ))}
+    </section>
   )
 }

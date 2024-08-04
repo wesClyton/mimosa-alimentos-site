@@ -1,0 +1,62 @@
+@import "../app/css/button/button.mixins.scss";
+
+.section-produtos {
+  position: relative;
+
+  > img {
+    width: 100%;
+    max-width: none;
+  }
+
+  .content {
+    position: absolute;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    inset: 0;
+
+    h2 {
+      color: var(--white);
+      font-size: 1.5rem;
+      max-width: 20rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  button {
+    color: var(--secondary);
+    @include btnSmall();
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section-produtos {
+    .content {
+      button {
+        @include btnMedium();
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section-produtos {
+    .content {
+      padding: 4rem 2rem;
+      h2 {
+        font-size: 3rem;
+        max-width: 40rem;
+        line-height: 3rem;
+      }
+
+      button {
+        @include btnMedium();
+      }
+    }
+  }
+}
