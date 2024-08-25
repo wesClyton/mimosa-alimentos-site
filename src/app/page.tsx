@@ -94,7 +94,7 @@ export default function HomePage() {
               alt="Leve a qualidade dos produtos Mimosa até você!"
             ></Image>
 
-            <p className="py-5 text-center">Solicite a visa de um representante!</p>
+            <p className="pt-5 pb-8">Solicite a visa de um representante!</p>
 
             <button type="button" className={classNames(`${button.btn}`, `${button["btn-secondary"]}`)}>
               Agende uma visita
@@ -104,8 +104,22 @@ export default function HomePage() {
       </section>
 
       <section className={style["section-onde-encontrar"]}>
-        <div className={classNames(`${style.content}`)}></div>
+        <video className={style["background-video"]} autoPlay muted loop playsInline>
+          <source src="/site/videos/04.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className={classNames(`${style.content}`)}>
+          <div className={classNames(`${style.card}`)}>
+            <Image width={168} height={265} src="/site/home/pin.svg" alt="Onde encontrar Mimosa!"></Image>
+            <h3>Onde encontrar Mimosa!</h3>
+            <p>Descubra um fornecedor Mimosa mais próximo de você!</p>
+            <button type="button" className={classNames(`${button.btn}`, `${button["btn-primary"]}`)}>
+              Encontre os nossos fornecedores
+            </button>
+          </div>
+        </div>
       </section>
+
       <Footer />
     </>
   )
