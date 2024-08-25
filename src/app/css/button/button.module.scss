@@ -6,27 +6,27 @@
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease;
-  color: var(--white);
   text-decoration: none;
   width: fit-content;
-  text-transform: uppercase;
+  text-transform: initial;
   font-weight: bold;
 }
 
 .btn-small {
-  @include btnSmall()
+  @include btnSmall();
 }
 
 .btn-medium {
-  @include btnMedium()
+  @include btnMedium();
 }
 
 .btn-large {
-  @include btnLarge()
+  @include btnLarge();
 }
 
 .btn-primary {
   background-color: var(--primary);
+  color: var(--secondary);
   &:hover {
     background-color: var(--primary-d);
   }
@@ -34,6 +34,7 @@
 
 .btn-secondary {
   background-color: var(--secondary);
+  color: var(--primary);
   &:hover {
     background-color: var(--secondary-d);
   }

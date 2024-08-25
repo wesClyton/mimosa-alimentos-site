@@ -24,7 +24,7 @@ export default function Footer() {
           <div className={classNames(`flex`, `flex-col`, `${styles.sac}`)}>
             <strong className="mb-3">SAC Mimosa:</strong>
             <p className="flex justify-center gap-2 mb-4">
-              <Image src="/site/footer/whatsapp.svg" width={20} height={24} alt="WhatsApp"></Image>
+              <i className={classNames(styles["icon-whatsapp"])}></i>
               <span>(44) 3626-7484</span>
             </p>
 

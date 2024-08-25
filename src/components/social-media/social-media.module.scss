@@ -9,24 +9,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    a.icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      font-family: "fontello";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.icon-facebook:before {
+        content: "\e801";
+      }
+
+      &.icon-instagram:before {
+        content: "\e802";
+      }
+    }
   }
 
   &.header {
     position: absolute;
     top: 10px;
     right: 10px;
-  }
 
-  &.footer {
-    li {
-      color: var(--primary);
-      border-radius: 10px;
-      background-color: var(--secondary);
+    a.icon {
+      background-color: transparent;
+      color: var(--white);
     }
   }
 
-  img {
-    height: 22px;
+  &.footer {
+    a.icon {
+      color: var(--primary);
+      background-color: var(--secondary);
+    }
   }
 }
 
@@ -36,6 +54,21 @@
       position: relative;
       top: 0;
       right: 0;
+      a.icon {
+        transition: 0.25s all;
+        &:hover {
+          color: var(--secondary);
+        }
+      }
+    }
+
+    &.footer {
+      a.icon {
+        transition: 0.25s all;
+        &:hover {
+          color: var(--white);
+        }
+      }
     }
   }
 }
