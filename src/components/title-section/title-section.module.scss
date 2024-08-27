@@ -1,0 +1,41 @@
+.title {
+  text-align: center;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: bold;
+
+  &::before,
+  &::after {
+    display: block;
+    content: "";
+    width: 150px;
+    height: 7px;
+    background-image: url("/site/title-section.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: calc(50% - 3.5px);
+    transform: scale(0.35);
+  }
+  &::before {
+    left: -8rem;
+  }
+  &::after {
+    right: -8rem;
+    transform: rotateY(-180deg) scale(0.35);
+  }
+
+  &.white {
+    color: var(--white);
+  }
+
+  &.primary {
+    color: var(--primary);
+  }
+
+  &.secondary {
+    color: var(--secondary);
+  }
+}
