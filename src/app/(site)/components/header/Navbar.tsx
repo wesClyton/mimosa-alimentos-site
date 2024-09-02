@@ -16,7 +16,7 @@ export function Navbar({ menuLinks }: INavbarProps) {
           <Link
             key={link.id}
             href={link.url}
-            className="block mt-4 lg:inline-block lg:mt-0 text-neutral-50 text-base font-semibold lg:mr-10 hover:text-yellow-500"
+            className="block mt-4 lg:inline-block lg:mt-0 text-neutral-50 text-base font-semibold lg:mr-5 xl:mr-10 hover:text-yellow-500 last:mr-0"
           >
             {link.name}
           </Link>

@@ -19,7 +19,8 @@ export function Header() {
 
   return (
     <header className="fixed w-full">
-      <nav className="container w-auto flex items-center justify-between flex-wrap p-6 bg-red-500 rounded-2xl m-4 lg:max-w-screen-lg lg:mx-auto xl:max-w-screen-xl xl:px-20">
+      <div className="container w-auto">
+        <nav className="flex items-center justify-between flex-wrap bg-red-500 rounded-2xl m-4 lg:max-w-screen-lg lg:mx-auto xl:max-w-screen-xl 2xl:max-w-[1400px] p-6">
         <div className="flex items-center flex-shrink-0 text-white mx-auto lg:mx-0 lg:mr-7 xl:mr-20">
           <Link href="/">
             <Image src="/site/logo-header.svg" width={155} height={52} className="mr-2" alt="Logo Mimosa Alimentos" />
@@ -42,6 +43,7 @@ export function Header() {
           </div>
         </div>
       </nav>
+      </div>
     </header>
   )
 }
