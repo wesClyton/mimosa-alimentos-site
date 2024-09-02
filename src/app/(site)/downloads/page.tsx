@@ -1,0 +1,11 @@
+import { Header } from "../components/header/Header"
+
+export default function DownloadsPage() {
+  return (
+    <>
+      <div className="w-full max-w-screen-xl h-screen flex justify-center items-center">
+        <h1>Downloads page</h1>
+      </div>
+    </>
+  )
+}

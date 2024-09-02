@@ -4,14 +4,14 @@ import { useState } from "react"
 import Image from "next/image"
 import { MobileMenuButton } from "./MobileMenuButton"
 import { Navbar } from "./Navbar"
-import { SocialMedia } from "../shared/SocialMedia"
+import { SocialMedia } from "./SocialMedia"
 import Link from "next/link"
 
 export function Header() {
   const menuLinks = [
     { id: 1, name: "Institucional", url: "/sobre" },
     { id: 2, name: "Produtos", url: "/produtos" },
-    { id: 3, name: "Onde Encontrar", url: "/onde-encontar" },
+    { id: 3, name: "Onde Encontrar", url: "/onde-encontrar" },
     { id: 4, name: "Contato", url: "/contato" },
   ]
 
@@ -33,7 +33,7 @@ export function Header() {
 
           <div className="flex flex-col items-center lg:flex-row">
             <Link
-              href="/"
+              href="/seja-um-cliente"
               className="inline-block py-3 px-8 leading-none text-sm text-center w-auto bg-red-600 rounded-lg text-white hover:bg-red-700 hover:text-yellow-500 font-semibold my-4 lg:mr-10"
             >
               Seja um Cliente
