@@ -10,7 +10,7 @@ interface INavbarProps {
 
 export function Navbar({ menuLinks }: INavbarProps) {
   return (
-    <div className="text-sm flex flex-col items-center mt-8 lg:flex-grow lg:mt-0 lg:flex-row">
+    <div className="text-sm flex flex-col justify-center items-center mt-8 lg:flex-grow lg:mt-0 lg:flex-row">
       {menuLinks &&
         menuLinks.map((link) => (
           <Link

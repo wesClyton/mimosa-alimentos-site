@@ -29,7 +29,7 @@ export default function HomePage() {
           button={{ title: "Conheça nossos produtos", href: "/" }}
         />
 
-        <div className="py-16 md:py-0 lg:h-[400px] bg-red-500 text-yellow-500">
+        <div className="py-16 h-[400px] md:py-0 bg-red-500 text-yellow-500">
           <div className="container h-full flex flex-col md:flex-row gap-10 items-center">
             <div className="md:w-1/2 flex justify-end">
               <h2 className="text-center md:text-right md:w-2/3 text-3xl">
@@ -42,13 +42,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="relative h-[700px] -mt-14">
+        <div className="relative h-screen md:h-[700px] -mt-14">
           <ImageBg
             image="/site/banners/home-conheca-nossa-historia"
-            className="bg-image w-full h-[700px] flex items-center bg-top z-10 relative"
+            className="lg:bg-image w-full h-[700px] flex items-center lg:bg-top z-10 relative"
           >
             <div className="container grid grid-cols-10">
-              <div className="col-start-2 col-span-3">
+              <div className="lg:col-start-2 col-span-10 lg:col-span-3">
                 <h2 className="text-6xl text-red-500 font-bold">
                   Mimosa <br /> Alimentos
                 </h2>
@@ -62,11 +62,11 @@ export default function HomePage() {
 
         <ImageBg
           image="/site/banners/home-leve-qualidade-dos-produtos-mimosa"
-          className="w-full h-screen bg-no-repeat bg-cover bg-center"
+          className="w-full h-screen bg-no-repeat bg-cover lg:bg-center mt-0"
         >
           <div className="container grid grid-cols-12 h-full">
-            <div className="col-start-7 col-span-5">
-              <div className="flex flex-col h-full w-full justify-center items-center text-5xl text-neutral-50 uppercase text-center">
+            <div className="col-span-12 lg:col-start-7 lg:col-span-5">
+              <div className="flex flex-col h-full w-full justify-center items-center text-4xl lg:text-5xl text-neutral-50 uppercase text-center">
                 <Image
                   src="/site/banners/vector-linguica.png"
                   width={161}
@@ -75,7 +75,8 @@ export default function HomePage() {
                   alt="Linguiças Mimosa"
                 />
                 <h2 className="tusker_700">
-                  Leve a <span className="text-yellow-500 text-8xl block py-2 leading-tight">qualidade</span> dos
+                  Leve a{" "}
+                  <span className="text-yellow-500 text-6xl lg:text-8xl block py-2 leading-tight">qualidade</span> dos
                   produtos <span className="block">Mimosa até você!</span>
                 </h2>
                 <ButtonBase title="Conheça nossos produtos" href="/" bg="bg-yellow-500" color="text-neutral-950" />
@@ -84,15 +85,21 @@ export default function HomePage() {
           </div>
         </ImageBg>
 
-        <section className="relative overflow-hidden h-[42rem] bg-yellow-500">
+        <section className="relative overflow-hidden h-screen lg:h-[42rem] bg-yellow-500">
           <div className="flex h-full">
-            <video className="w-1/2 h-full object-cover -translate-1/2 opacity-25 z-10" autoPlay muted loop playsInline>
+            <video
+              className="absolute w-full lg:static lg:w-1/2 h-full object-cover -translate-1/2 opacity-25 z-10"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
               <source src="/site/videos/04.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
-            <div className="text-center w-full bg-yellow-500 flex justify-center items-center">
-              <div>
+            <div className="text-center w-full lg:bg-yellow-500 flex justify-center items-center z-30">
+              <div className="p-4 lg:p-0">
                 <Image
                   width={168}
                   height={265}
@@ -100,10 +107,10 @@ export default function HomePage() {
                   alt="Onde encontrar Mimosa!"
                   className="text-red-500 inline-block"
                 />
-                <h3 className="text-6xl text-red-500 tusker_700">
+                <h3 className="text-3xl lg:text-6xl text-red-500 tusker_700">
                   Onde encontrar <br /> Mimosa!
                 </h3>
-                <p className="text-lg py-8">Descubra um fornecedor Mimosa mais próximo de você!</p>
+                <p className="text-base lg:text-lg py-8">Descubra um fornecedor Mimosa mais próximo de você!</p>
                 <ButtonBase href="" title="Encontre os nossos fornecedores" />
               </div>
             </div>

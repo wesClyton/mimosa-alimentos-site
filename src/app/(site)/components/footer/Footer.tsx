@@ -7,15 +7,15 @@ import { NavFooter } from "./NavFooter"
 export function Footer() {
   const menuLinks1 = [
     { id: 1, name: "Início", url: "/" },
-    { id: 1, name: "Institucional", url: "/sobre" },
-    { id: 2, name: "Produtos", url: "/produtos" },
-    { id: 3, name: "Onde Encontrar", url: "/onde-encontrar" },
+    { id: 2, name: "Institucional", url: "/sobre" },
+    { id: 3, name: "Produtos", url: "/produtos" },
+    { id: 4, name: "Onde Encontrar", url: "/onde-encontrar" },
   ]
 
   const menuLinks2 = [
-    { id: 4, name: "Downloads", url: "/downloads" },
-    { id: 4, name: "Seja um Cliente", url: "/seja-um-cliente" },
-    { id: 4, name: "Contato", url: "/contato" },
+    { id: 5, name: "Downloads", url: "/downloads" },
+    { id: 6, name: "Seja um Cliente", url: "/seja-um-cliente" },
+    { id: 7, name: "Contato", url: "/contato" },
   ]
 
   return (
@@ -43,14 +43,22 @@ export function Footer() {
             </div>
             <div>
               <p className="text-neutral-50 text-sm md:text-xs xl:text-sm uppercase">HORÁRIO DE ATENDIMENTO:</p>
-              <p className="text-neutral-50 text-sm md:text-xs xl:text-sm uppercase">SEGUNDA À SEXTA: 08:00H ÀS 18:00H</p>
+              <p className="text-neutral-50 text-sm md:text-xs xl:text-sm uppercase">
+                SEGUNDA À SEXTA: 08:00H ÀS 18:00H
+              </p>
               <p className="text-neutral-50 text-sm md:text-xs xl:text-sm uppercase">SÁBADO: 08:00H AO 12:00H </p>
             </div>
           </div>
         </div>
         <div className="flex flex-col items-center mt-8 md:mt-0">
           <Link href="/">
-            <Image src="/site/logo-footer.svg" alt="Mimosa Alimentos" className="lg:w-[160px] xl:w-[224px]" width={224} height={74} />
+            <Image
+              src="/site/logo-footer.svg"
+              alt="Mimosa Alimentos"
+              className="lg:w-[160px] xl:w-[224px]"
+              width={224}
+              height={74}
+            />
           </Link>
           <SocialMedia />
         </div>
