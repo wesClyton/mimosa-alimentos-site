@@ -18,7 +18,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="fixed w-full">
+    <header className="fixed w-full z-50">
       <div className="container w-auto">
         <nav className="flex items-center justify-between flex-wrap bg-red-500 rounded-2xl m-4 lg:max-w-screen-lg lg:mx-auto xl:max-w-screen-xl 2xl:max-w-[1400px] p-6">
         <div className="flex items-center flex-shrink-0 text-white mx-auto lg:mx-0 lg:mr-7 xl:mr-20">

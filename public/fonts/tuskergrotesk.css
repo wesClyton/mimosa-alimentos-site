@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'tusker_grotesk4500_medium';
+    src: url('tuskergrotesk-4500medium-webfont.woff2') format('woff2'),
+         url('tuskergrotesk-4500medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'tusker_grotesk4600_semibold';
+    src: url('tuskergrotesk-4600semibold-webfont.woff2') format('woff2'),
+         url('tuskergrotesk-4600semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'tusker_grotesk4700__bold';
+    src: url('tuskergrotesk-4700bold-webfont.woff2') format('woff2'),
+         url('tuskergrotesk-4700bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'tusker_grotesk4800_super';
+    src: url('tuskergrotesk-4800super-webfont.woff2') format('woff2'),
+         url('tuskergrotesk-4800super-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'tusker_grotesk5500_medium';
+    src: url('tuskergrotesk-5500medium-webfont.woff2') format('woff2'),
+         url('tuskergrotesk-5500medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'tusker_grotesk5600_semibold';
+    src: url('tuskergrotesk-5600semibold-webfont.woff2') format('woff2'),
+         url('tuskergrotesk-5600semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

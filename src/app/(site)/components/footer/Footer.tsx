@@ -21,7 +21,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-red-500 py-10">
       <div className="container sm:flex sm:flex-wrap sm:gap-20 sm:justify-center md:flex-nowrap md:gap-0 md:justify-between items-center lg:items-start md:max-w-screen-md lg:max-w-screen-lg lg:mx-auto xl:max-w-screen-xl xl:px-20 2xl:max-w-[1400px]">
-        <div className="lg:flex lg:flex lg:gap-5 xl:gap-10">
+        <div className="lg:flex lg:gap-5 xl:gap-10">
           <NavFooter menuLinks={menuLinks1} className="mb-4 text-center sm:text-left" />
           <NavFooter menuLinks={menuLinks2} className="text-center sm:text-left" />
         </div>

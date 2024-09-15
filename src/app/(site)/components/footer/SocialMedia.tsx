@@ -8,7 +8,7 @@ export function SocialMedia() {
         href="https://www.facebook.com/mimosaalimentos"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-red-500 bg-yellow-500 rounded p-1"
+        className="text-red-500 bg-yellow-500 hover:bg-yellow-100 rounded p-1"
         title="Facebook"
       >
         <FaFacebookF size={22} />
@@ -17,7 +17,7 @@ export function SocialMedia() {
         href="https://www.instagram.com/mimosaalimentos"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-red-500 bg-yellow-500 rounded p-1 ml-7"
+        className="text-red-500 bg-yellow-500 hover:bg-yellow-100 rounded p-1 ml-7"
         title="Instagram"
       >
         <FaInstagram size={22} />

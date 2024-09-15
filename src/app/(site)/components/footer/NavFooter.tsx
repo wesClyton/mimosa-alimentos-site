@@ -15,7 +15,7 @@ export const NavFooter = ({ menuLinks, className }: INavFooterProps) => {
       <ul>
         {menuLinks.map((link) => (
           <li key={link.id} className="mb-4 last:mb-0">
-            <Link href={link.url} className="block text-sm text-yellow-500 font-semibold uppercase">
+            <Link href={link.url} className="block text-sm text-yellow-500 font-semibold uppercase hover:text-yellow-100">
               {link.name}
             </Link>
           </li>

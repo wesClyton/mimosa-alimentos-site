@@ -2,46 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("../../public/fonts/tuskergrotesk.css");
+
 :root {
-    --radius: 10px;
+	--radius: 10px;
 
-    --yellow-50: #FFF9B8;
-    --yellow-100: #FFF7A3;
-    --yellow-200: #FFF47A; 
-    --yellow-300: #FFF052;
-    --yellow-400: #FFED29;
-    --yellow-500: #FFE900;
-    --yellow-600: #C7B600;
-    --yellow-700: #8F8200;
-    --yellow-800: #574F00;
-    --yellow-900: #1F1C00;
+	--yellow-50: #FFF9B8;
+	--yellow-100: #FFF7A3;
+	--yellow-200: #FFF47A; 
+	--yellow-300: #FFF052;
+	--yellow-400: #FFED29;
+	--yellow-500: #FFE900;
+	--yellow-600: #dccc26;
+	--yellow-700: #8F8200;
+	--yellow-800: #574F00;
+	--yellow-900: #1F1C00;
 
-    --red-50: #FFACB2;
-    --red-100: #FF97A0;
-    --red-200: #FF6E7A;
-    --red-300: #FF4655;
-    --red-400: #FF1D2F;
-    --red-500: #F30014;
-    --red-600: #BB000F;
-    --red-700: #83000B;
-    --red-800: #4B0006;
-    --red-900: #130002;
+	--red-50: #FFACB2;
+	--red-100: #FF97A0;
+	--red-200: #FF6E7A;
+	--red-300: #FF4655;
+	--red-400: #FF1D2F;
+	--red-500: #F30014;
+	--red-600: #BB000F;
+	--red-700: #83000B;
+	--red-800: #4B0006;
+	--red-900: #130002;
 
-    --neutral-50: #ffffff;
-    --neutral-100: #e9e9e9;
-    --neutral-200: #d9d9d9;
-    --neutral-300: #c4c4c4;
-    --neutral-400: #9d9d9d;
-    --neutral-500: #7b7b7b;
-    --neutral-600: #555555;
-    --neutral-700: #434343;
-    --neutral-800: #262626;
-    --neutral-900: #000000;
+	--neutral-50: #ffffff;
+	--neutral-100: #e9e9e9;
+	--neutral-200: #d9d9d9;
+	--neutral-300: #c4c4c4;
+	--neutral-400: #9d9d9d;
+	--neutral-500: #7b7b7b;
+	--neutral-600: #555555;
+	--neutral-700: #434343;
+	--neutral-800: #262626;
+	--neutral-900: #000000;
 
-    --font-poppins: 'Poppins', sans-serif;
+	--font-poppins: 'Poppins', sans-serif;
 }
 
 
 html {
-    font-family: var(--font-poppins);
+  font-family: var(--font-poppins);
+}
+
+.tusker_500 {
+  font-family: "tusker_grotesk4500_medium", sans-serif;
+}
+
+.tusker_600 {
+  font-family: "tusker_grotesk4600_semibold", sans-serif;
+}
+
+.tusker_700 {
+  font-family: "tusker_grotesk4700__bold", sans-serif;
+}
+
+.tusker_800 {
+  font-family: "tusker_grotesk4800_super", sans-serif;
 }
