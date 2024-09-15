@@ -84,19 +84,28 @@ export default function HomePage() {
           </div>
         </ImageBg>
 
-        <section className={style["section-onde-encontrar"]}>
-          <video className={style["background-video"]} autoPlay muted loop playsInline>
-            <source src="/site/videos/04.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className={classNames(`${style.content}`)}>
-            <div className={classNames(`${style.card}`)}>
-              <Image width={168} height={265} src="/site/home/pin.svg" alt="Onde encontrar Mimosa!"></Image>
-              <h3>Onde encontrar Mimosa!</h3>
-              <p>Descubra um fornecedor Mimosa mais próximo de você!</p>
-              <button type="button" className={classNames(`${button.btn}`, `${button["btn-primary"]}`)}>
-                Encontre os nossos fornecedores
-              </button>
+        <section className="relative overflow-hidden h-[42rem] bg-yellow-500">
+          <div className="flex h-full">
+            <video className="w-1/2 h-full object-cover -translate-1/2 opacity-25 z-10" autoPlay muted loop playsInline>
+              <source src="/site/videos/04.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <div className="text-center w-full bg-yellow-500 flex justify-center items-center">
+              <div>
+                <Image
+                  width={168}
+                  height={265}
+                  src="/site/home/pin.svg"
+                  alt="Onde encontrar Mimosa!"
+                  className="text-red-500 inline-block"
+                />
+                <h3 className="text-6xl text-red-500 tusker_700">
+                  Onde encontrar <br /> Mimosa!
+                </h3>
+                <p className="text-lg py-8">Descubra um fornecedor Mimosa mais próximo de você!</p>
+                <ButtonBase href="" title="Encontre os nossos fornecedores" />
+              </div>
             </div>
           </div>
         </section>
