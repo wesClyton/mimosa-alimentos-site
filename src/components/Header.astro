@@ -1,0 +1,17 @@
+---
+import Menu from "./Menu.astro";
+import type { IHeaderMenu } from "@interfaces/header.interface";
+
+const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
+---
+
+<header>
+  <a href="/">
+    <img src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
+  </a>
+
+  <Menu
+    items={menuItems}
+    showItemSejaUmCliente={menuShowItemSejaUmCliente}
+  />
+</header>

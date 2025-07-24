@@ -1,0 +1,45 @@
+---
+import type { IMenu } from '@interfaces/menu.interface';
+
+const {
+  items = [
+    {
+      label: 'Institucional',
+      href: '/',
+    },
+    {
+      label: 'Produtos',
+      href: '/',
+    },
+    {
+      label: 'Onde Encontrar',
+      href: '/',
+    },
+    {
+      label: 'Contato',
+      href: '/',
+    },
+  ],
+  showItemSejaUmCliente = true
+}: IMenu = Astro.props;
+
+const itemSejaUmCliente = {
+  label: 'Seja um Cliente',
+  href: '/',
+};
+---
+
+<nav>
+  <ul>
+    {items?.map(item => (
+      <li>
+        <a href={item.href}>{item.label}</a>
+      </li>
+    ))}
+    {showItemSejaUmCliente && (
+      <li>
+        <a href={itemSejaUmCliente.href}>{itemSejaUmCliente.label}</a>
+      </li>
+    )}
+  </ul>
+</nav>
