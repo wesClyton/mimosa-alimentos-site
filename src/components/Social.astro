@@ -1,0 +1,30 @@
+---
+import type { ISocial } from "@interfaces/social";
+
+const {
+  iconColor: color = 'yellow',
+  iconWithBackground = false,
+  socialNetworks = [
+    {
+      name: 'Facebook',
+      url: 'https://www.facebook.com/mimosaalimentos',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/mimosaalimentos/',
+    }
+  ]
+}: ISocial = Astro.props;
+---
+
+<div class="flex flex-row gap-4 justify-center items-center">
+  {socialNetworks.map((network) => (
+    <a href={network.url} target="_blank">
+      <img
+        class="max-h-5"
+        src={`/social/${network.name.toLowerCase()}-${color}${iconWithBackground ? '-with-bg' : ''}.png`}
+        alt={network.name}
+      />
+    </a>
+  ))}
+</div>

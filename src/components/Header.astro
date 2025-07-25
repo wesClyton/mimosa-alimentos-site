@@ -1,17 +1,82 @@
 ---
-import Menu from "./Menu.astro";
-import type { IHeaderMenu } from "@interfaces/header.interface";
+import type { IHeaderMenu } from '@interfaces/header.interface';
+import Menu from './Menu.astro';
+import Social from './Social.astro';
 
 const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
 ---
 
-<header>
-  <a href="/">
-    <img src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
-  </a>
+<header class="bg-red-800 px-10 py-5 lg:bg-transparent">
+  <button
+    id="header-toggle-btn"
+    class="absolute top-2 right-2 z-10 w-7 cursor-pointer lg:hidden"
+    aria-label="Header Button Toggle"
+  >
+    <img src="burger-menu-right.svg" alt="Header Button Toggle" />
+  </button>
 
-  <Menu
-    items={menuItems}
-    showItemSejaUmCliente={menuShowItemSejaUmCliente}
-  />
+  <div
+    class="mx-auto flex flex-col items-center justify-center rounded-3xl bg-transparent lg:w-full lg:max-w-7xl lg:flex-row lg:justify-between lg:bg-red-800 lg:px-8 lg:py-7"
+  >
+    <a href="/" class="w-38">
+      <img src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
+    </a>
+
+    <div class="header-toggle-content">
+      <Menu items={menuItems} showItemSejaUmCliente={menuShowItemSejaUmCliente} />
+    </div>
+
+    <div class="header-toggle-content">
+      <Social />
+    </div>
+  </div>
 </header>
+
+<script is:inline>
+  function checkIsMobile() {
+    return window.innerWidth <= 1024;
+  }
+
+  let contents = [];
+  const isMobile = checkIsMobile();
+  let isOpen = isMobile;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeToggleContent();
+  });
+
+  function initializeToggleContent() {
+    const btn = document.getElementById('header-toggle-btn');
+    contents = document.getElementsByClassName('header-toggle-content');
+
+    shouldShowMenu();
+
+    btn.addEventListener('click', () => {
+      shouldShowMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      shouldShowMenu(checkIsMobile() ? false : true);
+    });
+  }
+
+  function shouldShowMenu(forceShow = false) {
+    if (forceShow) {
+      isOpen = true;
+    } else {
+      isOpen = !isOpen;
+    }
+
+    if (isOpen) {
+      for (const content of contents) {
+        content.classList.add(['block']);
+        content.classList.remove('hidden');
+      }
+    } else {
+      for (const content of contents) {
+        content.classList.remove('block');
+        content.classList.add('hidden');
+      }
+    }
+  }
+</script>

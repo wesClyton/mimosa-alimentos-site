@@ -1,0 +1,21 @@
+{
+  // 🔧 Formatação automática e lint fix ao salvar
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always"
+  },
+
+  // 🔧 Definindo Prettier como formatador padrão
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 🧠 Formatação específica por linguagem
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // ✅ Validação do ESLint para linguagens usadas no projeto
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"]
+}

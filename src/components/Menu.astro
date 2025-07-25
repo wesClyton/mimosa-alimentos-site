@@ -5,41 +5,45 @@ const {
   items = [
     {
       label: 'Institucional',
-      href: '/',
+      href: '/institucional',
     },
     {
       label: 'Produtos',
-      href: '/',
+      href: '/produtos',
     },
     {
       label: 'Onde Encontrar',
-      href: '/',
+      href: '/onde-encontrar',
     },
     {
       label: 'Contato',
-      href: '/',
+      href: '/contato',
     },
   ],
-  showItemSejaUmCliente = true
+  showItemSejaUmCliente = true,
 }: IMenu = Astro.props;
 
 const itemSejaUmCliente = {
   label: 'Seja um Cliente',
-  href: '/',
+  href: '/seja-um-cliente',
 };
 ---
 
-<nav>
-  <ul>
-    {items?.map(item => (
-      <li>
-        <a href={item.href}>{item.label}</a>
-      </li>
-    ))}
-    {showItemSejaUmCliente && (
-      <li>
-        <a href={itemSejaUmCliente.href}>{itemSejaUmCliente.label}</a>
-      </li>
-    )}
+<nav class="my-7 font-semibold lg:my-0">
+  <ul class="flex flex-col items-center gap-4 text-sm md:gap-6 lg:flex-row lg:gap-10 xl:gap-15">
+    {
+      items?.map((item) => (
+        <li class="text-white">
+          <a href={item.href}>{item.label}</a>
+        </li>
+      ))
+    }
+    {
+      showItemSejaUmCliente && (
+        <li class="rounded-xl bg-white px-4 py-2 text-red-800">
+          <a href={itemSejaUmCliente.href}>{itemSejaUmCliente.label}</a>
+        </li>
+      )
+    }
   </ul>
 </nav>
