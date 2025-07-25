@@ -1,31 +1,32 @@
 ---
-import type { IMenu } from '@interfaces/menu.interface';
+import type { IMenu, IMenuItem } from '@interfaces/menu.interface';
+import { MENU_ITEMS } from '@utils/menu.contants';
 
 const {
   items = [
     {
-      label: 'Institucional',
-      href: '/institucional',
+      label: MENU_ITEMS.institucional.label,
+      href: MENU_ITEMS.institucional.href,
     },
     {
-      label: 'Produtos',
-      href: '/produtos',
+      label: MENU_ITEMS.produtos.label,
+      href: MENU_ITEMS.produtos.href,
     },
     {
-      label: 'Onde Encontrar',
-      href: '/onde-encontrar',
+      label: MENU_ITEMS.ondeEncontrar.label,
+      href: MENU_ITEMS.ondeEncontrar.href,
     },
     {
-      label: 'Contato',
-      href: '/contato',
+      label: MENU_ITEMS.contato.label,
+      href: MENU_ITEMS.contato.href,
     },
   ],
   showItemSejaUmCliente = true,
 }: IMenu = Astro.props;
 
-const itemSejaUmCliente = {
-  label: 'Seja um Cliente',
-  href: '/seja-um-cliente',
+const itemSejaUmCliente: IMenuItem = {
+  label: MENU_ITEMS.sejaUmCliente.label,
+  href: MENU_ITEMS.sejaUmCliente.href,
 };
 ---
 
