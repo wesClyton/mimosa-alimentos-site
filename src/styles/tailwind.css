@@ -10,7 +10,9 @@
   --screens-lg: 1024px;
   --screens-xl: 1366px;
 
-  --color-red-800: #99040F;
+  --color-red-800: #99040f;
 
-  --color-amber-50: #FFF6EF;
+  --color-amber-50: #fff6ef;
+
+  --color-yellow-500: #ffcc00;
 }

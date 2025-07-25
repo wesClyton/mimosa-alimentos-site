@@ -6,7 +6,7 @@ import Social from './Social.astro';
 const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
 ---
 
-<header class="bg-red-800 px-10 py-5 lg:bg-transparent">
+<header class="bg-red-800 px-5 py-5 lg:bg-transparent">
   <button
     id="header-toggle-btn"
     class="absolute top-2 right-2 z-10 w-7 cursor-pointer lg:hidden"
@@ -16,10 +16,10 @@ const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
   </button>
 
   <div
-    class="mx-auto flex flex-col items-center justify-center rounded-3xl bg-transparent lg:w-full lg:max-w-7xl lg:flex-row lg:justify-between lg:bg-red-800 lg:px-8 lg:py-7"
+    class="container mx-auto flex flex-col items-center justify-center rounded-3xl bg-transparent lg:w-full lg:flex-row lg:justify-between lg:bg-red-800 lg:px-8 lg:py-7"
   >
-    <a href="/" class="w-38">
-      <img src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
+    <a href="/">
+      <img class="w-38" src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
     </a>
 
     <div class="header-toggle-content hidden lg:block">
@@ -59,15 +59,15 @@ const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
   function shouldShowMenu() {
     isOpen = !isOpen;
 
-    if (isOpen) {
-      for (const content of contents) {
+    for (const content of contents) {
+      if (isOpen) {
         content.classList.add(['block']);
         content.classList.remove('hidden');
-      }
-    } else {
-      for (const content of contents) {
-        content.classList.remove('block');
-        content.classList.add('hidden');
+      } else {
+        for (const content of contents) {
+          content.classList.remove('block');
+          content.classList.add('hidden');
+        }
       }
     }
   }

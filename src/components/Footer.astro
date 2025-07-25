@@ -1,1 +1,53 @@
-<footer>footer</footer>
+---
+import Social from './Social.astro';
+---
+
+<footer class="bg-red-800 px-5 py-10 text-base text-white">
+  <div class="container mx-auto">
+    <div class="flex flex-col gap-16 lg:flex-wrap xl:flex-row xl:justify-between">
+      <section class="flex flex-row justify-center gap-10 text-sm font-bold uppercase">
+        <ul class="flex flex-col gap-5">
+          <li><a class="hover:text-yellow-500" href="/">Home</a></li>
+          <li><a class="hover:text-yellow-500" href="/institucional">A Mimosa</a></li>
+          <li><a class="hover:text-yellow-500" href="/institucional">Qualidade</a></li>
+          <li><a class="hover:text-yellow-500" href="/produtos">Produtos</a></li>
+        </ul>
+
+        <ul class="flex flex-col gap-5">
+          <li><a class="hover:text-yellow-500" href="/downloads">Downloads</a></li>
+          <li><a class="hover:text-yellow-500" href="/onde-encontrar">Onde Encontrar</a></li>
+          <li><a class="hover:text-yellow-500" href="/seja-um-cliente">Seja um Cliente</a></li>
+          <li><a class="hover:text-yellow-500" href="/contato">Contato</a></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col items-center">
+        <h3 class="mb-3 font-bold text-yellow-500 uppercase">Mimosa Alimentos LTDA.</h3>
+        <address class="font-style-normal text- text-center text-sm uppercase not-italic">
+          Avenida Umuarama, 3416 <br />
+          87507-055 | Umuarama-PR
+        </address>
+      </section>
+
+      <section class="flex flex-col items-center">
+        <h3 class="font-bold text-yellow-500 uppercase">SAC Mimosa:</h3>
+        <p class="my-4 flex items-center">
+          <img src="/social/whatsapp-white.png" alt="WhatsApp Icon" class="mr-2 w-4" />
+          <span class="font-bold">(44) 3626-7484</span>
+        </p>
+        <p class="mt-1 text-center text-sm uppercase">
+          Horário de atendimento: <br />
+          Segunda à Sexta: 08:00h às 18:00h. <br />
+          Sábado: 08:00h às 12:00h.
+        </p>
+      </section>
+
+      <section class="flex flex-col items-center">
+        <a href="/">
+          <img class="mb-5 w-38" src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
+        </a>
+        <Social iconColor="red" iconWithBackground={true} />
+      </section>
+    </div>
+  </div>
+</footer>
