@@ -22,11 +22,11 @@ const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
       <img src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
     </a>
 
-    <div class="header-toggle-content">
+    <div class="header-toggle-content hidden lg:block">
       <Menu items={menuItems} showItemSejaUmCliente={menuShowItemSejaUmCliente} />
     </div>
 
-    <div class="header-toggle-content">
+    <div class="header-toggle-content hidden lg:block">
       <Social />
     </div>
   </div>
@@ -54,18 +54,10 @@ const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
     btn.addEventListener('click', () => {
       shouldShowMenu();
     });
-
-    window.addEventListener('resize', () => {
-      shouldShowMenu(checkIsMobile() ? false : true);
-    });
   }
 
-  function shouldShowMenu(forceShow = false) {
-    if (forceShow) {
-      isOpen = true;
-    } else {
-      isOpen = !isOpen;
-    }
+  function shouldShowMenu() {
+    isOpen = !isOpen;
 
     if (isOpen) {
       for (const content of contents) {
