@@ -11,7 +11,7 @@
 }
 
 .btn {
-  @apply rounded-md px-10 py-3 text-center text-xs font-bold transition-colors duration-300 lg:text-sm;
+  @apply rounded-md px-8 py-3 text-center text-xs font-bold transition-colors duration-300 lg:text-sm;
 
   &.--red {
     @apply bg-red-800 text-white;
