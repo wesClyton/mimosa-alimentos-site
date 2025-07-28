@@ -42,33 +42,56 @@ import Layout from '@layouts/Layout.astro';
     </div>
   </section>
 
-  <section class="flex flex-col py-10 lg:py-20">
-    <div class="container-center">
-      <div class="flex flex-col gap-12 md:gap-16">
-        <div class="flex flex-col items-center gap-7 md:flex-row md:gap-12">
-          <div class="flex-1/2">
-            <h1 class="title">Mimosa Alimentos</h1>
-            <h2 class="subtitle mb-5">Uma história de amor e dedicação!</h2>
+  <section class="container-center">
+    <div class="flex flex-col gap-12 py-10 md:gap-16 lg:py-20">
+      <div class="flex flex-col items-center gap-7 md:flex-row md:gap-12">
+        <div class="flex-1/2">
+          <h1 class="title">Mimosa Alimentos</h1>
+          <h2 class="subtitle lg:mt-2">Uma história de amor e dedicação!</h2>
 
-            <a class="btn --red inline-block w-full lg:w-100" href="#">Conheça nossa história</a>
-          </div>
-          <div class="w-100 flex-2/3">
-            <img src="/home/mimosa-alimentos-01.png" alt="Mimosa Alimentos" />
-          </div>
+          <a class="btn --red mt-5 inline-block w-full lg:w-100" href="#">Conheça nossa história</a>
+        </div>
+        <div class="flex-2/3">
+          <img
+            class="w-full"
+            src="/home/mimosa-alimentos-01.png"
+            alt="Mimosa Alimentos - Uma história de amor e dedicação!"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col-reverse items-center gap-7 md:flex-row md:gap-12">
+        <div class="flex-2/3">
+          <img
+            class="w-full"
+            src="/home/mimosa-alimentos-02.png"
+            alt="Leve a qualidade dos produtos mimosa até você!"
+          />
         </div>
 
-        <div class="flex flex-col-reverse items-center gap-7 md:flex-row md:gap-12">
-          <div class="w-100 flex-2/3">
-            <img src="/home/mimosa-alimentos-02.png" alt="Leve a qualidade" />
-          </div>
+        <div class="flex-1/2">
+          <h1 class="title">Leve a qualidade</h1>
+          <h2 class="subtitle lg:mt-2">dos produtos mimosa até você!</h2>
 
-          <div class="flex-1/2">
-            <h1 class="title">Mimosa Alimentos</h1>
-            <h2 class="subtitle">Uma história de amor e dedicação!</h2>
-
-            <a class="btn --red mt-5 inline-block w-full lg:w-100" href="#">Agendar visita</a>
-          </div>
+          <a class="btn --red mt-5 inline-block w-full lg:w-100" href="#">Agendar visita</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative flex flex-col bg-red-800 py-16 lg:py-32 xl:py-46 2xl:py-62">
+    <div
+      class="absolute inset-0 top-0 z-1 h-full w-full bg-[url(/home/bg-torne-se-cliente.png)] bg-cover bg-top bg-no-repeat opacity-30"
+    >
+    </div>
+
+    <div class="container-center z-2">
+      <div class="flex flex-col items-center gap-8 py-10 md:flex-row md:gap-32 lg:gap-40">
+        <p class="flex-1/2 text-right text-yellow-500">
+          Da nossa <span class="font-bold text-white">família</span> para a <span class="font-bold text-white">sua</span
+          >, com sabor, qualidade e dedicação que fazem parte da nossa história.
+        </p>
+        <a class="btn --yellow inline-block w-full flex-1/2" href="#">Torne-se um cliente Mimosa</a>
       </div>
     </div>
   </section>
