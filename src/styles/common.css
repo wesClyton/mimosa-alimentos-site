@@ -1,5 +1,5 @@
 .container-center {
-  @apply container mx-auto px-5 xl:px-0;
+  @apply container mx-auto;
 }
 
 .title {
