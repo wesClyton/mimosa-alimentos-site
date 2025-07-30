@@ -34,7 +34,7 @@ const itemSejaUmCliente: IMenuItem = {
   <ul class="flex flex-col items-center gap-4 text-sm md:gap-6 lg:flex-row lg:gap-10 xl:gap-15">
     {
       items?.map((item) => (
-        <li class="text-white transition hover:text-yellow-500">
+        <li class="text-white transition hover:text-yellow-300">
           <a href={item.href}>{item.label}</a>
         </li>
       ))
@@ -43,7 +43,7 @@ const itemSejaUmCliente: IMenuItem = {
       showItemSejaUmCliente && (
         <li>
           <a
-            class="rounded-xl bg-white px-4 py-2 text-red-800 transition hover:bg-yellow-500"
+            class="rounded-xl bg-white px-4 py-2 text-red-800 transition hover:bg-yellow-300"
             href={itemSejaUmCliente.href}
           >
             {itemSejaUmCliente.label}

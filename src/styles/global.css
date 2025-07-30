@@ -1,4 +1,5 @@
 @import './tailwind.css';
+@import 'swiper/css';
 
 html,
 body {
@@ -6,4 +7,10 @@ body {
   width: 100%;
   height: 100%;
   background-color: var(--color-amber-50);
+}
+
+* {
+  ::selection {
+    background-color: var(--color-yellow-200);
+  }
 }

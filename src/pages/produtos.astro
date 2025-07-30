@@ -3,6 +3,81 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import ProdutosSlides from '@components/ProdutosSlide';
 import Layout from '@layouts/Layout.astro';
+import { v4 as uuidv4 } from 'uuid';
+
+import type { ISlideProdutos } from '@interfaces/slide-produtos.interface';
+
+const slideLinguicas: ISlideProdutos[] = [
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+];
+
+const slideLinguicaQueijo: ISlideProdutos[] = [
+  {
+    id: uuidv4(),
+    name: 'Linguiça Du Cheff',
+    description: '1 Kg e 5 Kg',
+    urlImage: '/produtos/produto.png',
+  },
+];
 ---
 
 <Layout>
@@ -17,7 +92,7 @@ import Layout from '@layouts/Layout.astro';
 
       <div class="flex-1/2">
         <h1 class="title">Conheça nossos produtos</h1>
-        <p class="text-sm md:mt-3">
+        <p class="paragraph md:mt-3">
           A marca conta com um mix próprio de 20 itens, entre linguiça Toscana, Toscana com Queijo, linguiça fina na
           tripa de carneiro - a famosa churrasquita - e a linha Churrasco, além de também realizar o fracionamento de
           frios com certificação SISBI.
@@ -26,7 +101,62 @@ import Layout from '@layouts/Layout.astro';
     </div>
 
     <div class="-mt-10 flex-initial">
-      <ProdutosSlides client:visible />
+      <ProdutosSlides
+        client:visible
+        config={{
+          breakpoints: {
+            0: {
+              slidesPerView: 1,
+            },
+            640: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+            1366: {
+              slidesPerView: 5,
+            },
+          },
+        }}
+        slideProdutos={slideLinguicas}
+      />
+    </div>
+  </section>
+
+  <section class="flex flex-col bg-yellow-300 px-5 pb-10">
+    <div class="container-center">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div>
+          <img class="mx-auto w-75 md:w-full" src="/produtos/linguica-queijo.png" alt="Linguiça com Queijo" />
+        </div>
+
+        <div class="my-auto">
+          <h1 class="title md:mt-10">Linguiça com queijo</h1>
+          <p class="paragraph mt-2">
+            O ponto de equilíbrio entre duas grandes delícias da culinária. A fórmula precisamente calculada para
+            garantir o sabor perfeito da mistura da linguiça com queijo.
+          </p>
+
+          <ProdutosSlides
+            client:visible
+            config={{
+              breakpoints: {
+                0: {
+                  slidesPerView: 1,
+                },
+                640: {
+                  slidesPerView: 2,
+                },
+              },
+            }}
+            slideProdutos={slideLinguicaQueijo}
+          />
+        </div>
+      </div>
     </div>
   </section>
 

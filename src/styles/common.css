@@ -14,6 +14,10 @@
   @apply leading-5 text-gray-700 md:text-lg xl:text-2xl xl:leading-7;
 }
 
+.paragraph {
+  @apply text-xs leading-5 text-gray-700 md:text-base xl:text-lg xl:leading-7;
+}
+
 .btn {
   @apply rounded-md px-8 py-3 text-center text-xs font-bold transition-colors duration-300 lg:text-sm;
 
@@ -26,6 +30,6 @@
   }
 
   &.--yellow {
-    @apply bg-yellow-500 text-red-800;
+    @apply bg-yellow-300 text-red-800;
   }
 }
