@@ -6,6 +6,10 @@
   @apply text-2xl leading-7 font-black text-red-800 md:text-4xl md:leading-10 xl:text-6xl xl:leading-18;
 }
 
+.title-page {
+  @apply text-center text-2xl leading-7 font-black text-red-800 md:text-4xl xl:text-5xl;
+}
+
 .subtitle {
   @apply leading-5 text-gray-700 md:text-lg xl:text-2xl xl:leading-7;
 }

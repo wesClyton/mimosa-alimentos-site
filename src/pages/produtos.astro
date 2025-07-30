@@ -1,0 +1,34 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import ProdutosSlides from '@components/ProdutosSlide';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout>
+  <Header />
+
+  <section class="container-center px-5 py-10 md:pb-20">
+    <h1 class="title-page mb-10">Produtos</h1>
+    <div class="mt-10 mb-5 flex flex-col gap-5 md:mb-0 md:flex-row md:items-center lg:gap-10">
+      <div class="mb-5 flex-1/2">
+        <img src="/produtos/linguica.png" alt="Linguiça" />
+      </div>
+
+      <div class="flex-1/2">
+        <h1 class="title">Conheça nossos produtos</h1>
+        <p class="text-sm md:mt-3">
+          A marca conta com um mix próprio de 20 itens, entre linguiça Toscana, Toscana com Queijo, linguiça fina na
+          tripa de carneiro - a famosa churrasquita - e a linha Churrasco, além de também realizar o fracionamento de
+          frios com certificação SISBI.
+        </p>
+      </div>
+    </div>
+
+    <div class="-mt-10 flex-initial">
+      <ProdutosSlides client:visible />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

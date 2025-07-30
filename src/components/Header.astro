@@ -6,7 +6,7 @@ import Social from './Social.astro';
 const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
 ---
 
-<header class="container-center bg-red-800 p-5 lg:bg-transparent">
+<header class="bg-red-800 p-5 lg:bg-transparent">
   <button
     id="header-toggle-btn"
     class="absolute top-2 right-2 z-10 w-7 cursor-pointer lg:hidden"
@@ -15,19 +15,21 @@ const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
     <img src="burger-menu-right.svg" alt="Header Button Toggle" />
   </button>
 
-  <div
-    class="flex flex-col items-center justify-center rounded-3xl bg-transparent lg:w-full lg:flex-row lg:justify-between lg:bg-red-800 lg:px-8 lg:py-7"
-  >
-    <a href="/">
-      <img class="w-38" src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
-    </a>
+  <div class="container-center">
+    <div
+      class="flex flex-col items-center justify-center rounded-3xl bg-transparent lg:w-full lg:flex-row lg:justify-between lg:bg-red-800 lg:px-8 lg:py-7"
+    >
+      <a href="/">
+        <img class="w-38" src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
+      </a>
 
-    <div class="header-toggle-content hidden lg:block">
-      <Menu items={menuItems} showItemSejaUmCliente={menuShowItemSejaUmCliente} />
-    </div>
+      <div class="header-toggle-content hidden lg:block">
+        <Menu items={menuItems} showItemSejaUmCliente={menuShowItemSejaUmCliente} />
+      </div>
 
-    <div class="header-toggle-content hidden lg:block">
-      <Social />
+      <div class="header-toggle-content hidden lg:block">
+        <Social />
+      </div>
     </div>
   </div>
 </header>
