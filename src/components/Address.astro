@@ -1,0 +1,17 @@
+---
+import type { ISac } from '@interfaces/sac.interface';
+const { inFooter } = Astro.props as ISac;
+
+const colors = {
+  title: inFooter ? 'text-yellow-300' : 'text-red-800',
+  address: inFooter ? 'text-white' : 'text-gray-700',
+};
+---
+
+<div class="flex flex-col items-center">
+  <h3 class={`mb-3 font-bold uppercase ${colors.title}`}>Mimosa Alimentos LTDA.</h3>
+  <address class={`font-style-normal text-center text-sm uppercase not-italic ${colors.address}`}>
+    Avenida Umuarama, 3416 <br />
+    87507-055 | Umuarama-PR
+  </address>
+</div>

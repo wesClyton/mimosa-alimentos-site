@@ -1,5 +1,7 @@
 ---
 import { MENU_ITEMS } from '@utils/menu.contants';
+import Address from './Address.astro';
+import Sac from './Sac.astro';
 import Social from './Social.astro';
 ---
 
@@ -35,25 +37,12 @@ import Social from './Social.astro';
       </ul>
     </section>
 
-    <section class="flex flex-col items-center lg:flex-initial">
-      <h3 class="mb-3 font-bold text-yellow-300 uppercase">Mimosa Alimentos LTDA.</h3>
-      <address class="font-style-normal text- text-center text-sm uppercase not-italic">
-        Avenida Umuarama, 3416 <br />
-        87507-055 | Umuarama-PR
-      </address>
+    <section class="lg:flex-initial">
+      <Address inFooter={true} />
     </section>
 
-    <section class="flex flex-col items-center lg:flex-initial">
-      <h3 class="font-bold text-yellow-300 uppercase">SAC Mimosa:</h3>
-      <a class="my-4 flex items-center" href="https://wa.me/554436267484" target="_blank" rel="noopener noreferrer">
-        <img src="/social/whatsapp-white.png" alt="WhatsApp Icon" class="mr-2 w-4" />
-        <span class="font-bold">(44) 3626-7484</span>
-      </a>
-      <p class="mt-1 text-center text-sm uppercase">
-        Horário de atendimento: <br />
-        Segunda à Sexta: 08:00h às 18:00h. <br />
-        Sábado: 08:00h às 12:00h.
-      </p>
+    <section class="lg:flex-initial">
+      <Sac inFooter={true} />
     </section>
 
     <section class="flex flex-auto flex-col items-center lg:flex-initial">

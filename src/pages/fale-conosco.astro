@@ -1,0 +1,60 @@
+---
+import Address from '@components/Address.astro';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Sac from '@components/Sac.astro';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout>
+  <Header />
+
+  <main class="container-center px-5 py-10 md:pb-20">
+    <h1 class="title-page mb-10">Fale conosco</h1>
+
+    <div class="container-center">
+      <div class="flex flex-col md:flex-row-reverse">
+        <div class="md:flex-1/2">
+          <img
+            src="/fale-conosco/banner-01.png"
+            alt="Fale conosco"
+            class="h-full w-auto rounded-t-2xl rounded-b-none object-cover md:w-full md:rounded-l-none md:rounded-r-2xl"
+          />
+        </div>
+
+        <div class="rounded-t-none rounded-b-2xl bg-white p-5 md:flex-1/2 md:rounded-l-2xl md:rounded-r-none md:p-10">
+          <div class="flex h-full flex-col items-center justify-center">
+            <p class="paragraph">
+              Esse é o nosso canal de conversa direta com você. A mimosa alimentos está a disposição para tirar todas as
+              suas dúvidas.
+            </p>
+
+            <div class="my-8"><Sac inFooter={false} /></div>
+
+            <Address inFooter={false} />
+
+            <div class="mt-10 flex flex-col gap-1">
+              <a
+                class="btn --yellow my-2 flex items-center justify-center"
+                href="https://wa.me/554436267484"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Fale conosco pelo WhatsApp
+              </a>
+
+              <a
+                class="btn --yellow my-2 mb-0 flex items-center justify-center"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Mimosa | Umuarama - PR
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

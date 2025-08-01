@@ -33,7 +33,7 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   },
   contato: {
     label: 'Contato',
-    href: '/contato',
+    href: '/fale-conosco',
   },
   sejaUmCliente: {
     label: 'Seja um Cliente',
