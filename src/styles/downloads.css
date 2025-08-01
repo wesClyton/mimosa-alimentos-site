@@ -1,0 +1,24 @@
+@media screen and (min-width: 1024px) {
+  .download-item {
+    &:hover {
+      background-color: var(--color-red-800);
+
+      .download-item-img {
+        transform: scale(0.85);
+        translate: 0 -3rem;
+      }
+
+      .download-item-text {
+        color: var(--color-white);
+        transform: translateY(-3rem);
+        opacity: 1;
+
+        .btn {
+          background-color: var(--color-yellow-300);
+          color: var(--color-red-800);
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}

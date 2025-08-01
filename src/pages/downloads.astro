@@ -1,0 +1,21 @@
+---
+import DownloadTabs from '@components/DownloadTabs';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout>
+  <Header />
+
+  <main class="container-center px-5 py-10 md:pb-20">
+    <h1 class="title-page mb-10">Produtos</h1>
+    <p class="paragraph mx-auto max-w-100 text-center md:mt-3">
+      Aproveite nossos materiais de divulgação. <br /> Faça o download de nossas imagens de produtos e logos.
+    </p>
+
+    <DownloadTabs client:visible />
+  </main>
+
+  <Footer />
+</Layout>
