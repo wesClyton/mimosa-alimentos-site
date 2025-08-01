@@ -2,7 +2,7 @@
 import type { ISocial } from '@interfaces/social';
 
 const {
-  iconColor: color = 'yellow',
+  iconColor = 'yellow',
   iconWithBackground = false,
   socialNetworks = [
     {
@@ -23,7 +23,7 @@ const {
       <a href={network.url} target="_blank" class="transition hover:opacity-75">
         <img
           class="max-h-5"
-          src={`/social/${network.name.toLowerCase()}-${color}${iconWithBackground ? '-with-bg' : ''}.png`}
+          src={`/social/${network.name.toLowerCase()}-${iconColor}${iconWithBackground ? '-with-bg' : ''}.png`}
           alt={network.name}
         />
       </a>

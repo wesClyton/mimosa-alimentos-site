@@ -8,7 +8,11 @@ type MenuKey =
   | 'produtos'
   | 'ondeEncontrar'
   | 'contato'
-  | 'sejaUmCliente';
+  | 'sejaUmCliente'
+  | 'clienteVantagens'
+  | 'clienteCadastreSe'
+  | 'clienteComoRealizarPedidos'
+  | 'clienteContato';
 
 export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   home: {
@@ -42,5 +46,21 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   downloads: {
     label: 'Downloads',
     href: '/downloads',
+  },
+  clienteCadastreSe: {
+    label: 'Cadastre-se',
+    href: '/seja-um-cliente#cadastre-se',
+  },
+  clienteComoRealizarPedidos: {
+    label: 'Como realizar pedidos',
+    href: '/seja-um-cliente#como-realizar-pedidos',
+  },
+  clienteVantagens: {
+    label: 'Vantagens',
+    href: '/seja-um-cliente#vantagens',
+  },
+  clienteContato: {
+    label: 'Contato',
+    href: '/seja-um-cliente#contato',
   },
 };

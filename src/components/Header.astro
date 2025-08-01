@@ -3,32 +3,37 @@ import type { IHeaderMenu } from '@interfaces/header.interface';
 import Menu from './Menu.astro';
 import Social from './Social.astro';
 
-const { menuItems, menuShowItemSejaUmCliente }: IHeaderMenu = Astro.props;
+const { menuItems, menuSejaCliente }: IHeaderMenu = Astro.props;
+
+const colors = {
+  bg: menuSejaCliente ? 'yellow-300' : 'red-800',
+  iconSocial: menuSejaCliente ? 'red' : 'yellow',
+};
 ---
 
-<header class="bg-red-800 p-5 lg:bg-transparent">
+<header class={`bg-${colors.bg} p-5 lg:bg-transparent`}>
   <button
     id="header-toggle-btn"
     class="absolute top-2 right-2 z-10 w-7 cursor-pointer lg:hidden"
     aria-label="Header Button Toggle"
   >
-    <img src="burger-menu-right.svg" alt="Header Button Toggle" />
+    <img src={`/hamburger-menu-${menuSejaCliente ? 'red' : 'white'}.svg`} alt="Header Button Toggle" />
   </button>
 
   <div class="container-center">
     <div
-      class="flex flex-col items-center justify-center rounded-3xl bg-transparent lg:w-full lg:flex-row lg:justify-between lg:bg-red-800 lg:px-8 lg:py-7"
+      class={`flex flex-col items-center justify-center rounded-3xl lg:w-full lg:flex-row lg:justify-between lg:px-8 lg:py-7 lg:bg-${colors.bg}`}
     >
       <a href="/">
-        <img class="w-38" src="/logo-mimosa-white.svg" alt="Logo Mimosa Alimentos" />
+        <img class="w-38" src={`/logo-mimosa-${menuSejaCliente ? 'red' : 'white'}.svg`} alt="Logo Mimosa Alimentos" />
       </a>
 
       <div class="header-toggle-content hidden lg:block">
-        <Menu items={menuItems} showItemSejaUmCliente={menuShowItemSejaUmCliente} />
+        <Menu items={menuItems} menuSejaCliente={menuSejaCliente} />
       </div>
 
       <div class="header-toggle-content hidden lg:block">
-        <Social />
+        <Social iconColor={colors.iconSocial} />
       </div>
     </div>
   </div>

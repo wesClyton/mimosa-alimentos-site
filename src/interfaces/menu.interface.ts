@@ -1,6 +1,6 @@
 export interface IMenu {
   items?: IMenuItem[];
-  showItemSejaUmCliente?: boolean;
+  menuSejaCliente?: boolean;
 }
 
 export interface IMenuItem {

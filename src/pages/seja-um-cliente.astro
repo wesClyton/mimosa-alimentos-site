@@ -1,0 +1,36 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import type { IMenu } from '@interfaces/menu.interface';
+import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
+
+const {
+  items = [
+    {
+      label: MENU_ITEMS.clienteVantagens.label,
+      href: MENU_ITEMS.clienteVantagens.href,
+    },
+    {
+      label: MENU_ITEMS.clienteCadastreSe.label,
+      href: MENU_ITEMS.clienteCadastreSe.href,
+    },
+    {
+      label: MENU_ITEMS.clienteComoRealizarPedidos.label,
+      href: MENU_ITEMS.clienteComoRealizarPedidos.href,
+    },
+    {
+      label: MENU_ITEMS.clienteContato.label,
+      href: MENU_ITEMS.clienteContato.href,
+    },
+  ],
+}: IMenu = Astro.props;
+---
+
+<Layout>
+  <Header menuSejaCliente={true} menuItems={items} />
+
+  <main></main>
+
+  <Footer />
+</Layout>
