@@ -47,14 +47,106 @@ const {
       </div>
     </section>
 
-    <section class="min-h-[400px]">
+    <section class="">
       <Video
         description="Conheça mais sobre nosso produto"
         title="Seja um cliente"
         videoUrl="/home/video-encontre-fornecedores.mp4"
       />
     </section>
-  </main>
 
-  <Footer />
+    <section class="bg-yellow-300 px-5 py-10 lg:py-30">
+      <div class="mx-auto max-w-5xl">
+        <div class="flex flex-col items-center">
+          <h2 class="title text-center">Faça o seu cadastro e torne-se um cliente Mimosa!</h2>
+          <p class="paragraph my-8 text-center">
+            Lorem ipsum dolor sit amet consectetur. Eget proin morbi volutpat nullam dignissim adipiscing. Viverra sed
+            elementum mi risus nunc viverra mattis.
+          </p>
+
+          <form class="md:text-md w-full text-sm">
+            <h4 class="mb-2 text-lg font-semibold text-red-800">Dados da empresa</h4>
+            <div class="grid grid-cols-1 gap-2 md:grid-cols-5">
+              <div class="col-span-1 md:col-span-2">
+                <input class="input" name="razaoSocial" type="text" placeholder="Razão social" />
+              </div>
+              <div class="col-span-1 md:col-span-2">
+                <input class="input" name="nomeFantasia" type="text" placeholder="Nome fantasia" />
+              </div>
+              <div class="col-span-1 md:col-span-1">
+                <input class="input" name="cnpj" type="text" placeholder="CNPJ" />
+              </div>
+            </div>
+
+            <h4 class="mt-5 mb-2 text-lg font-semibold text-red-800">Dados do responsável</h4>
+            <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+              <div class="col-span-1">
+                <input class="input" name="nomeResponsavel" type="text" placeholder="Nome completo do responsável" />
+              </div>
+              <div class="col-span-1">
+                <input class="input" name="whatsapp" type="text" placeholder="WhatsApp" />
+              </div>
+            </div>
+
+            <h4 class="mt-5 mb-2 text-lg font-semibold text-red-800">Endereço da empresa</h4>
+            <div class="grid grid-cols-1 gap-2 md:grid-cols-6">
+              <div class="col-span-1 md:col-span-2">
+                <input class="input" name="cep" type="text" placeholder="CEP" />
+              </div>
+              <div class="col-span-1 md:col-span-3 md:col-start-1">
+                <input class="input" name="endereco" type="text" placeholder="Endereço" />
+              </div>
+              <div class="col-span-1 md:col-span-1">
+                <input class="input" name="numero" type="text" placeholder="Número" />
+              </div>
+              <div class="col-span-1 md:col-span-2">
+                <input class="input" name="complemento" type="text" placeholder="Complemento" />
+              </div>
+              <div class="col-span-1 md:col-span-2">
+                <input class="input" name="bairro" type="text" placeholder="Bairro" />
+              </div>
+              <div class="col-span-1 md:col-span-2">
+                <select class="input" name="estado">
+                  <option value="" disabled selected>Estado</option>
+                </select>
+              </div>
+              <div class="col-span-1 md:col-span-2">
+                <select class="input" name="cidade">
+                  <option value="" disabled selected>Cidade</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-5 flex items-start justify-start gap-2">
+              <input type="checkbox" id="termos" name="termos" class="translate-y-0.75 xl:translate-y-1.5" />
+              <label for="termos" class="paragraph">
+                Confirmo a validade das informações e confirmo que li e estou de acordo com o
+                <a href="#" class="font-bold">Termos de Uso</a>
+                e com as
+                <a href="#" class="font-bold">Políticas de Privacidade</a>.
+              </label>
+            </div>
+
+            <div class="mt-5 flex items-start justify-start gap-2">
+              <input
+                type="checkbox"
+                id="comunicacoes"
+                name="comunicacoes"
+                class="translate-y-0.75 xl:translate-y-1.5"
+              />
+              <label for="comunicacoes" class="paragraph">
+                Aceito receber comunicações via e-mail, SMS e telefone.
+              </label>
+            </div>
+
+            <div class="mt-5">
+              <button class="btn --red w-full" type="submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<Footer />

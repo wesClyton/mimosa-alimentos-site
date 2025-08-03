@@ -36,7 +36,7 @@ export default function CardCaminhao({ showInput, valueChangesInput }: CardCamin
             <input
               type="text"
               placeholder="Digite o nome da sua cidade"
-              className="mt-3 w-full rounded-md bg-white p-2 text-xs lg:w-75"
+              className="input mt-3 text-xs lg:w-75"
               value={inputValue}
               onChange={handleInputChange}
             />
