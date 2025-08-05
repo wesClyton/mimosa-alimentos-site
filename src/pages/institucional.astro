@@ -1,0 +1,85 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Video from '@components/Video.astro';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <section class="lg:-mt-37">
+      <Video title="Institucional" videoUrl="/home/video-encontre-fornecedores.mp4" />
+    </section>
+
+    <section class="container-center px-10 py-10">
+      <div class="flex flex-col items-center justify-center text-center">
+        <h2 class="title">Mimosa Alimentos</h2>
+        <h2 class="subtitle">Há 21 anos trazendo sabor para sua família.</h2>
+        <img class="mt-5 lg:mt-20" src="/institucional/linguicas.png" alt="Mimosa Alimentos" />
+        <p class="paragraph -mt-10 max-w-200 font-bold! text-red-800! lg:-mt-30">
+          A história da Mimosa Alimentos é marcada por muito trabalho, dedicação e esforço continuo por produtos com
+          sabor irresistível e qualidade inquestionável.
+        </p>
+
+        <div class="flex flex-col gap-12 py-10 text-left md:gap-16 lg:py-20">
+          <div class="flex flex-col items-center gap-7 md:flex-row md:gap-12">
+            <div class="flex-1/2">
+              <p class="mb-5">
+                A Mimosa Alimentos nasceu em 2001 atuando na distribuição de leite de saquinho em Umuarama no estado do
+                Paraná, inicialmente no sistema em domicílio e posteriormente ampliando o atendimento a pequenos
+                supermercados e panificadoras, onde se consolidou neste segmento.
+              </p>
+              <p class="mb-5">
+                O amor em produzir alimentos sempre foi muito forte na vida dos seus fundadores, Rosângela e José
+                Aparecido. Como uma forma de criar um diferencial, eles começaram a produzir linguiça frescal caseira e
+                presentear os clientes da Mimosa.
+              </p>
+              <p>
+                A aceitação foi tão grande, que os clientes passaram a fazer encomendas das linguiças. Em 2006 surgiu a
+                ideia de produzir linguiça frescal em escala industrial, que se tornou o principal produto da Mimosa
+                Alimentos.
+              </p>
+            </div>
+            <div class="flex-2/3">
+              <img
+                class="w-full rounded-2xl"
+                src="/institucional/foto-01.png"
+                alt="Mimosa Alimentos - Uma história de amor e dedicação!"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col-reverse items-center gap-7 md:flex-row md:gap-12">
+            <div class="flex-2/3">
+              <img
+                class="w-full rounded-2xl"
+                src="/institucional/foto-02.png"
+                alt="Leve a qualidade dos produtos mimosa até você!"
+              />
+            </div>
+
+            <div class="flex-1/2">
+              <p class="mb-5">
+                Com um amplo mix de produtos, a Mimosa Alimentos se tornou uma das mais importantes indústrias do
+                segmento do Paraná, sendo a primeira fabrica de conservas a produzir linguiça com a certificação
+                SISBI/POA - Sistema Brasileiro de Inspeção de Produtos de Origem Animal, e a décima do Brasil com esta
+                certificação, o que a credencia, distribuir seus produtos para todo o Brasil.
+              </p>
+              <p>
+                A marca conta com um mix próprio de 20 itens, entre linguiça Toscana, Toscana com Queijo, linguiça fina
+                na tripa de carneiro - a famosa churrasquita - e a linha Churrasco, além de também realizar o
+                fracionamento de frios com certificação SISBI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="flex flex-col bg-yellow-300 px-5 py-10">timeline...</section>
+  </main>
+
+  <Footer />
+</Layout>
