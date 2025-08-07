@@ -15,7 +15,7 @@
 }
 
 .paragraph {
-  @apply text-xs leading-6 text-gray-700 md:text-base xl:text-lg xl:leading-8;
+  @apply text-xs leading-5 text-gray-700 md:text-base xl:text-lg xl:leading-7;
 }
 
 .btn {
