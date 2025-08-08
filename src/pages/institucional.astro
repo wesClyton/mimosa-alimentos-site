@@ -3,6 +3,33 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import Video from '@components/Video.astro';
 import Layout from '@layouts/Layout.astro';
+
+const itemsQualidade: { pathImage: string; title: string; text: string; pathImageContent: string }[] = [
+  {
+    pathImage: 'qualidade-01.png',
+    title: 'Nossa política de qualidade',
+    text: 'Nossos processos possuem procedimentos e diretrizes que orientam a produção, a comercialização e a entrega de alimentos seguros e de qualidade. Nossa fábrica possui certificação SISBI-POA, garantindo a segurança e qualidade padrão Mimosa.',
+    pathImageContent: '',
+  },
+  {
+    pathImage: 'qualidade-02.png',
+    title: 'SISBI',
+    text: 'Nossos produtos possuem certificação do Sistema Brasileiro de Inspeção de Produtos de Origem Animal.',
+    pathImageContent: 'qualidade-sisbi.png',
+  },
+  {
+    pathImage: 'qualidade-03.png',
+    title: 'SISBI-POA',
+    text: 'Nossos produtos possuem certificação do Sistema Unificado de Atenção à Sanidade Agropecuária.',
+    pathImageContent: 'qualidade-sisbi.png',
+  },
+  {
+    pathImage: 'qualidade-04.png',
+    title: 'SELO ALIMENTOS DO PARANÁ',
+    text: 'Vencedora na categoria melhores empresas do setor alimentício de todo o Paraná. Organizado por Fundação Nacional da Qualidade (FNQ) e Sebrae-PR.',
+    pathImageContent: 'qualidade-alimentos-pr.png',
+  },
+];
 ---
 
 <Layout>
@@ -107,16 +134,16 @@ import Layout from '@layouts/Layout.astro';
 
         <div class="flex flex-col gap-10">
           <div
-            class="relative h-auto overflow-hidden rounded-2xl md:flex md:h-[300px] md:min-h-100 md:flex-row-reverse 2xl:h-[500px]"
+            class="relative h-auto overflow-hidden rounded-2xl lg:flex lg:h-[300px] lg:min-h-100 lg:flex-row-reverse 2xl:h-[500px]"
           >
-            <div class="md:h-full md:flex-3">
+            <div class="lg:h-full lg:flex-3">
               <img src="/institucional/pilares-01.png" alt="Nossos Pilares" class="h-full w-full object-cover" />
             </div>
             <div
-              class="flex flex-col items-center justify-center gap-3 bg-yellow-300 p-5 text-center md:flex-1 md:gap-5 md:p-10"
+              class="flex flex-col items-center justify-center gap-3 bg-yellow-300 p-5 text-center lg:flex-1 lg:gap-5 lg:p-10"
             >
               <img class="max-w-15" src="/institucional/qualidade-ico-missao.png" alt="Missão" />
-              <h3 class="text-lg leading-6 font-bold text-red-800 md:text-3xl">Missão</h3>
+              <h3 class="text-lg leading-6 font-bold text-red-800 lg:text-3xl">Missão</h3>
               <p class="paragraph">
                 "Ser referência em qualidade e sabor de nossos produtos, sempre respeitando nossos clientes,
                 colaboradores e consumidores."
@@ -125,22 +152,72 @@ import Layout from '@layouts/Layout.astro';
           </div>
 
           <div
-            class="md:h-[300px 2xl:h-[500px]] relative h-auto overflow-hidden rounded-2xl md:flex md:min-h-100 md:flex-row"
+            class="lg:h-[300px 2xl:h-[500px]] relative h-auto overflow-hidden rounded-2xl lg:flex lg:min-h-100 lg:flex-row"
           >
-            <div class="md:h-full md:flex-3">
+            <div class="lg:h-full lg:flex-3">
               <img src="/institucional/pilares-02.png" alt="Nossos Pilares" class="h-full w-full object-cover" />
             </div>
             <div
-              class="flex flex-col items-center justify-center gap-3 bg-yellow-300 p-5 text-center md:flex-1 md:gap-5 md:p-10"
+              class="flex flex-col items-center justify-center gap-3 bg-yellow-300 p-5 text-center lg:flex-1 lg:gap-5 lg:p-10"
             >
               <img class="max-w-15" src="/institucional/qualidade-ico-visao.png" alt="Visão" />
-              <h3 class="text-lg leading-6 font-bold text-red-800 md:text-3xl">Visão</h3>
+              <h3 class="text-lg leading-6 font-bold text-red-800 lg:text-3xl">Visão</h3>
               <p class="paragraph">
                 "Produzir e oferecer alimentos com segurança alimentar, alto padrão de qualidade e sabor diferenciado,
                 proporcionando aos nossos clientes o prazer e a satisfação de comer bem."
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-center px-10 py-10 lg:py-20">
+      <div class="flex flex-col items-center justify-center text-center">
+        <h2 class="title mb-3">Qualidade Mimosa</h2>
+        <h3 class="subtitle mb-5">Levando sempre os melhores produtos para sua mesa!</h3>
+        <p class="paragraph mb-10 max-w-200 lg:mb-20">
+          Sempre investindo em tecnologia, qualidade e inovação a Mimosa trabalha para oferecer os melhores produtos
+          para suas refeições.
+        </p>
+
+        <ul class="flex flex-col gap-15 lg:gap-30">
+          {
+            itemsQualidade.map((item) => (
+              <li class="flex flex-col items-center gap-4 md:flex-row md:gap-10 md:text-left">
+                <div class="md:flex-1">
+                  <img src={`/institucional/${item.pathImage}`} alt={item.title} class="w-full rounded-2xl" />
+                </div>
+                <div class="flex flex-col gap-3 md:flex-1">
+                  <h4 class="font-bold md:text-lg">{item.title}</h4>
+                  {item.pathImageContent && (
+                    <img
+                      class="mx-auto max-w-50 md:ml-0"
+                      src={`/institucional/${item.pathImageContent}`}
+                      alt={item.title}
+                    />
+                  )}
+                  <p class="paragraph">{item.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="relative flex flex-col bg-yellow-300 px-5 py-16 lg:py-32 xl:py-46 2xl:py-62">
+      <div
+        class="absolute inset-0 top-0 z-1 h-full w-full bg-[url(/institucional/foto-03.png)] bg-cover bg-top bg-no-repeat opacity-15"
+      >
+      </div>
+
+      <div class="container-center z-2">
+        <div class="flex flex-col items-center gap-8 py-10 text-sm md:flex-row md:gap-32 lg:gap-40 xl:text-xl">
+          <p class="flex-1/2 text-right text-red-800">
+            Lorem ipsum dolor sit amet consectetur eget amet at metus nunc eu in blandit.
+          </p>
+          <a class="btn --red inline-block w-full flex-1/2" href="#">Surpreenda-se com a nossa qualidade</a>
         </div>
       </div>
     </section>
