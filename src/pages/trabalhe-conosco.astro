@@ -1,0 +1,126 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Video from '@components/Video.astro';
+import Layout from '@layouts/Layout.astro';
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <section class="lg:-mt-37">
+      <Video title="Trabalhe conosco" videoUrl="/home/video-encontre-fornecedores.mp4" />
+    </section>
+
+    <section>
+      <div class="flex flex-col bg-yellow-300 px-5 py-10">
+        <div class="container-center pb-10">
+          <h1 class="title">Vem ser Mimosa</h1>
+          <p class="paragraph">
+            Somos mais de 60 pessoas diretas e indiretas, comprometidas com o sabor, a qualidade e a tradição que
+            alimentam gerações. Aqui, cada detalhe importa — da fazenda até a sua mesa. Trabalhamos com agilidade,
+            responsabilidade e paixão, construindo um time que acredita em fazer sempre melhor, com atitude, inovação e
+            aquele carinho que só a Mimosa tem.
+          </p>
+        </div>
+      </div>
+
+      <div class="container-center">
+        <div class="flex flex-col px-5">
+          <img class="-mt-10 rounded-2xl" src="/trabalhe-conosco/photo-01.png" alt="Vem ser Mimosa" />
+          <p class="paragraph mt-3">
+            Somos uma empresa feita de gente. Gente que faz acontecer, com alegria, paixão e dinamismo. Geramos
+            prosperidade e criamos oportunidades para todos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-5 py-10 md:py-20">
+      <div class="container-center">
+        <div class="flex flex-col items-start gap-10 md:flex-row">
+          <div class="flex flex-1 flex-col gap-5">
+            <h1 class="title">Nosso jeito</h1>
+            <p class="paragraph">
+              Com uma das mais modernas e completas estruturas do setor alimentício, somos referência em tudo o que
+              fazemos. Movidos pela paixão em alimentar bem, crescemos com coragem, sem jamais abrir mão da qualidade.
+              Investimos em inovação, nutrição e tecnologia, sempre de olhos abertos para o futuro. Geramos valor,
+              criamos oportunidades e levamos o melhor da nossa terra para milhares de famílias. Nosso coração é
+              vermelho. Somos Mimosa.
+            </p>
+          </div>
+          <div class="flex-1">
+            <img class="rounded-2xl" src="/trabalhe-conosco/photo-02.png" alt="Vem ser Mimosa" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-5 pb-10 lg:mb-20">
+      <div class="container-center">
+        <h1 class="title md:mb-5">Agilidade, inovação, comprometimento e colaboração: isso é ser Mimosa!</h1>
+        <p class="paragraph mb-3">
+          Somos uma marca feita por gente que acorda cedo, que conhece a terra, respeita o tempo da natureza e acredita
+          no valor de alimentar bem. O vermelho que corre em nós é símbolo da nossa energia, da nossa história e do
+          nosso compromisso com milhões de lares brasileiros.
+        </p>
+        <p class="paragraph mb-3">
+          Desde o início, escolhemos fazer diferente: produzir com responsabilidade, valorizar quem está no campo e
+          garantir que os nossos produtos cheguem frescos, gostosos e confiáveis às mesas de todo o país. Porque pra
+          nós, comida de qualidade não é luxo — é cuidado, é direito, é afeto.
+        </p>
+        <p class="paragraph mb-3">
+          A Mimosa está presente em cada etapa: da ordenha ao transporte, da fábrica à gôndola. Temos centros de
+          captação e produção com tecnologia de ponta, frota própria e uma distribuição que não para — porque alimentar
+          o Brasil com carinho é a nossa missão todos os dias.
+        </p>
+        <p class="paragraph">
+          Crescemos com o pé no chão e o coração aberto. E é com esse jeito nosso, simples e verdadeiro, que seguimos:
+          levando sabor, nutrição e confiança a cada nova geração. Somos Mimosa. Somos do campo, somos da mesa, somos do
+          Brasil.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-5 pb-10 lg:pb-20">
+      <div class="container-center">
+        <div class="flex flex-col rounded-2xl bg-yellow-300 p-5 md:p-10">
+          <div class="container-center">
+            <div class="flex flex-col gap-10 md:items-end lg:flex-row">
+              <div class="flex-1">
+                <h1 class="title">Quer fazer parte de algo que alimenta o Brasil todos os dias?</h1>
+                <p class="paragraph">
+                  Na Mimosa, cada pessoa faz a diferença — da produção ao carinho que chega na mesa. Se você acredita em
+                  trabalho com propósito, qualidade e verdade, queremos conhecer você!
+                </p>
+
+                <form class="mt-5 flex flex-col gap-5">
+                  <input class="input" name="nome" type="text" placeholder="Nome completo" />
+                  <input class="input" name="telefone" type="tel" placeholder="Telefone com DDD" />
+                  <input class="input" name="email" type="email" placeholder="Melhor e-mail" />
+
+                  <label
+                    for="curriculo"
+                    class="flex cursor-pointer items-center justify-center gap-3 rounded-lg border-1 border-dashed border-red-800 bg-white px-5 py-4"
+                  >
+                    <img src="/trabalhe-conosco/upload.png" alt="Upload" class="h-auto w-6" />
+                    <span class="text-xs font-bold text-red-800">Arraste ou Clique para adicionar o currículo</span>
+                    <input id="curriculo" name="curriculo" type="file" accept=".pdf" class="hidden" />
+                  </label>
+
+                  <button class="btn --red w-full" type="submit">Enviar meus dados</button>
+                </form>
+              </div>
+              <div class="-mr-10 -mb-10 flex-1">
+                <img src="/trabalhe-conosco/photo-form.png" alt="Mimosa Alimentos" class="hidden w-auto md:block" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

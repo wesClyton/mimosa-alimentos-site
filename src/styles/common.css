@@ -36,4 +36,8 @@
 
 .input {
   @apply w-full rounded-md bg-white p-2;
+
+  &::placeholder {
+    @apply text-xs md:text-base xl:text-lg;
+  }
 }
