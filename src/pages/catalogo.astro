@@ -1,0 +1,150 @@
+---
+import CatalogoBrands from '@components/CatalogoBrands';
+import CatalogoProducts from '@components/CatalogoProducts';
+import CatalogoTypes from '@components/CatalogoTypes';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Layout from '@layouts/Layout.astro';
+
+const categorias: { iconBlack: string; iconWhite: string; name: string }[] = [
+  {
+    iconBlack: 'restaurantes-black.png',
+    iconWhite: 'restaurantes-white.png',
+    name: 'Restaurantes',
+  },
+  {
+    iconBlack: 'confeitaria-black.png',
+    iconWhite: 'confeitaria-white.png',
+    name: 'Confeitaria - Padaria',
+  },
+  {
+    iconBlack: 'acougue-black.png',
+    iconWhite: 'acougue-white.png',
+    name: 'Açougue',
+  },
+  {
+    iconBlack: 'lanchonete-black.png',
+    iconWhite: 'lanchonete-white.png',
+    name: 'Lanchonete',
+  },
+  {
+    iconBlack: 'mercado-black.png',
+    iconWhite: 'mercado-white.png',
+    name: 'Mercado',
+  },
+];
+---
+
+<Layout>
+  <Header />
+
+  <main class="container-center px-5 py-10 md:pb-20">
+    <h1 class="title-page mb-10">Catálogo</h1>
+
+    <div class="container-center flex flex-col gap-5 lg:flex-row">
+      <div class="flex flex-col rounded-2xl bg-white lg:flex-1 lg:pb-5">
+        <div>
+          <img class="mx-auto w-50" src="/catalogo/meu-mercado-mimosa.png" alt="Meu mercado Mimosa" />
+
+          <div class="px-5 text-left">
+            <div class="flex items-center justify-between">
+              <h3 class="mb-3 text-2xl leading-6 font-bold text-red-800">Filtros rápidos</h3>
+              <button
+                id="catalogo-filtros-toggle"
+                class="-mt-3 ml-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded transition lg:hidden"
+                aria-label="Mostrar/Esconder filtros"
+                type="button"
+              >
+                <img src="/hamburger-menu-red.svg" alt="Menu Filtros" class="h-6 w-6" />
+              </button>
+            </div>
+
+            <div id="filtros-rapidos" class="hidden transition-all duration-300 lg:block">
+              <input
+                id="catalogo-busca"
+                class="input border-1 border-solid border-gray-200"
+                type="text"
+                placeholder="Buscar produto"
+              />
+
+              <CatalogoBrands client:load />
+
+              <CatalogoTypes client:load />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-5 lg:flex-3">
+        <div class="rounded-2xl bg-white p-5">
+          <h3 class="mb-3 text-2xl leading-6 font-bold text-red-800">Procurar por categoria</h3>
+          <ul class="flex flex-row flex-wrap items-center justify-center gap-1 lg:justify-between">
+            {
+              categorias.map((categoria) => (
+                <li class="flex aspect-square w-full items-center justify-center border-b-1 border-solid border-gray-200 px-5 py-2 last:border-b-0 lg:w-1/5 lg:max-w-[18%] lg:border-1 lg:py-5 lg:last:border-1">
+                  <a href="#" class="item-categoria flex h-full w-full flex-col items-center justify-center">
+                    <img class="mx-auto w-4 lg:w-10" src={'/catalogo/' + categoria.iconBlack} alt={categoria.name} />
+                    <span class="w-full text-center text-xs">{categoria.name}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div id="lista-produtos" class="rounded-2xl bg-white p-5">
+          <div class="flex flex-col gap-5">
+            <CatalogoProducts client:load />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    buttonFiltros();
+    inputBuscarProdutos();
+    inputBuscarPorCategorias();
+  });
+
+  function buttonFiltros() {
+    const btn = document.getElementById('catalogo-filtros-toggle');
+    const filtros = document.getElementById('filtros-rapidos');
+    let isOpen = false;
+
+    btn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        filtros.classList.remove('hidden');
+        filtros.classList.add('block');
+      } else {
+        filtros.classList.remove('block');
+        filtros.classList.add('hidden');
+      }
+    });
+  }
+
+  function inputBuscarProdutos() {
+    const buscaInput = document.getElementById('catalogo-busca');
+
+    let buscaTimeout;
+    buscaInput.addEventListener('input', function () {
+      clearTimeout(buscaTimeout);
+      buscaTimeout = setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('productsSearch', { detail: this.value }));
+      }, 500);
+    });
+  }
+
+  function inputBuscarPorCategorias() {
+    const buscaInputs = document.getElementsByClassName('item-categoria');
+    Array.from(buscaInputs).forEach((buscaInput) => {
+      buscaInput.addEventListener('click', function () {
+        window.dispatchEvent(new CustomEvent('categorySearch', { detail: this.textContent }));
+      });
+    });
+  }
+</script>

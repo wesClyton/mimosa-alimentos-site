@@ -6,12 +6,13 @@ import Social from './Social.astro';
 const { menuItems, menuSejaCliente }: IHeaderMenu = Astro.props;
 
 const colors = {
-  bg: menuSejaCliente ? 'yellow-300' : 'red-800',
+  bg: menuSejaCliente ? 'bg-yellow-300' : 'bg-red-800',
+  bgLg: menuSejaCliente ? 'lg:bg-yellow-300' : 'lg:bg-red-800',
   iconSocial: menuSejaCliente ? 'red' : 'yellow',
 };
 ---
 
-<header class={`bg-${colors.bg} p-5 lg:bg-transparent relative z-50`}>
+<header class={`${colors.bg} p-5 lg:bg-transparent relative z-50`}>
   <button
     id="header-toggle-btn"
     class="absolute top-2 right-2 z-10 w-7 cursor-pointer lg:hidden"
@@ -22,7 +23,7 @@ const colors = {
 
   <div class="container-center">
     <div
-      class={`flex flex-col items-center justify-center rounded-3xl lg:w-full lg:flex-row lg:justify-between lg:px-8 lg:py-7 lg:bg-${colors.bg}`}
+      class={`flex flex-col items-center justify-center rounded-3xl lg:w-full lg:flex-row lg:justify-between lg:px-8 lg:py-7 ${colors.bgLg}`}
     >
       <a href="/">
         <img class="w-38" src={`/logo-mimosa-${menuSejaCliente ? 'red' : 'white'}.svg`} alt="Logo Mimosa Alimentos" />
@@ -50,6 +51,7 @@ const colors = {
 
   document.addEventListener('DOMContentLoaded', () => {
     initializeToggleContent();
+    initializeSmoothScroll();
   });
 
   function initializeToggleContent() {
@@ -77,5 +79,18 @@ const colors = {
         }
       }
     }
+  }
+
+  function initializeSmoothScroll() {
+    document.querySelectorAll('.header-toggle-content a').forEach((link) => {
+      link.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href').replace('#', '').replace('/seja-um-cliente', '');
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   }
 </script>
