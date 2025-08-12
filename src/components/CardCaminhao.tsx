@@ -14,7 +14,7 @@ let googleMapInstance: any = null;
 let googleMarkers: any[] = [];
 
 interface CardCaminhaoProps {
-  showInput: boolean;
+  showMap: boolean;
 }
 
 function loadGoogleMapsScript(libraries: string[] = []) {
@@ -43,7 +43,7 @@ function loadGoogleMapsScript(libraries: string[] = []) {
   return googleMapsScriptLoading;
 }
 
-export default function CardCaminhao({ showInput }: CardCaminhaoProps) {
+export default function CardCaminhao({ showMap }: CardCaminhaoProps) {
   const [inputValue, setInputValue] = useState('');
   const [locations, setLocations] = useState<ICustumerData | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -51,15 +51,15 @@ export default function CardCaminhao({ showInput }: CardCaminhaoProps) {
 
   // Load locations when input is shown
   useEffect(() => {
-    if (!showInput) return;
+    if (!showMap) return;
     fetch(APP.BASE_URL + '/customers?perPage=9999')
       .then((res) => res.json())
       .then((data) => setLocations(data));
-  }, [showInput]);
+  }, [showMap]);
 
   // Load Google Maps (with "places" library for autocomplete) and set up autocomplete
   useEffect(() => {
-    if (!showInput || !inputRef.current) return;
+    if (!showMap || !inputRef.current) return;
 
     loadGoogleMapsScript(['places']).then(() => {
       if (!inputRef.current) return;
@@ -83,11 +83,11 @@ export default function CardCaminhao({ showInput }: CardCaminhaoProps) {
         }
       });
     });
-  }, [showInput]);
+  }, [showMap]);
 
   // Initialize Google Map and set pins with InfoWindow
   useEffect(() => {
-    if (!showInput || !locations || !locations.data?.length || !mapRef.current) return;
+    if (!showMap || !locations || !locations.data?.length || !mapRef.current) return;
 
     loadGoogleMapsScript().then(() => {
       // If map already exists, remove existing markers
@@ -148,7 +148,7 @@ export default function CardCaminhao({ showInput }: CardCaminhaoProps) {
         }
       });
     });
-  }, [showInput, locations]);
+  }, [showMap, locations]);
 
   // Handle input change (text search)
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,13 +166,13 @@ export default function CardCaminhao({ showInput }: CardCaminhaoProps) {
             casa.
           </h2>
 
-          {!showInput && (
+          {!showMap && (
             <a className="btn --red inline-block w-full lg:w-75" href={MENU_ITEMS.ondeEncontrar.href}>
               Encontre nossos fornecedores
             </a>
           )}
 
-          {showInput && (
+          {showMap && (
             <input
               ref={inputRef}
               type="text"
@@ -199,9 +199,11 @@ export default function CardCaminhao({ showInput }: CardCaminhaoProps) {
         </div>
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-2xl border-3 border-solid border-yellow-300 md:mt-10">
-        {showInput && <div ref={mapRef} style={{ width: '100%', height: 450 }} id="google-map" />}
-      </div>
+      {showMap && (
+        <div className="mt-5 overflow-hidden rounded-2xl border-3 border-solid border-yellow-300 md:mt-10">
+          <div ref={mapRef} style={{ width: '100%', height: 450 }} id="google-map" />
+        </div>
+      )}
     </>
   );
 }
