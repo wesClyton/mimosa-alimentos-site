@@ -3,6 +3,7 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import Video from '@components/Video.astro';
 import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
 
 const itemsQualidade: { pathImage: string; title: string; text: string; pathImageContent: string }[] = [
   {
@@ -172,7 +173,7 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
       </div>
     </section>
 
-    <section class="container-center px-10 py-10 lg:py-20">
+    <section id="qualidade" class="container-center px-10 py-10 lg:py-20">
       <div class="flex flex-col items-center justify-center text-center">
         <h2 class="title mb-3">Qualidade Mimosa</h2>
         <h3 class="subtitle mb-5">Levando sempre os melhores produtos para sua mesa!</h3>
@@ -217,7 +218,9 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
           <p class="flex-1/2 text-right text-red-800">
             Lorem ipsum dolor sit amet consectetur eget amet at metus nunc eu in blandit.
           </p>
-          <a class="btn --red inline-block w-full flex-1/2" href="#">Surpreenda-se com a nossa qualidade</a>
+          <a class="btn --red inline-block w-full flex-1/2" href={MENU_ITEMS.qualidade.href}
+            >Surpreenda-se com a nossa qualidade</a
+          >
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { MENU_ITEMS } from '@utils/menu.contants';
 import { useState } from 'react';
 
 interface CardCaminhaoProps {
@@ -27,7 +28,7 @@ export default function CardCaminhao({ showInput, valueChangesInput }: CardCamin
           </h2>
 
           {!showInput && (
-            <a className="btn --red inline-block w-full lg:w-75" href="#">
+            <a className="btn --red inline-block w-full lg:w-75" href={MENU_ITEMS.ondeEncontrar.href}>
               Encontre nossos fornecedores
             </a>
           )}

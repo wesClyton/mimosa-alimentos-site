@@ -7,6 +7,7 @@ import ProdutosSlides from '@components/ProdutosSlide';
 import type { ISlideProduto, ISlideProdutos } from '@interfaces/slide-produtos.interface';
 import { SlideProdutosKey } from '@interfaces/slide-produtos.interface';
 import { APP } from '@utils/app.contants';
+import { MENU_ITEMS } from '@utils/menu.contants';
 
 const response = await fetch(APP.BASE_URL + '/products/by-category');
 const tiposLinguicas: ISlideProdutos = await response.json();
@@ -141,7 +142,9 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
         <div class="mt-5 md:my-auto lg:mt-5 xl:mt-9">
           <h1 class="title">Ofereça o melhor em sabor!</h1>
           <p class="paragraph mt-2">Lorem ipsum dolor sit amet consectetur porta iaculis sit et.</p>
-          <a class="btn --red mt-5 inline-block w-full lg:w-100" href="#">Torne-se um cliente Mimosa</a>
+          <a class="btn --red mt-5 inline-block w-full lg:w-100" href={MENU_ITEMS.sejaUmCliente.href}
+            >Torne-se um cliente Mimosa</a
+          >
         </div>
       </div>
     </div>

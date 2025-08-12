@@ -4,6 +4,7 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import Sac from '@components/Sac.astro';
 import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
 ---
 
 <Layout>
@@ -47,7 +48,7 @@ import Layout from '@layouts/Layout.astro';
 
               <a
                 class="btn --red my-2 mb-0 flex items-center justify-center"
-                href="#"
+                href={MENU_ITEMS.denuncie.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 >Denuncie aqui
