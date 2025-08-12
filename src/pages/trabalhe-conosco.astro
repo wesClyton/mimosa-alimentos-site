@@ -1,6 +1,7 @@
 ---
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import TrabalheConoscoForm from '@components/TrabalheConoscoForm';
 import Video from '@components/Video.astro';
 import Layout from '@layouts/Layout.astro';
 ---
@@ -95,22 +96,7 @@ import Layout from '@layouts/Layout.astro';
                   trabalho com propósito, qualidade e verdade, queremos conhecer você!
                 </p>
 
-                <form class="mt-5 flex flex-col gap-5">
-                  <input class="input" name="nome" type="text" placeholder="Nome completo" />
-                  <input class="input" name="telefone" type="tel" placeholder="Telefone com DDD" />
-                  <input class="input" name="email" type="email" placeholder="Melhor e-mail" />
-
-                  <label
-                    for="curriculo"
-                    class="flex cursor-pointer items-center justify-center gap-3 rounded-lg border-1 border-dashed border-red-800 bg-white px-5 py-4"
-                  >
-                    <img src="/trabalhe-conosco/upload.png" alt="Upload" class="h-auto w-6" />
-                    <span class="text-xs font-bold text-red-800">Arraste ou Clique para adicionar o currículo</span>
-                    <input id="curriculo" name="curriculo" type="file" accept=".pdf" class="hidden" />
-                  </label>
-
-                  <button class="btn --red w-full" type="submit">Enviar meus dados</button>
-                </form>
+                <TrabalheConoscoForm client:load />
               </div>
               <div class="-mr-10 -mb-10 flex-1">
                 <img src="/trabalhe-conosco/photo-form.png" alt="Mimosa Alimentos" class="hidden w-auto md:block" />

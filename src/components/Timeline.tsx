@@ -86,7 +86,7 @@ export default function Timeline() {
                 <div className="relative flex translate-y-[-9rem] items-start justify-center gap-6 py-40">
                   <div className="flex flex-col items-center">
                     <p className="mb-2 text-lg font-bold">{year}</p>
-                    <div className="flex flex-col items-center justify-center after:absolute after:bottom-[22%] after:z-1 after:block after:h-20 after:w-1 after:bg-white">
+                    <div className="flex flex-col items-center justify-center after:absolute after:bottom-[22%] after:z-1 after:block after:h-20 after:w-[2px] after:bg-white">
                       {renderCircle(item, year)}
                     </div>
                   </div>
@@ -101,7 +101,7 @@ export default function Timeline() {
               {position === 'bottom' && (
                 <div className="relative flex translate-y-[10rem] items-start justify-center gap-6 py-40">
                   <div className="flex flex-col items-center">
-                    <div className="flex flex-col items-center justify-center after:absolute after:top-[19%] after:z-1 after:block after:h-20 after:w-1 after:bg-white">
+                    <div className="flex flex-col items-center justify-center after:absolute after:top-[19%] after:z-1 after:block after:h-20 after:w-[2px] after:bg-white">
                       {renderCircle(item, year)}
                     </div>
                     <p className="mt-2 text-lg font-bold">{year}</p>
