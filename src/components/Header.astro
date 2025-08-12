@@ -82,7 +82,7 @@ const colors = {
   }
 
   function initializeSmoothScroll() {
-    document.querySelectorAll('.header-toggle-content a').forEach((link) => {
+    document.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href').replace('#', '').replace('/seja-um-cliente', '');
         const target = document.getElementById(targetId);

@@ -2,97 +2,17 @@
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import Layout from '@layouts/Layout.astro';
-import { v4 as uuidv4 } from 'uuid';
 
 import ProdutosSlides from '@components/ProdutosSlide';
-import type { ISlideProdutos } from '@interfaces/slide-produtos.interface';
+import type { ISlideProduto, ISlideProdutos } from '@interfaces/slide-produtos.interface';
+import { SlideProdutosKey } from '@interfaces/slide-produtos.interface';
+import { APP } from '@utils/app.contants';
 
-const slideLinguicas: ISlideProdutos[] = [
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-];
-
-const slideLinguicaQueijo: ISlideProdutos[] = [
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-];
-
-const slideLinguicaChurrasquita: ISlideProdutos[] = [
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-  {
-    id: uuidv4(),
-    name: 'Linguiça Du Cheff',
-    description: '1 Kg e 5 Kg',
-    urlImage: '/produtos/produto.png',
-  },
-];
+const response = await fetch(APP.BASE_URL + '/products/by-category');
+const tiposLinguicas: ISlideProdutos = await response.json();
+const slideLinguicaChurrasquita: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.CHURRASQUITA];
+const slideLinguicaQueijo: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.COM_QUEIJO];
+const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA];
 ---
 
 <Layout>

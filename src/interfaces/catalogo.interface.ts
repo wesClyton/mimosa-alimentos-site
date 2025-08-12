@@ -14,8 +14,6 @@ export interface ICatalogoProduto {
   segment: string[];
   image: string;
   status: boolean;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface ICatalogoType {
