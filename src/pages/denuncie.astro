@@ -1,10 +1,10 @@
 ---
 import Address from '@components/Address.astro';
+import DenuncieAqui from '@components/DenuncieModal';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import Sac from '@components/Sac.astro';
 import Layout from '@layouts/Layout.astro';
-import { MENU_ITEMS } from '@utils/menu.contants';
 ---
 
 <Layout>
@@ -46,13 +46,7 @@ import { MENU_ITEMS } from '@utils/menu.contants';
                 >Fale conosco pelo WhatsApp
               </a>
 
-              <a
-                class="btn --red my-2 mb-0 flex items-center justify-center"
-                href={MENU_ITEMS.denuncie.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                >Denuncie aqui
-              </a>
+              <DenuncieAqui client:load />
             </div>
           </div>
         </div>

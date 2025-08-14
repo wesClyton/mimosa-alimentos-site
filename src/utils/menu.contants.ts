@@ -2,7 +2,6 @@ import type { IMenuItem } from '@interfaces/menu.interface';
 
 type MenuKey =
   | 'home'
-  | 'qualidade'
   | 'downloads'
   | 'institucional'
   | 'produtos'
@@ -13,16 +12,17 @@ type MenuKey =
   | 'clienteCadastreSe'
   | 'clienteComoRealizarPedidos'
   | 'clienteContato'
-  | 'denuncie';
+  | 'denuncie'
+  | 'catalogo';
 
 export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   home: {
     label: 'Home',
     href: '/',
   },
-  qualidade: {
-    label: 'Qualidade',
-    href: '/institucional#qualidade',
+  denuncie: {
+    label: 'Denuncie',
+    href: '/denuncie',
   },
   institucional: {
     label: 'Institucional',
@@ -64,8 +64,8 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
     label: 'Contato',
     href: '/seja-um-cliente#contato',
   },
-  denuncie: {
-    label: 'Denuncie',
-    href: '/denuncie',
+  catalogo: {
+    label: 'Catálogo',
+    href: '/catalogo',
   },
 };

@@ -13,6 +13,10 @@ const {
       href: MENU_ITEMS.produtos.href,
     },
     {
+      label: MENU_ITEMS.catalogo.label,
+      href: MENU_ITEMS.catalogo.href,
+    },
+    {
       label: MENU_ITEMS.ondeEncontrar.label,
       href: MENU_ITEMS.ondeEncontrar.href,
     },
@@ -35,7 +39,7 @@ const colors = {
 ---
 
 <nav class="my-7 font-semibold lg:my-0">
-  <ul class="flex flex-col items-center gap-4 text-sm md:gap-6 lg:flex-row lg:gap-10 xl:gap-15">
+  <ul class="flex flex-col items-center gap-4 text-sm md:gap-6 md:text-xs lg:flex-row lg:gap-10 lg:text-sm xl:gap-15">
     {
       items?.map((item) => (
         <li class={`text-${colors.text} transition`}>
