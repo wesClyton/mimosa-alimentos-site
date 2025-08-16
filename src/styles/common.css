@@ -45,3 +45,8 @@
     @apply text-xs md:text-base;
   }
 }
+
+/* timeline */
+.timeline-swiper {
+  height: 100%;
+}

@@ -23,7 +23,7 @@ export default function Timeline() {
   }, []);
 
   const renderCircle = (item: any, year: number) => (
-    <div className="relative z-2 flex h-[160px] w-[160px] items-center justify-center overflow-hidden rounded-full bg-black">
+    <div className="timeline-circle relative z-2 flex h-[160px] w-[160px] items-center justify-center overflow-hidden rounded-full bg-black">
       {item.image ? (
         <img
           src={item.image.startsWith('http') ? item.image : `${APP.S3}/${item.image}`}
@@ -41,7 +41,7 @@ export default function Timeline() {
   );
 
   return (
-    <section className="relative w-full">
+    <section className="relative h-[700px] w-full">
       {/* Linha central */}
       <div
         className="pointer-events-none absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 bg-white"
@@ -52,29 +52,26 @@ export default function Timeline() {
         modules={[Navigation]}
         navigation
         loop={false}
-        spaceBetween={40} // mais espaçamento ajuda no cálculo
-        slidesPerView="auto" // evita que Swiper corte os últimos
+        slidesPerView="auto"
         breakpoints={{
           640: {
             slidesPerView: 1,
           },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
+          1280: {
             slidesPerView: 3,
           },
         }}
+        className="timeline-swiper"
       >
         {timeline.data.map((item, idx) => {
           const year = new Date(item.date).getFullYear();
           const position = idx === 0 ? 'center' : idx % 2 === 1 ? 'top' : 'bottom';
 
           return (
-            <SwiperSlide key={item.id ?? idx} className="max-w-[400px]">
+            <SwiperSlide key={item.id ?? idx} className="timeline-slide h-[600px] max-w-[400px]">
               {/* Primeiro item centralizado */}
               {position === 'center' && (
-                <div className="flex h-full translate-y-[13rem] flex-col items-center justify-center">
+                <div className="flex h-full translate-y-[2rem] flex-col items-center justify-center">
                   {renderCircle(item, year)}
                   <p className="mt-4 text-lg font-bold">{year}</p>
                   <h3 className="text-[16px] font-bold">{item.title}</h3>
@@ -83,10 +80,10 @@ export default function Timeline() {
 
               {/* Itens acima da linha */}
               {position === 'top' && (
-                <div className="relative flex translate-y-[-9rem] items-start justify-center gap-6 py-40">
+                <div className="relative flex h-full translate-y-[-9rem] items-start justify-center gap-6 py-40">
                   <div className="flex flex-col items-center">
                     <p className="mb-2 text-lg font-bold">{year}</p>
-                    <div className="flex flex-col items-center justify-center after:absolute after:bottom-[25%] after:z-1 after:block after:h-20 after:w-[2px] after:bg-white">
+                    <div className="flex flex-col items-center justify-center after:absolute after:bottom-[29.5%] after:z-1 after:block after:h-50 after:w-[2px] after:bg-white">
                       {renderCircle(item, year)}
                     </div>
                   </div>
@@ -99,9 +96,9 @@ export default function Timeline() {
 
               {/* Itens abaixo da linha */}
               {position === 'bottom' && (
-                <div className="relative flex translate-y-[10rem] items-start justify-center gap-6 py-40">
+                <div className="relative flex h-full translate-y-[10rem] items-end justify-center gap-6 py-40">
                   <div className="flex flex-col items-center">
-                    <div className="flex flex-col items-center justify-center after:absolute after:top-[23%] after:z-1 after:block after:h-20 after:w-[2px] after:bg-white">
+                    <div className="flex flex-col items-center justify-center after:absolute after:top-[27.3%] after:z-1 after:block after:h-50 after:w-[2px] after:bg-white">
                       {renderCircle(item, year)}
                     </div>
                     <p className="mt-2 text-lg font-bold">{year}</p>
