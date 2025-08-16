@@ -1,6 +1,7 @@
 import type { ICatalogoProdutoData } from '@interfaces/catalogo.interface';
 import { APP } from '@utils/app.contants';
 import { useEffect, useRef, useState } from 'react';
+import { EProdutosCategorias } from 'src/enums/produtos-categorias.enum';
 import CatalogoPaginator from './CatalogoPaginator';
 
 const PAGE_SIZE = 9;
@@ -129,7 +130,7 @@ export default function CatalogoProducts() {
               produtos.data.map((produto) => (
                 <li key={produto.id}>
                   <div className="relative">
-                    <div className="absolute top-0 left-0 flex w-full flex-row justify-between text-xs">
+                    <div className="absolute top-0 left-0 flex w-full flex-row justify-between gap-2 text-xs">
                       <span className="mt-2 ml-2 flex items-center justify-center rounded-sm bg-red-800 px-3 py-1 text-white">
                         {produto.type}
                       </span>
@@ -147,14 +148,23 @@ export default function CatalogoProducts() {
                     <h4 className="paragraph text-sm!">{produto.description}</h4>
                     <p className="paragraph text-sm! text-gray-500!">{produto.brand}</p>
                     <ul className="flex flex-row flex-wrap gap-2">
-                      {produto.segment.map((segment, index) => (
-                        <li
-                          className="flex items-center justify-center rounded-sm bg-red-800 px-3 py-1 text-xs text-white"
-                          key={index}
-                        >
-                          {segment}
-                        </li>
-                      ))}
+                      {produto.segment.map((segment, index) => {
+                        let bg = 'bg-gray-200 text-gray-800';
+                        if (segment === EProdutosCategorias.Bares) bg = 'bg-green-600 text-white';
+                        if (segment === EProdutosCategorias.Lanches) bg = 'bg-gray-300 text-gray-800';
+                        if (segment === EProdutosCategorias.Pizzarias) bg = 'bg-orange-700 text-white';
+                        if (segment === EProdutosCategorias.Restaurantes) bg = 'bg-yellow-300 text-yellow-900';
+                        if (segment === EProdutosCategorias.Supermercados) bg = 'bg-blue-800 text-white';
+
+                        return (
+                          <li
+                            className={`flex items-center justify-center rounded-sm px-3 py-1 text-xs ${bg}`}
+                            key={index}
+                          >
+                            {segment}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </li>

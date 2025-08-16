@@ -39,7 +39,9 @@ const colors = {
 ---
 
 <nav class="my-7 font-semibold lg:my-0">
-  <ul class="flex flex-col items-center gap-4 text-sm md:gap-6 md:text-xs lg:flex-row lg:gap-10 lg:text-sm xl:gap-15">
+  <ul
+    class="flex flex-col items-center gap-4 text-sm md:gap-6 md:text-xs lg:flex-row lg:gap-10 lg:text-xs xl:gap-15 xl:text-sm"
+  >
     {
       items?.map((item) => (
         <li class={`text-${colors.text} transition`}>

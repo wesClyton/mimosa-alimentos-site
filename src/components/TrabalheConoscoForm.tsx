@@ -140,7 +140,7 @@ export default function TrabalheConoscoForm() {
         <input
           {...register('email')}
           type="email"
-          placeholder="Melhor e-mail"
+          placeholder="E-mail"
           className={`input ${errors.email ? 'border-red-800 bg-red-50' : ''}`}
         />
         {errors.email && <span className="mt-1 block text-xs text-red-800">{errors.email.message}</span>}

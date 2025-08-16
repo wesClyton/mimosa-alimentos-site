@@ -7,32 +7,33 @@ import Header from '@components/Header.astro';
 import { Title } from '@components/Title';
 import Layout from '@layouts/Layout.astro';
 import { MENU_ITEMS } from '@utils/menu.contants';
+import { EProdutosCategorias } from 'src/enums/produtos-categorias.enum';
 
 const categorias: { iconBlack: string; iconWhite: string; name: string }[] = [
   {
     iconBlack: 'restaurantes-black.png',
     iconWhite: 'restaurantes-white.png',
-    name: 'Restaurantes',
+    name: EProdutosCategorias.Restaurantes,
   },
   {
-    iconBlack: 'confeitaria-black.png',
-    iconWhite: 'confeitaria-white.png',
-    name: 'Confeitaria - Padaria',
+    iconBlack: 'bares-black.png',
+    iconWhite: 'bares-white.png',
+    name: EProdutosCategorias.Bares,
   },
   {
-    iconBlack: 'acougue-black.png',
-    iconWhite: 'acougue-white.png',
-    name: 'Açougue',
+    iconBlack: 'lanches-black.png',
+    iconWhite: 'lanches-white.png',
+    name: EProdutosCategorias.Lanches,
   },
   {
-    iconBlack: 'lanchonete-black.png',
-    iconWhite: 'lanchonete-white.png',
-    name: 'Lanchonete',
+    iconBlack: 'pizzarias-black.png',
+    iconWhite: 'pizzarias-white.png',
+    name: EProdutosCategorias.Pizzarias,
   },
   {
     iconBlack: 'mercado-black.png',
     iconWhite: 'mercado-white.png',
-    name: 'Mercado',
+    name: EProdutosCategorias.Supermercados,
   },
 ];
 ---
@@ -92,13 +93,22 @@ const categorias: { iconBlack: string; iconWhite: string; name: string }[] = [
       <div class="flex flex-col gap-5 lg:flex-3">
         <div class="rounded-2xl bg-white p-5">
           <h3 class="mb-3 text-2xl leading-6 font-bold text-red-800">Procurar por categoria</h3>
-          <ul class="flex flex-row flex-wrap items-center justify-center gap-1 lg:justify-between">
+          <ul
+            class="flex flex-row flex-wrap items-center justify-center gap-1 lg:justify-between"
+            id="categorias-lista"
+          >
             {
-              categorias.map((categoria) => (
-                <li class="flex aspect-square w-full items-center justify-center border-b-1 border-solid border-gray-200 px-5 py-2 last:border-b-0 lg:w-1/5 lg:max-w-[18%] lg:border-1 lg:py-5 lg:last:border-1">
-                  <a href="#" class="item-categoria flex h-full w-full flex-col items-center justify-center">
+              categorias.map((categoria, idx) => (
+                <li class="flex w-full items-center justify-center border-b-1 border-solid border-gray-200 last:border-b-0 lg:aspect-square lg:w-1/5 lg:max-w-[18%] lg:border-1 lg:last:border-1">
+                  <a
+                    href="#"
+                    class="item-categoria flex h-full w-full flex-row items-center justify-center gap-2 px-5 py-2 lg:flex-col lg:py-5"
+                    data-index={idx}
+                    data-icon-black={categoria.iconBlack}
+                    data-icon-white={categoria.iconWhite}
+                  >
                     <img class="mx-auto w-4 lg:w-10" src={'/catalogo/' + categoria.iconBlack} alt={categoria.name} />
-                    <span class="w-full text-center text-xs">{categoria.name}</span>
+                    <span class="w-full text-left text-xs lg:text-center">{categoria.name}</span>
                   </a>
                 </li>
               ))
@@ -157,6 +167,29 @@ const categorias: { iconBlack: string; iconWhite: string; name: string }[] = [
     const buscaInputs = document.getElementsByClassName('item-categoria');
     Array.from(buscaInputs).forEach((buscaInput) => {
       buscaInput.addEventListener('click', function () {
+        window.dispatchEvent(new CustomEvent('categorySearch', { detail: this.textContent }));
+      });
+    });
+  }
+
+  function inputBuscarPorCategorias() {
+    const buscaInputs = document.getElementsByClassName('item-categoria');
+    Array.from(buscaInputs).forEach((buscaInput) => {
+      buscaInput.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Remove active de todos
+        Array.from(buscaInputs).forEach((el) => {
+          el.classList.remove('active', 'bg-red-800', 'text-white');
+          el.querySelector('img').src = '/catalogo/' + el.dataset.iconBlack;
+          el.querySelector('span').classList.remove('text-white');
+        });
+
+        // Adiciona active no clicado
+        this.classList.add('active', 'bg-red-800', 'text-white');
+        this.querySelector('img').src = '/catalogo/' + this.dataset.iconWhite;
+        this.querySelector('span').classList.add('text-white');
+
         window.dispatchEvent(new CustomEvent('categorySearch', { detail: this.textContent }));
       });
     });

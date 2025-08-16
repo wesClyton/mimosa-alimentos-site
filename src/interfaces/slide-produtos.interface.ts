@@ -1,7 +1,7 @@
 export enum SlideProdutosKey {
   CHURRASQUITA = 'CHURRASQUITA',
   COM_QUEIJO = 'COM QUEIJO',
-  LINGUICA = 'LINGUIÇA',
+  LINGUICA = 'LINGUICA',
 }
 
 export interface ISlideProdutos {

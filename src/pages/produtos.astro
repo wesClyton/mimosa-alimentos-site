@@ -12,6 +12,7 @@ import { MENU_ITEMS } from '@utils/menu.contants';
 
 const response = await fetch(APP.BASE_URL + '/products/by-category');
 const tiposLinguicas: ISlideProdutos = await response.json();
+console.log(tiposLinguicas);
 const slideLinguicaChurrasquita: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.CHURRASQUITA];
 const slideLinguicaQueijo: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.COM_QUEIJO];
 const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA];
@@ -119,7 +120,7 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
           <p class="text-sm font-bold text-yellow-300 uppercase">A favorita <br />do público</p>
         </div>
       </div>
-      <div class="my-auto text-left">
+      <div class="my-auto text-left md:[direction:ltr]">
         <h1 class="title md:mt-10">Linguiças Churrasquita</h1>
         <p class="paragraph mt-2">A linguiça fininha, feita especialmente para quem aprecia um sabor especial.</p>
 

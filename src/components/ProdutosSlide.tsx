@@ -32,7 +32,7 @@ export default function ProdutosSlides({ slideProdutos, config }: ProdutosSlides
                 />
               </div>
               <h3 className="relative z-2 mt-2 text-red-800">{produto.name}</h3>
-              <p className="relative z-2">{produto.description}</p>
+              <p className="relative z-2">{produto.size}</p>
             </a>
           </SwiperSlide>
         ))}
