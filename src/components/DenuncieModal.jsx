@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { APP } from '@utils/app.contants';
 import Cleave from 'cleave.js/react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -12,7 +13,7 @@ const ReactSwal = withReactContent(Swal);
 // Schema de validação com Zod
 const schema = z
   .object({
-    tipo: z.string().min(2, 'Informe o tipo de denúncia'),
+    type: z.string().min(2, 'Informe o tipo de denúncia'),
     place: z.string().min(2, 'Informe o local da ocorrência'),
     description: z.string().min(10, 'Descreva melhor a denúncia'),
     wantsIdentification: z.boolean().optional(),
@@ -20,7 +21,7 @@ const schema = z
       .string()
       .optional()
       .transform((val) => (val === '' ? undefined : val)),
-    contato: z
+    contact: z
       .string()
       .optional()
       .transform((val) => (val === '' ? undefined : val)),
@@ -30,7 +31,7 @@ const schema = z
     (data) => {
       // Se wantsIdentification for true, name e contato são obrigatórios
       if (data.wantsIdentification) {
-        return !!data.name && !!data.contato;
+        return !!data.name && !!data.contact;
       }
       return true;
     },
@@ -64,7 +65,14 @@ function DenunciaForm({ onSuccess, onError }) {
 
   const handleFileChange = (e) => {
     if (e.target.files) {
-      setFiles(Array.from(e.target.files));
+      // Verificar tamanho dos arquivos (limite de 10MB cada)
+      const validFiles = Array.from(e.target.files).filter((file) => file.size <= 10 * 1024 * 1024);
+
+      if (validFiles.length !== e.target.files.length) {
+        alert('Alguns arquivos excedem o tamanho máximo de 10MB e foram ignorados.');
+      }
+
+      setFiles(validFiles);
     }
   };
 
@@ -73,26 +81,28 @@ function DenunciaForm({ onSuccess, onError }) {
     try {
       // Criar FormData para upload de arquivos
       const formData = new FormData();
-      formData.append('tipo', data.tipo);
+      formData.append('type', data.type);
       formData.append('place', data.place);
       formData.append('description', data.description);
       formData.append('wantsIdentification', data.wantsIdentification);
 
       if (data.wantsIdentification) {
         formData.append('name', data.name);
-        formData.append('contato', data.contato);
+        formData.append('contact', data.contact);
       }
 
       // Adicionar arquivos
       if (files.length > 0) {
-        files.forEach((file, index) => {
-          formData.append(`attachments`, file);
+        files.forEach((file) => {
+          formData.append('attachments', file);
         });
       }
 
-      const resp = await fetch('/api/denuncia', {
+      // Enviar para o endpoint correto
+      const resp = await fetch(`${APP.BASE_URL}/reports`, {
         method: 'POST',
         body: formData,
+        // Não definir Content-Type para que o navegador defina o boundary correto para FormData
       });
 
       if (resp.ok) {
@@ -100,10 +110,11 @@ function DenunciaForm({ onSuccess, onError }) {
         setFiles([]);
         onSuccess();
       } else {
-        throw new Error(`Erro ${resp.status}: ${(await resp.text()) || 'Falha no servidor'}`);
+        const errorText = await resp.text();
+        throw new Error(`Erro ${resp.status}: ${errorText || 'Falha no servidor'}`);
       }
     } catch (error) {
-      console.error('Erro no envio:', error);
+      console.error('Erro no envio da denúncia:', error);
       onError(error);
     } finally {
       setLoading(false);
@@ -114,11 +125,11 @@ function DenunciaForm({ onSuccess, onError }) {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 text-left">
       <div>
         <input
-          {...register('tipo')}
+          {...register('type')}
           placeholder="Tipo da denúncia"
-          className={`w-full rounded border px-3 py-2 ${errors.tipo ? 'border-red-800 bg-red-50' : 'border-gray-300'}`}
+          className={`w-full rounded border px-3 py-2 ${errors.type ? 'border-red-800 bg-red-50' : 'border-gray-300'}`}
         />
-        {errors.tipo && <span className="text-xs text-red-800">{errors.tipo.message}</span>}
+        {errors.type && <span className="text-xs text-red-800">{errors.type.message}</span>}
       </div>
 
       <div>
@@ -166,9 +177,12 @@ function DenunciaForm({ onSuccess, onError }) {
         {files.length > 0 && (
           <div className="mt-2">
             <p className="text-sm text-gray-600">{files.length} arquivo(s) selecionado(s)</p>
-            <ul className="mt-1 text-xs text-gray-500">
+            <ul className="mt-1 max-h-24 overflow-auto text-xs text-gray-500">
               {files.map((file, idx) => (
-                <li key={idx}>{file.name}</li>
+                <li key={idx} className="flex items-center justify-between">
+                  <span className="truncate">{file.name}</span>
+                  <span className="ml-2 text-xs text-gray-400">({(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+                </li>
               ))}
             </ul>
           </div>
@@ -200,7 +214,7 @@ function DenunciaForm({ onSuccess, onError }) {
 
           <div>
             <Controller
-              name="contato"
+              name="contact"
               control={control}
               render={({ field }) => (
                 <Cleave
@@ -211,22 +225,18 @@ function DenunciaForm({ onSuccess, onError }) {
                     numericOnly: true,
                   }}
                   className={`w-full rounded border px-3 py-2 ${
-                    errors.contato ? 'border-red-800 bg-red-50' : 'border-gray-300'
+                    errors.contact ? 'border-red-800 bg-red-50' : 'border-gray-300'
                   }`}
                   placeholder="(99) 99999-9999"
                 />
               )}
             />
-            {errors.contato && <span className="text-xs text-red-800">{errors.contato.message}</span>}
+            {errors.contact && <span className="text-xs text-red-800">{errors.contact.message}</span>}
           </div>
         </>
       )}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full rounded bg-red-800 px-4 py-2 font-bold text-white transition duration-150 hover:bg-red-900 disabled:cursor-not-allowed disabled:opacity-70"
-      >
+      <button type="submit" disabled={loading} className="btn --red w-full rounded px-4 py-2">
         {loading ? 'Enviando...' : 'Enviar denúncia'}
       </button>
     </form>
