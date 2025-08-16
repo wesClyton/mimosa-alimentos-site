@@ -4,7 +4,9 @@ import CatalogoProducts from '@components/CatalogoProducts';
 import CatalogoTypes from '@components/CatalogoTypes';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import { Title } from '@components/Title';
 import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
 
 const categorias: { iconBlack: string; iconWhite: string; name: string }[] = [
   {
@@ -39,9 +41,21 @@ const categorias: { iconBlack: string; iconWhite: string; name: string }[] = [
   <Header />
 
   <main class="container-center px-5 py-10 md:pb-20">
-    <h1 class="title-page mb-10">Catálogo</h1>
+    <Title
+      title="Catálogo"
+      breadcrumbs={[
+        {
+          label: MENU_ITEMS.home.label,
+          href: MENU_ITEMS.home.href,
+        },
+        {
+          label: MENU_ITEMS.catalogo.label,
+          href: MENU_ITEMS.catalogo.href,
+        },
+      ]}
+    />
 
-    <div class="container-center flex flex-col gap-5 lg:flex-row">
+    <div class="container-center mt-10 flex flex-col gap-5 md:mt-15 lg:flex-row">
       <div class="flex flex-col rounded-2xl bg-white lg:flex-1 lg:pb-5">
         <div>
           <img class="mx-auto w-50" src="/catalogo/meu-mercado-mimosa.png" alt="Meu mercado Mimosa" />

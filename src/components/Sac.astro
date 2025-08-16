@@ -1,5 +1,6 @@
 ---
 import type { ISac } from '@interfaces/sac.interface';
+import { MENU_ITEMS } from '@utils/menu.contants';
 const { inFooter } = Astro.props as ISac;
 
 const colors = {
@@ -21,4 +22,5 @@ const colors = {
     Segunda à Sexta: 08:00h às 18:00h. <br />
     Sábado: 08:00h às 12:00h.
   </p>
+  <a class="mt-3 font-semibold uppercase" href={MENU_ITEMS.denuncie.href}>{MENU_ITEMS.denuncie.label}</a>
 </div>

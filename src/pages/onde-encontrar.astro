@@ -2,16 +2,32 @@
 import CardCaminhao from '@components/CardCaminhao';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import { Title } from '@components/Title';
 import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
 ---
 
 <Layout>
   <Header />
 
   <main class="container-center px-5 py-10 md:pb-20">
-    <h1 class="title-page mb-10">Onde encontrar</h1>
+    <Title
+      title="Onde encontrar"
+      breadcrumbs={[
+        {
+          label: MENU_ITEMS.home.label,
+          href: MENU_ITEMS.home.href,
+        },
+        {
+          label: MENU_ITEMS.ondeEncontrar.label,
+          href: MENU_ITEMS.ondeEncontrar.href,
+        },
+      ]}
+    />
 
-    <CardCaminhao client:only showMap={true} />
+    <div class="mt-10 md:mt-15">
+      <CardCaminhao client:only showMap={true} />
+    </div>
   </main>
 
   <Footer />

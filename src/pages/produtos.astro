@@ -4,6 +4,7 @@ import Header from '@components/Header.astro';
 import Layout from '@layouts/Layout.astro';
 
 import ProdutosSlides from '@components/ProdutosSlide';
+import { Title } from '@components/Title';
 import type { ISlideProduto, ISlideProdutos } from '@interfaces/slide-produtos.interface';
 import { SlideProdutosKey } from '@interfaces/slide-produtos.interface';
 import { APP } from '@utils/app.contants';
@@ -20,8 +21,20 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
   <Header />
 
   <section class="container-center px-5 py-10 md:pb-20">
-    <h1 class="title-page mb-10">Produtos</h1>
-    <div class="mt-10 mb-5 flex flex-col gap-5 md:mb-0 md:flex-row md:items-center lg:gap-10">
+    <Title
+      title="Produtos"
+      breadcrumbs={[
+        {
+          label: MENU_ITEMS.home.label,
+          href: MENU_ITEMS.home.href,
+        },
+        {
+          label: MENU_ITEMS.produtos.label,
+          href: MENU_ITEMS.produtos.href,
+        },
+      ]}
+    />
+    <div class="mt-10 mb-5 flex flex-col gap-5 md:mt-15 md:mb-0 md:flex-row md:items-center lg:gap-10">
       <div class="mb-5 flex-1/2">
         <img src="/produtos/linguica.png" alt="Linguiça" />
       </div>

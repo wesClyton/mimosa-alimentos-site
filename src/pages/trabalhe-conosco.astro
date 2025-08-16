@@ -4,6 +4,7 @@ import Header from '@components/Header.astro';
 import TrabalheConoscoForm from '@components/TrabalheConoscoForm';
 import Video from '@components/Video.astro';
 import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
 ---
 
 <Layout>
@@ -11,7 +12,20 @@ import Layout from '@layouts/Layout.astro';
 
   <main>
     <section class="lg:-mt-37">
-      <Video title="Trabalhe conosco" videoUrl="/home/video-encontre-fornecedores.mp4" />
+      <Video
+        title="Trabalhe conosco"
+        videoUrl="/home/video-encontre-fornecedores.mp4"
+        breadcrumbs={[
+          {
+            label: MENU_ITEMS.home.label,
+            href: MENU_ITEMS.home.href,
+          },
+          {
+            label: MENU_ITEMS.trabalheConosco.label,
+            href: MENU_ITEMS.trabalheConosco.href,
+          },
+        ]}
+      />
     </section>
 
     <section>

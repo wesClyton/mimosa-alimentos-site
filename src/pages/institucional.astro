@@ -39,7 +39,20 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
 
   <main>
     <section class="lg:-mt-37">
-      <Video title="Institucional" videoUrl="/home/video-encontre-fornecedores.mp4" />
+      <Video
+        title="Institucional"
+        videoUrl="/home/video-encontre-fornecedores.mp4"
+        breadcrumbs={[
+          {
+            label: MENU_ITEMS.home.label,
+            href: MENU_ITEMS.home.href,
+          },
+          {
+            label: MENU_ITEMS.institucional.label,
+            href: MENU_ITEMS.institucional.href,
+          },
+        ]}
+      />
     </section>
 
     <section class="container-center px-10 py-10">

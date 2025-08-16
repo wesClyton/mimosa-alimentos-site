@@ -1,7 +1,8 @@
 ---
 import type { IVideo } from '@interfaces/video.interface';
+import { Title } from './Title';
 
-const { description = '', title = '', videoUrl = '', showButtonPlay = true }: IVideo = Astro.props;
+const { description = '', title = '', videoUrl = '', showButtonPlay = true, breadcrumbs = [] }: IVideo = Astro.props;
 ---
 
 <div
@@ -14,10 +15,15 @@ const { description = '', title = '', videoUrl = '', showButtonPlay = true }: IV
 
   <div class="glightbox relative z-10 flex flex-col items-center text-center text-white">
     {showButtonPlay && <img src="/play.svg" alt="Play" class="max-w-15 cursor-pointer md:max-w-22 lg:max-w-25" />}
-    <h1 class="xl:leading-18; mt-5 mb-2 text-2xl leading-7 font-black md:text-4xl md:leading-10 xl:text-6xl">
-      {title}
-    </h1>
-    <p class="md:text-md text-sm lg:text-lg xl:mt-4 xl:text-xl">{description}</p>
+    <Title
+      title={title}
+      inVideo={true}
+      breadcrumbs={breadcrumbs.map((breadcrumb) => ({
+        label: breadcrumb.label,
+        href: breadcrumb.href,
+      }))}
+    />
+    <p class="text-sm lg:text-lg xl:mt-4 xl:text-xl">{description}</p>
   </div>
 </div>
 

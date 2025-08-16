@@ -7,7 +7,7 @@
 }
 
 .title-page {
-  @apply text-center text-2xl leading-7 font-black text-red-800 md:text-4xl xl:text-5xl;
+  @apply text-center text-2xl leading-7 font-black text-red-800 md:text-5xl xl:text-6xl;
 }
 
 .subtitle {
@@ -31,6 +31,10 @@
 
   &.--yellow {
     @apply bg-yellow-300 text-red-800;
+
+    &:hover {
+      @apply bg-yellow-400;
+    }
   }
 }
 
