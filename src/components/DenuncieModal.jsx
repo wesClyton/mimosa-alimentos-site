@@ -10,45 +10,94 @@ import { z } from 'zod';
 const ReactSwal = withReactContent(Swal);
 
 // Schema de validação com Zod
-const schema = z.object({
-  nome: z.string().min(3, 'Informe seu nome completo'),
-  telefone: z
-    .string()
-    .trim()
-    .refine((v) => v.length === 14 || v.length === 15, {
-      message: 'Telefone inválido',
-    }),
-  descricao: z.string().min(10, 'Descreva melhor a denúncia'),
-});
-
-// Tipo inferido do schema
-// type FormData = z.infer<typeof schema>;
+const schema = z
+  .object({
+    tipo: z.string().min(2, 'Informe o tipo de denúncia'),
+    place: z.string().min(2, 'Informe o local da ocorrência'),
+    description: z.string().min(10, 'Descreva melhor a denúncia'),
+    wantsIdentification: z.boolean().optional(),
+    name: z
+      .string()
+      .optional()
+      .transform((val) => (val === '' ? undefined : val)),
+    contato: z
+      .string()
+      .optional()
+      .transform((val) => (val === '' ? undefined : val)),
+    attachments: z.any().optional(),
+  })
+  .refine(
+    (data) => {
+      // Se wantsIdentification for true, name e contato são obrigatórios
+      if (data.wantsIdentification) {
+        return !!data.name && !!data.contato;
+      }
+      return true;
+    },
+    {
+      message: 'Nome e contato são obrigatórios quando identificação está marcada',
+      path: ['wantsIdentification'],
+    },
+  );
 
 // Componente do formulário
 function DenunciaForm({ onSuccess, onError }) {
   const {
     register,
     handleSubmit,
+    watch,
     control,
     formState: { errors },
     reset,
   } = useForm({
     resolver: zodResolver(schema),
+    defaultValues: {
+      wantsIdentification: false,
+      attachments: null,
+    },
   });
 
   const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState([]);
+
+  const wantsIdentification = watch('wantsIdentification');
+
+  const handleFileChange = (e) => {
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
+  };
 
   const onSubmit = async (data) => {
     setLoading(true);
     try {
+      // Criar FormData para upload de arquivos
+      const formData = new FormData();
+      formData.append('tipo', data.tipo);
+      formData.append('place', data.place);
+      formData.append('description', data.description);
+      formData.append('wantsIdentification', data.wantsIdentification);
+
+      if (data.wantsIdentification) {
+        formData.append('name', data.name);
+        formData.append('contato', data.contato);
+      }
+
+      // Adicionar arquivos
+      if (files.length > 0) {
+        files.forEach((file, index) => {
+          formData.append(`attachments`, file);
+        });
+      }
+
       const resp = await fetch('/api/denuncia', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       if (resp.ok) {
         reset();
+        setFiles([]);
         onSuccess();
       } else {
         throw new Error(`Erro ${resp.status}: ${(await resp.text()) || 'Falha no servidor'}`);
@@ -65,46 +114,113 @@ function DenunciaForm({ onSuccess, onError }) {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 text-left">
       <div>
         <input
-          {...register('nome')}
-          placeholder="Nome completo"
-          className={`w-full rounded border px-3 py-2 ${errors.nome ? 'border-red-800 bg-red-50' : 'border-gray-300'}`}
+          {...register('tipo')}
+          placeholder="Tipo da denúncia"
+          className={`w-full rounded border px-3 py-2 ${errors.tipo ? 'border-red-800 bg-red-50' : 'border-gray-300'}`}
         />
-        {errors.nome && <span className="text-xs text-red-800">{errors.nome.message}</span>}
+        {errors.tipo && <span className="text-xs text-red-800">{errors.tipo.message}</span>}
       </div>
 
       <div>
-        <Controller
-          name="telefone"
-          control={control}
-          render={({ field }) => (
-            <Cleave
-              {...field}
-              options={{
-                delimiters: ['(', ') ', '-'], // Delimitadores corretos
-                blocks: [0, 2, 5, 4], // Blocos ajustados
-                numericOnly: true,
-              }}
-              className={`w-full rounded border px-3 py-2 ${
-                errors.telefone ? 'border-red-800 bg-red-50' : 'border-gray-300'
-              }`}
-              placeholder="(99) 99999-9999"
-            />
-          )}
+        <input
+          {...register('place')}
+          placeholder="Local da ocorrência"
+          className={`w-full rounded border px-3 py-2 ${errors.place ? 'border-red-800 bg-red-50' : 'border-gray-300'}`}
         />
-        {errors.telefone && <span className="text-xs text-red-800">{errors.telefone.message}</span>}
+        {errors.place && <span className="text-xs text-red-800">{errors.place.message}</span>}
       </div>
 
       <div>
         <textarea
-          {...register('descricao')}
-          placeholder="Descreva sua denúncia"
+          {...register('description')}
+          placeholder="Descreva sua denúncia detalhadamente"
           className={`w-full rounded border px-3 py-2 ${
-            errors.descricao ? 'border-red-800 bg-red-50' : 'border-gray-300'
+            errors.description ? 'border-red-800 bg-red-50' : 'border-gray-300'
           }`}
           rows={4}
         />
-        {errors.descricao && <span className="text-xs text-red-800">{errors.descricao.message}</span>}
+        {errors.description && <span className="text-xs text-red-800">{errors.description.message}</span>}
       </div>
+
+      <div className="file-upload-container">
+        <label className="mb-2 block text-sm font-medium">Anexos (opcional)</label>
+        <div className="flex w-full items-center justify-center">
+          <label className="flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded border-2 border-dashed border-red-800 bg-white">
+            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+              <img src="/trabalhe-conosco/upload.png" alt="Upload" className="mb-2 h-auto w-10" />
+              <p className="mb-2 text-sm text-red-800">
+                <span className="font-semibold">Clique para upload</span> ou arraste arquivos
+              </p>
+              <p className="text-xs text-red-800">PNG, JPG, PDF (MAX. 10MB)</p>
+            </div>
+            <input
+              id="dropzone-file"
+              type="file"
+              className="hidden"
+              multiple
+              onChange={handleFileChange}
+              accept=".jpg,.jpeg,.png,.pdf"
+            />
+          </label>
+        </div>
+        {files.length > 0 && (
+          <div className="mt-2">
+            <p className="text-sm text-gray-600">{files.length} arquivo(s) selecionado(s)</p>
+            <ul className="mt-1 text-xs text-gray-500">
+              {files.map((file, idx) => (
+                <li key={idx}>{file.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <div className="mb-2 flex items-center">
+        <input
+          type="checkbox"
+          id="wantsIdentification"
+          {...register('wantsIdentification')}
+          className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-red-800 focus:ring-red-800"
+        />
+        <label htmlFor="wantsIdentification" className="ms-2 text-sm font-medium">
+          Desejo me identificar
+        </label>
+      </div>
+
+      {wantsIdentification && (
+        <>
+          <div>
+            <input
+              {...register('name')}
+              placeholder="Nome completo"
+              className={`w-full rounded border px-3 py-2 ${errors.name ? 'border-red-800 bg-red-50' : 'border-gray-300'}`}
+            />
+            {errors.name && <span className="text-xs text-red-800">{errors.name.message}</span>}
+          </div>
+
+          <div>
+            <Controller
+              name="contato"
+              control={control}
+              render={({ field }) => (
+                <Cleave
+                  {...field}
+                  options={{
+                    delimiters: ['(', ') ', '-'],
+                    blocks: [0, 2, 5, 4],
+                    numericOnly: true,
+                  }}
+                  className={`w-full rounded border px-3 py-2 ${
+                    errors.contato ? 'border-red-800 bg-red-50' : 'border-gray-300'
+                  }`}
+                  placeholder="(99) 99999-9999"
+                />
+              )}
+            />
+            {errors.contato && <span className="text-xs text-red-800">{errors.contato.message}</span>}
+          </div>
+        </>
+      )}
 
       <button
         type="submit"
@@ -135,7 +251,8 @@ export default function DenuncieAqui() {
     ReactSwal.close();
     ReactSwal.fire({
       icon: 'success',
-      title: 'Enviado com sucesso!',
+      title: 'Denúncia enviada com sucesso!',
+      text: 'Agradecemos sua colaboração.',
       confirmButtonColor: '#b91c1c',
     });
   };

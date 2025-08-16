@@ -149,7 +149,7 @@ export default function TrabalheConoscoForm() {
       <div>
         <label
           {...getRootProps()}
-          className={`flex cursor-pointer items-center justify-center gap-3 rounded-lg border border-dashed border-red-800 bg-white px-5 py-4 transition ${
+          className={`flex cursor-pointer items-center justify-center gap-3 rounded-lg border border-dashed border-red-800 bg-white px-5 py-4 transition hover:bg-gray-100 ${
             isDragActive ? 'border-red-700 bg-yellow-100' : ''
           }`}
         >
