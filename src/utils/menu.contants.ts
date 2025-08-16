@@ -11,7 +11,6 @@ type MenuKey =
   | 'clienteVantagens'
   | 'clienteCadastreSe'
   | 'clienteComoRealizarPedidos'
-  | 'clienteContato'
   | 'denuncie'
   | 'catalogo'
   | 'trabalheConosco';
@@ -60,10 +59,6 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   clienteVantagens: {
     label: 'Vantagens',
     href: '/seja-um-cliente#vantagens',
-  },
-  clienteContato: {
-    label: 'Contato',
-    href: '/seja-um-cliente#contato',
   },
   catalogo: {
     label: 'Catálogo',
