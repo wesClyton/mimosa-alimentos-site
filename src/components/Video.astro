@@ -2,7 +2,14 @@
 import type { IVideo } from '@interfaces/video.interface';
 import { Title } from './Title';
 
-const { description = '', title = '', videoUrl = '', showButtonPlay = true, breadcrumbs = [] }: IVideo = Astro.props;
+const {
+  description = '',
+  title = '',
+  videoUrl = '',
+  showButtonPlay = true,
+  breadcrumbs = [],
+  videoUrlYoutube = '',
+}: IVideo = Astro.props;
 ---
 
 <div
@@ -13,8 +20,18 @@ const { description = '', title = '', videoUrl = '', showButtonPlay = true, brea
     Seu navegador não suporta vídeos em HTML5.
   </video>
 
-  <div class="glightbox relative z-10 flex flex-col items-center text-center text-white">
-    {showButtonPlay && <img src="/play.svg" alt="Play" class="max-w-15 cursor-pointer md:max-w-22 lg:max-w-25" />}
+  <div class="relative z-10 flex flex-col items-center text-center text-white">
+    {
+      showButtonPlay && (
+        <img
+          src="/play.svg"
+          alt="Play"
+          class="max-w-15 cursor-pointer md:max-w-22 lg:max-w-25"
+          id="play-button"
+          data-video-url={videoUrlYoutube}
+        />
+      )
+    }
     <Title
       title={title}
       inVideo={true}
@@ -27,4 +44,76 @@ const { description = '', title = '', videoUrl = '', showButtonPlay = true, brea
   </div>
 </div>
 
-<script></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  import Swal from 'sweetalert2';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const playButton = document.getElementById('play-button');
+    if (playButton) {
+      playButton.addEventListener('click', function () {
+        const videoUrl = this.getAttribute('data-video-url');
+        if (videoUrl) {
+          // Extrair o ID do vídeo do YouTube se for um link completo
+          let videoId: string | null = videoUrl;
+
+          // Se for uma URL completa do YouTube, extrair o ID do vídeo
+          if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+            const urlObj = new URL(videoUrl);
+            if (videoUrl.includes('youtube.com')) {
+              videoId = urlObj.searchParams.get('v');
+            } else if (videoUrl.includes('youtu.be')) {
+              videoId = urlObj.pathname.substring(1);
+            }
+          }
+
+          // Criar o embed do YouTube
+          const embedHtml = `
+            <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+              <iframe
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          `;
+
+          // Mostrar o modal com SweetAlert2
+          Swal.fire({
+            html: embedHtml,
+            showConfirmButton: false,
+            showCloseButton: true,
+            width: '80%',
+            padding: '1em',
+            background: '#000',
+            backdrop: `rgba(0,0,0,0.8)`,
+            customClass: {
+              container: 'video-modal-container',
+              popup: 'video-modal-popup',
+            },
+          });
+        } else {
+          console.error('URL do vídeo YouTube não fornecida');
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Estilos para o modal de vídeo */
+  :global(.video-modal-popup) {
+    max-width: 1000px;
+    border-radius: 0;
+  }
+  :global(.swal2-close) {
+    color: white !important;
+    font-size: 2.5em;
+  }
+  :global(.swal2-popup) {
+    padding: 0.5em;
+  }
+</style>

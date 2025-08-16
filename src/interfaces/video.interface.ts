@@ -5,5 +5,6 @@ export interface IVideo {
   title?: string;
   description?: string;
   videoUrl?: string;
+  videoUrlYoutube?: string;
   breadcrumbs?: IBreadcrumbItem[];
 }
