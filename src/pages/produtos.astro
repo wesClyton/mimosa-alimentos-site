@@ -12,7 +12,6 @@ import { MENU_ITEMS } from '@utils/menu.contants';
 
 const response = await fetch(APP.BASE_URL + '/products/by-category');
 const tiposLinguicas: ISlideProdutos = await response.json();
-console.log(tiposLinguicas);
 const slideLinguicaChurrasquita: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.CHURRASQUITA];
 const slideLinguicaQueijo: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.COM_QUEIJO];
 const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA];

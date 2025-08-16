@@ -13,8 +13,9 @@ export default function CatalogoBrands() {
 
   return (
     <>
-      <h4 className="mt-5 mb-3 text-xl font-bold text-red-800">Marca</h4>
+      <h4 className="mt-5 mb-3 text-lg font-bold text-red-800">Marca</h4>
       <select
+        id="catalogo-marcas"
         className="input border-1 border-solid border-gray-200"
         name="brands"
         onChange={(e) => {
