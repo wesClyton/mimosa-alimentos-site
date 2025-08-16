@@ -3,6 +3,7 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import Layout from '@layouts/Layout.astro';
 
+import ParallaxHandler from '@components/ParallaxHandler';
 import ProdutosSlides from '@components/ProdutosSlide';
 import { Title } from '@components/Title';
 import type { ISlideProduto, ISlideProdutos } from '@interfaces/slide-produtos.interface';
@@ -18,6 +19,8 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
 ---
 
 <Layout>
+  <ParallaxHandler client:load />
+
   <Header />
 
   <section class="container-center px-5 py-10 md:pb-20">
@@ -34,7 +37,16 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
         },
       ]}
     />
-    <div class="mt-10 mb-5 flex flex-col gap-5 md:mt-15 md:mb-0 md:flex-row md:items-center lg:gap-10">
+
+    <div class="parallax-container absolute top-5 right-0 z-10 w-100">
+      <img id="parallax-folha-01" src="/paralax/folha-01.png" class="parallax-img w-full" />
+    </div>
+
+    <div class="relative z-60 mt-10 mb-5 flex flex-col gap-5 md:mt-15 md:mb-0 md:flex-row md:items-center lg:gap-10">
+      <div class="parallax-container absolute top-5 left-0 z-60 w-100">
+        <img id="parallax-pimenta-01" src="/paralax/pimenta-01.png" class="parallax-img w-full" />
+      </div>
+
       <div class="mb-5 flex-1/2">
         <img src="/produtos/linguica.png" alt="Linguiça" />
       </div>
@@ -49,7 +61,7 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
       </div>
     </div>
 
-    <div class="-mt-10 flex-initial">
+    <div class="relative z-50 -mt-10 flex-initial">
       <ProdutosSlides
         client:visible
         config={{
@@ -76,7 +88,14 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
     </div>
   </section>
 
-  <section class="flex flex-col bg-yellow-300 px-5 pb-10">
+  <section class="parallax-start-folha-02 relative flex flex-col bg-yellow-300 px-5 pb-10">
+    <div class="parallax-container absolute -top-30 -left-10 z-60 w-100">
+      <img id="parallax-pimenta-02" src="/paralax/pimenta-02.png" class="parallax-img w-full" />
+    </div>
+
+    <div class="parallax-container absolute -top-50 right-0 z-60 w-100">
+      <img id="parallax-pimenta-03" src="/paralax/pimenta-01.png" class="parallax-img w-full" />
+    </div>
     <div class="container-center">
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div>
@@ -112,6 +131,12 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
   <section class="container-center px-5 pb-10">
     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:[direction:rtl]">
       <div class="relative">
+        <div class="parallax-container absolute -top-50 right-0 z-60 w-100">
+          <img id="parallax-folha-02" src="/paralax/folha-02.png" class="parallax-img w-full" />
+        </div>
+        <div class="parallax-container absolute -top-50 right-70 z-60 w-100">
+          <img id="parallax-pimenta-04" src="/paralax/pimenta-02.png" class="parallax-img w-full" />
+        </div>
         <img class="mx-auto w-50 md:w-full" src="/produtos/linguica-churrasquita.png" alt="Linguiça Churrasquita" />
         <div
           class="absolute right-1 -bottom-0 flex h-35 w-35 scale-75 rotate-30 items-center justify-center rounded-full bg-red-800 md:right-20 md:-bottom-40 md:scale-130 lg:-bottom-30 lg:scale-160"
@@ -165,3 +190,25 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
 
   <Footer />
 </Layout>
+
+<style>
+  .parallax-container {
+    overflow: visible;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .parallax-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    will-change: transform;
+  }
+
+  @media (max-width: 1024px) {
+    .parallax-container,
+    .parallax-img {
+      display: none;
+    }
+  }
+</style>
