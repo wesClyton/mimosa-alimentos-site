@@ -23,7 +23,7 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
 
   <Header />
 
-  <section class="container-center px-5 py-10 md:pb-20">
+  <section class="container-center relative px-5 py-10 md:pb-20">
     <Title
       title="Produtos"
       breadcrumbs={[
@@ -89,14 +89,15 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
   </section>
 
   <section class="parallax-start-folha-02 relative flex flex-col bg-yellow-300 px-5 pb-10">
-    <div class="parallax-container absolute -top-30 -left-10 z-60 w-100">
-      <img id="parallax-pimenta-02" src="/paralax/pimenta-02.png" class="parallax-img w-full" />
-    </div>
+    <div class="container-center relative">
+      <div class="parallax-container absolute -top-30 -left-10 z-60 w-100">
+        <img id="parallax-pimenta-02" src="/paralax/pimenta-02.png" class="parallax-img w-full" />
+      </div>
 
-    <div class="parallax-container absolute -top-50 right-0 z-60 w-100">
-      <img id="parallax-pimenta-03" src="/paralax/pimenta-01.png" class="parallax-img w-full" />
-    </div>
-    <div class="container-center">
+      <div class="parallax-container absolute -top-50 right-0 z-60 w-100">
+        <img id="parallax-pimenta-03" src="/paralax/pimenta-01.png" class="parallax-img w-full" />
+      </div>
+
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div>
           <img class="mx-auto w-75 md:w-full" src="/produtos/linguica-queijo.png" alt="Linguiça com Queijo" />
@@ -167,11 +168,11 @@ const slideLinguicas: ISlideProduto[] = tiposLinguicas[SlideProdutosKey.LINGUICA
   </section>
 
   <section class="bg-yellow-300 px-5 py-10 md:mt-20 md:py-20 lg:min-h-90 xl:min-h-120">
-    <div class="conteiner-center">
+    <div class="container-center">
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div class="relative">
           <img
-            class="mx-auto w-full md:absolute md:-ml-60 md:scale-240 lg:-mt-10 lg:-ml-40 lg:scale-150 xl:-mt-20 xl:-ml-50 xl:max-w-3xl 2xl:-ml-30"
+            class="mx-auto w-full md:absolute md:-ml-60 md:scale-240 lg:-mt-10 lg:-ml-40 lg:scale-150 xl:-mt-20 xl:-ml-50 xl:max-w-3xl 2xl:-ml-40"
             src="/produtos/homem-meio-coracao.png"
             alt="Mimosa Alimentos"
           />
