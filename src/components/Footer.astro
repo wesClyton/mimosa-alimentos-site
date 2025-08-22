@@ -5,7 +5,7 @@ import Sac from './Sac.astro';
 import Social from './Social.astro';
 ---
 
-<footer class="flex justify-center bg-red-800 px-5 py-10 text-base text-white lg:py-25">
+<footer class="relative flex justify-center bg-red-800 px-5 py-10 text-base text-white lg:py-25">
   <div class="container flex w-full flex-col gap-y-16 lg:flex-row lg:flex-wrap lg:justify-between">
     <section class="relative z-10 flex flex-row justify-center gap-10 text-sm font-bold uppercase lg:flex-initial">
       <ul class="flex flex-col gap-5">
@@ -52,57 +52,73 @@ import Social from './Social.astro';
       <Social iconColor="red" iconWithBackground={true} />
     </section>
   </div>
-</footer>
 
-<button
-  id="toTopButton"
-  class="fixed right-5 bottom-5 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-red-800 text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-red-900"
-  aria-label="Voltar ao topo"
->
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-  </svg>
-</button>
+  <button
+    id="toTopButton"
+    class="fixed right-5 bottom-5 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-red-800 text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-red-900"
+    aria-label="Voltar ao topo"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+</footer>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
     const toTopButton = document.getElementById('toTopButton');
-    const header = document.querySelector('header');
 
+    if (!toTopButton) {
+      return;
+    }
+
+    const header = document.querySelector('header');
     let lastScrollTop = 0;
     let scrollTimeout;
 
-    window.addEventListener('scroll', function () {
-      clearTimeout(scrollTimeout);
-
-      if (window.scrollY > 300) {
-        toTopButton.classList.add('opacity-100');
-        toTopButton.classList.remove('opacity-0');
-      } else {
-        toTopButton.classList.add('opacity-0');
-        toTopButton.classList.remove('opacity-100');
-      }
-
-      const currentScroll = window.scrollY;
-
-      if (currentScroll > lastScrollTop && currentScroll > 100) {
-        header.classList.add('translate-y-[-100%]');
-      } else {
-        header.classList.remove('translate-y-[-100%]');
-      }
-
-      lastScrollTop = currentScroll;
-
-      scrollTimeout = setTimeout(() => {
-        header.classList.remove('translate-y-[-100%]');
-      }, 1000);
-    });
-
-    toTopButton.addEventListener('click', function () {
+    function scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
-    });
+    }
+
+    toTopButton.addEventListener('click', scrollToTop);
+
+    function handleScroll() {
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+      if (currentScroll > 300) {
+        toTopButton.classList.remove('opacity-0');
+        toTopButton.classList.add('opacity-100');
+        setTimeout(() => {
+          toTopButton.style.pointerEvents = 'auto';
+        }, 300);
+      } else {
+        toTopButton.classList.remove('opacity-100');
+        toTopButton.classList.add('opacity-0');
+        toTopButton.style.pointerEvents = 'none';
+      }
+
+      if (header) {
+        clearTimeout(scrollTimeout);
+
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+          header.classList.add('translate-y-[-100%]');
+        } else {
+          header.classList.remove('translate-y-[-100%]');
+        }
+
+        lastScrollTop = currentScroll;
+
+        scrollTimeout = setTimeout(() => {
+          header.classList.remove('translate-y-[-100%]');
+        }, 1000);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    handleScroll();
   });
 </script>

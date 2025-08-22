@@ -3,19 +3,26 @@ import CardCaminhao from '@components/CardCaminhao';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import IndexSliderTop from '@components/IndexSliderTop';
+import ParallaxHandler from '@components/ParallaxHandler';
 import Layout from '@layouts/Layout.astro';
 import { MENU_ITEMS } from '@utils/menu.contants';
 ---
 
 <Layout>
+  <ParallaxHandler client:load />
+
   <Header />
 
-  <section class="container-center">
-    <div class="px-5 pt-10">
-      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:items-center">
+  <section class="px-5 pt-10">
+    <div class="container-center">
+      <div class="grid grid-cols-1 gap-5 text-center md:grid-cols-2 md:items-center md:text-left">
         <div>
-          <h1 class="title">O sabor é de família</h1>
-          <h2 class="subtitle mt-2 lg:mt-5">Sabor, qualidade, suculência e tudo que você procura</h2>
+          <h1 class="text-3xl leading-7 font-black text-red-800 md:text-5xl md:leading-12 xl:text-6xl xl:leading-18">
+            O sabor é de família
+          </h1>
+          <h2 class="mt-2 text-lg leading-5 text-gray-700 lg:mt-5 xl:text-2xl xl:leading-7">
+            Sabor, qualidade, suculência e tudo que você procura
+          </h2>
         </div>
 
         <div>
@@ -51,9 +58,13 @@ import { MENU_ITEMS } from '@utils/menu.contants';
   <section class="container-center px-5">
     <div class="flex flex-col gap-12 py-10 md:gap-16 lg:py-20">
       <div class="flex flex-col items-center gap-7 md:flex-row md:gap-12">
-        <div class="flex-1/2">
-          <h1 class="title">Mimosa Alimentos</h1>
-          <h2 class="subtitle lg:mt-2">Uma história de amor e dedicação!</h2>
+        <div class="flex-1/2 text-center md:text-left">
+          <h1 class="text-3xl leading-7 font-black text-red-800 md:text-5xl md:leading-12 xl:text-6xl xl:leading-18">
+            Mimosa Alimentos
+          </h1>
+          <h2 class="mt-2 text-lg leading-5 text-gray-700 lg:mt-2 xl:text-2xl xl:leading-7">
+            Uma história de amor e dedicação!
+          </h2>
 
           <a class="btn --red mt-5 inline-block w-full lg:w-100" href={MENU_ITEMS.institucional.href}
             >Conheça nossa história</a
@@ -77,9 +88,13 @@ import { MENU_ITEMS } from '@utils/menu.contants';
           />
         </div>
 
-        <div class="flex-1/2">
-          <h1 class="title">Leve a qualidade</h1>
-          <h2 class="subtitle lg:mt-2">dos produtos mimosa até você!</h2>
+        <div class="start-parallax-bg-01 flex-1/2 text-center md:text-left">
+          <h1 class="text-3xl leading-7 font-black text-red-800 md:text-5xl md:leading-12 xl:text-6xl xl:leading-18">
+            Leve a qualidade
+          </h1>
+          <h2 class="mt-2 text-lg leading-5 text-gray-700 lg:mt-2 xl:text-2xl xl:leading-7">
+            dos produtos mimosa até você!
+          </h2>
 
           <a class="btn --red mt-5 inline-block w-full lg:w-100" href={MENU_ITEMS.contato.href}>Agendar visita</a>
         </div>
@@ -88,9 +103,12 @@ import { MENU_ITEMS } from '@utils/menu.contants';
   </section>
 
   <section class="relative flex h-[270px] flex-col items-center justify-center bg-red-800 px-5 py-10 xl:h-[370px]">
-    <div
-      class="absolute inset-0 top-0 z-1 h-full w-full bg-[url(/home/bg-torne-se-cliente.png)] bg-cover bg-top bg-no-repeat opacity-30"
-    >
+    <div class="parallax-container absolute inset-0 h-full w-full overflow-hidden">
+      <div
+        id="parallax-bg-01"
+        class="absolute inset-0 top-0 z-1 h-200 w-full bg-[url(/home/bg-torne-se-cliente.png)] bg-cover bg-top bg-no-repeat opacity-30"
+      >
+      </div>
     </div>
 
     <div class="container-center z-2">

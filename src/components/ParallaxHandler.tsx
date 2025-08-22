@@ -131,6 +131,22 @@ export default function ParallaxHandler() {
           },
         });
       }
+
+      const bg01 = document.getElementById('parallax-bg-01');
+      if (bg01) {
+        window.gsap.to(bg01, {
+          y: -150,
+          x: 0,
+          rotation: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.start-parallax-bg-01', // Elemento que aciona a animação
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 5,
+          },
+        });
+      }
     };
 
     // Carregar scripts quando o DOM estiver pronto
