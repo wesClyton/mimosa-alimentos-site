@@ -13,7 +13,9 @@ type MenuKey =
   | 'clienteComoRealizarPedidos'
   | 'denuncie'
   | 'catalogo'
-  | 'trabalheConosco';
+  | 'trabalheConosco'
+  | 'termoDeUso'
+  | 'politicas';
 
 export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   home: {
@@ -67,5 +69,13 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   trabalheConosco: {
     label: 'Trabalhe Conosco',
     href: '/trabalhe-conosco',
+  },
+  termoDeUso: {
+    label: 'Termos de Uso',
+    href: '/termos-de-uso',
+  },
+  politicas: {
+    label: 'Políticas de Privacidade',
+    href: '/politicas-de-privacidade',
   },
 };
