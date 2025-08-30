@@ -10,7 +10,7 @@ import '../styles/downloads.css';
 
 const TABS: IDownloadTab[] = [
   { label: 'Linguiças', key: DownloadTabKey.Linguicas },
-  { label: 'Frios', key: DownloadTabKey.Frios },
+  // { label: 'Frios', key: DownloadTabKey.Frios },
   { label: 'Diversos', key: DownloadTabKey.Diversos },
 ];
 

@@ -8,7 +8,10 @@ import Layout from '@layouts/Layout.astro';
 import { MENU_ITEMS } from '@utils/menu.contants';
 ---
 
-<Layout>
+<Layout
+  title="Mimosa Alimentos | O sabor é de família"
+  description="Especialistas em linguiças Toscana, linguiças com queijo e a famosa churrasquita. Sabor, qualidade e suculência para o seu dia a dia."
+>
   <ParallaxHandler client:load />
 
   <Header />
@@ -126,7 +129,7 @@ import { MENU_ITEMS } from '@utils/menu.contants';
 
   <section class="relative flex items-center justify-center bg-black px-5 py-10 md:py-20 lg:py-32">
     <video class="absolute inset-0 z-0 h-full w-full object-cover opacity-30" autoplay muted loop playsinline>
-      <source src="/home/video-example.mp4" type="video/mp4" />
+      <source src="/home/caminhao.mp4" type="video/mp4" />
       Seu navegador não suporta vídeos em HTML5.
     </video>
 

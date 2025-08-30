@@ -28,7 +28,10 @@ const {
 }: IMenu = Astro.props;
 ---
 
-<Layout>
+<Layout
+  title="Seja um Cliente | Mimosa Alimentos | Venda produtos de sucesso"
+  description="Torne-se um cliente Mimosa Alimentos e ofereça linguiças premium aos seus clientes. Cadastro rápido, entrega em até 5 dias e suporte completo."
+>
   <Header menuSejaCliente={true} menuItems={items} />
 
   <main>
@@ -61,8 +64,8 @@ const {
         <div class="flex flex-col items-center">
           <h2 class="title text-center">Faça o seu cadastro e torne-se um cliente Mimosa!</h2>
           <p class="paragraph my-8 text-center">
-            Lorem ipsum dolor sit amet consectetur. Eget proin morbi volutpat nullam dignissim adipiscing. Viverra sed
-            elementum mi risus nunc viverra mattis.
+            Preencha seus dados e nossa equipe entrará em contato para habilitar seu acesso e apresentar as condições
+            comerciais. É rápido, seguro e sem burocracia.
           </p>
 
           <form class="md:text-md w-full text-sm">

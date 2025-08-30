@@ -19,12 +19,12 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
     text: 'Nossos produtos possuem certificação do Sistema Brasileiro de Inspeção de Produtos de Origem Animal.',
     pathImageContent: 'qualidade-sisbi.png',
   },
-  {
-    pathImage: 'qualidade-03.png',
-    title: 'SISBI-POA',
-    text: 'Nossos produtos possuem certificação do Sistema Unificado de Atenção à Sanidade Agropecuária.',
-    pathImageContent: 'qualidade-sisbi.png',
-  },
+  // {
+  //   pathImage: 'qualidade-03.png',
+  //   title: 'SISBI-POA',
+  //   text: 'Nossos produtos possuem certificação do Sistema Unificado de Atenção à Sanidade Agropecuária.',
+  //   pathImageContent: 'qualidade-sisbi.png',
+  // },
   {
     pathImage: 'qualidade-04.png',
     title: 'SELO ALIMENTOS DO PARANÁ',
@@ -34,7 +34,10 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
 ];
 ---
 
-<Layout>
+<Layout
+  title="Institucional | Mimosa Alimentos | 21 Anos de Tradição e Qualidade"
+  description="Conheça a história da Mimosa Alimentos: desde 2001 produzindo linguiças com sabor irresistível e qualidade certificada. Uma empresa paranaense com certificação SISBI-POA."
+>
   <Header />
 
   <main>
@@ -112,8 +115,7 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
               </p>
               <p>
                 A marca conta com um mix próprio de 20 itens, entre linguiça Toscana, Toscana com Queijo, linguiça fina
-                na tripa de carneiro - a famosa churrasquita - e a linha Churrasco, além de também realizar o
-                fracionamento de frios com certificação SISBI.
+                na tripa de carneiro - a famosa churrasquita - e a linha Churrasco, com certificação SISBI.
               </p>
             </div>
           </div>
@@ -239,9 +241,10 @@ const itemsQualidade: { pathImage: string; title: string; text: string; pathImag
       <div class="container-center z-2">
         <div class="flex flex-col items-center gap-8 py-10 text-sm md:flex-row md:gap-32 lg:gap-40 xl:text-xl">
           <p class="flex-1/2 text-center text-red-800 md:text-right">
-            Lorem ipsum dolor sit amet consectetur eget amet at metus nunc eu in blandit.
+            Leve para o seu negócio a qualidade que conquista paladares. Conte com a Mimosa para oferecer sabor e
+            confiança em cada refeição.
           </p>
-          <a class="btn --red inline-block w-full flex-1/2" href={MENU_ITEMS.institucional.href}
+          <a class="btn --red inline-block w-full flex-1/2" href={MENU_ITEMS.produtos.href}
             >Surpreenda-se com a nossa qualidade</a
           >
         </div>

@@ -39,8 +39,8 @@ export default function ParallaxHandler() {
       const folha1 = document.getElementById('parallax-folha-01');
       if (folha1) {
         window.gsap.to(folha1, {
-          y: 50,
-          x: 500,
+          y: 1000,
+          x: 300,
           rotation: -50,
           ease: 'none',
           scrollTrigger: {

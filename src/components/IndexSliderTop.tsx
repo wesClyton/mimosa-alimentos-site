@@ -8,8 +8,8 @@ const slides = [
     alt: 'Não dá para explicar, tem que experimentar',
   },
   {
-    src: '/home/banner-01.png',
-    alt: 'Não dá para explicar, tem que experimentar',
+    src: '/home/banner-02.png',
+    alt: 'Mimosa Alimentos',
   },
 ];
 
