@@ -66,10 +66,38 @@ try {
     <meta name="theme-color" content="#99040f" />
     <!-- Cor da sua marca -->
 
+    <!-- Google Tag Manager -->
+
+    <script>
+      (function (w, d, s, l, i) {
+        (w as any)[l] = (w as any)[l] || [];
+        (w as any)[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        (j as HTMLScriptElement).async = true;
+        (j as HTMLScriptElement).src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        if (f.parentNode) {
+          f.parentNode.insertBefore(j, f);
+        }
+      })(window, document, 'script', 'dataLayer', 'GTM-NCC9X5DQ');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- Slot para adicionar metatags personalizadas em páginas específicas -->
     <slot name="head" />
   </head>
   <body>
     <slot />
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NCC9X5DQ"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
