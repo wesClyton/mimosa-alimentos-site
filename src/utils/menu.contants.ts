@@ -15,7 +15,7 @@ type MenuKey =
   | 'catalogo'
   | 'trabalheConosco'
   | 'termoDeUso'
-  | 'politicas';
+  | 'politica';
 
 export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   home: {
@@ -74,8 +74,8 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
     label: 'Termos de Uso',
     href: '/termos-de-uso',
   },
-  politicas: {
-    label: 'Políticas de Privacidade',
-    href: '/politicas-de-privacidade',
+  politica: {
+    label: 'Política de Privacidade',
+    href: '/politica-de-privacidade',
   },
 };
