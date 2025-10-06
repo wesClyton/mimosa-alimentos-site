@@ -468,11 +468,11 @@ export function SejaUmClienteForm() {
         />
         <label htmlFor="termos" className="paragraph">
           Confirmo a validade das informações e confirmo que li e estou de acordo com os
-          <a href={MENU_ITEMS.termoDeUso.href} className="mx-1 font-bold">
+          <a target="_blank" href={MENU_ITEMS.politica.href} className="mx-1 font-bold">
             {MENU_ITEMS.termoDeUso.label}
           </a>
           e com as
-          <a href={MENU_ITEMS.politica.href} className="mx-1 font-bold">
+          <a target="_blank" href={MENU_ITEMS.politica.href} className="mx-1 font-bold">
             {MENU_ITEMS.politica.label}
           </a>
           .
