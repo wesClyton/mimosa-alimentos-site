@@ -1,11 +1,12 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { APP } from '@utils/app.contants';
-import { MENU_ITEMS } from '@utils/menu.contants';
 import Cleave from 'cleave.js/react';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { z } from 'zod';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { APP } from '@utils/app.contants';
+import { MENU_ITEMS } from '@utils/menu.contants';
 
 // Zod schema para validação
 const formSchema = z.object({
@@ -471,8 +472,8 @@ export function SejaUmClienteForm() {
             {MENU_ITEMS.termoDeUso.label}
           </a>
           e com as
-          <a href={MENU_ITEMS.politicas.href} className="mx-1 font-bold">
-            {MENU_ITEMS.politicas.label}
+          <a href={MENU_ITEMS.politica.href} className="mx-1 font-bold">
+            {MENU_ITEMS.politica.label}
           </a>
           .
         </label>
