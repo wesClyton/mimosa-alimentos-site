@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { EProdutosCategorias } from 'src/enums/produtos-categorias.enum';
 import CatalogoPaginator from './CatalogoPaginator';
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 18;
 
 function ShimmerCard() {
   return (
