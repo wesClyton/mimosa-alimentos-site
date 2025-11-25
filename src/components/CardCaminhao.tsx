@@ -131,11 +131,51 @@ export default function CardCaminhao({ showMap }: CardCaminhaoProps) {
 
           // Balão de informações personalizado
           const contentString = `
-            <div class="text-base" style="min-width:180px; max-width:260px;">
-              <strong class="text-xl">${loc.businessName || 'Local Mimosa'}</strong><br/>
-              ${loc.address ? `<span>${loc.address}</span><br/>` : ''}
-              ${loc.city ? `<span>${loc.city.name} - ${loc.city.state.name}</span><br/>` : ''}
-              ${loc.phone ? `<span>Tel.: ${loc.phone}</span>` : ''}
+            <div style="
+              min-width: 260px; 
+              max-width: 300px; 
+              padding: 8px 12px 12px 12px;
+              font-family: system-ui, -apple-system, sans-serif;
+              background: white;
+            ">
+              <h3 style="
+                font-size: 15px;
+                font-weight: 600;
+                color: #1f2937;
+                margin: 0 0 10px 0;
+                line-height: 1.3;
+              ">${loc.businessName}</h3>
+              
+              <div style="
+                color: #6b7280; 
+                font-size: 13px;
+                line-height: 1.5;
+                margin-bottom: 10px;
+              ">
+                ${loc.address ? `<div style="margin-bottom: 4px;">${loc.address}</div>` : ''}
+                ${loc.city ? `<div style="margin-bottom: 4px;">${loc.city.name} - ${loc.city.state.name}</div>` : ''}
+                ${loc.phone ? `<div>${loc.phone}</div>` : ''}
+              </div>
+              
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=${loc.latitude},${loc.longitude}" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style="
+                  display: inline-block;
+                  color: #991b1b;
+                  font-size: 13px;
+                  font-weight: 500;
+                  text-decoration: none;
+                  border-bottom: 1px solid #991b1b;
+                  padding-bottom: 2px;
+                  transition: opacity 0.2s ease;
+                "
+                onmouseover="this.style.opacity='0.7';"
+                onmouseout="this.style.opacity='1';"
+              >
+                Como chegar →
+              </a>
             </div>
           `;
 
