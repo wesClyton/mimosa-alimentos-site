@@ -14,7 +14,7 @@ function ShimmerCard() {
           <span className="mt-2 ml-2 h-6 w-20 rounded-sm bg-gray-200" />
           <span className="mt-2 mr-2 h-6 w-14 rounded-sm bg-gray-200" />
         </div>
-        <div className="mb-4 h-40 w-full rounded-2xl bg-gray-100 p-10" />
+        <div className="mb-4 h-64 w-full rounded-2xl bg-gray-100 p-10" />
       </div>
       <div className="mt-4 flex flex-col gap-2">
         <div className="h-5 w-3/4 rounded bg-gray-200" />
@@ -138,11 +138,13 @@ export default function CatalogoProducts() {
                         #{produto.cod}
                       </span>
                     </div>
-                    <img
-                      className="rounded-2xl bg-gray-100 p-10"
-                      src={APP.S3 + '/' + produto.image}
-                      alt={produto.description}
-                    />
+                    <div className="h-64 w-full">
+                      <img
+                        className="h-full w-full rounded-2xl bg-gray-100 object-contain p-10"
+                        src={APP.S3 + '/' + produto.image}
+                        alt={produto.description}
+                      />
+                    </div>
                   </div>
                   <div className="mt-4 flex flex-col gap-2">
                     <h4 className="paragraph text-sm!">{produto.description}</h4>
