@@ -1,0 +1,33 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+const pdfDesktop = '/nosso-catalogo/CATALOGO_MIMOSA_2026_v17.pdf';
+const pdfMobile = pdfDesktop;
+---
+
+<Layout
+  title="Catálogo Mimosa Alimentos 2026"
+  description="Catálogo digital de produtos Mimosa Alimentos. O sabor é de família."
+>
+  <main class="h-dvh w-screen bg-gray-100">
+    <iframe
+      id="catalogo-viewer"
+      class="h-full w-full border-0"
+      title="Catálogo Mimosa Alimentos"
+      loading="eager"></iframe>
+  </main>
+</Layout>
+
+<script define:vars={{ pdfDesktop, pdfMobile }}>
+  const iframe = document.getElementById('catalogo-viewer');
+  const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+  iframe.src = isDesktop ? pdfDesktop : pdfMobile;
+</script>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+</style>
