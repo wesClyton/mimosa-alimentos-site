@@ -13,6 +13,22 @@ let googleMapsScriptLoading: Promise<void> | null = null;
 let googleMapInstance: any = null;
 let googleMarkers: any[] = [];
 
+function formatCustomerPhone(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  let digits = raw.replace(/\D/g, '');
+  if (!digits || /^0+$/.test(digits)) return null;
+  if (digits.length >= 12 && digits.startsWith('55')) {
+    digits = digits.slice(2);
+  }
+  if (digits.length === 11) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  }
+  if (digits.length === 10) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  }
+  return null;
+}
+
 interface CardCaminhaoProps {
   showMap: boolean;
 }
@@ -154,7 +170,10 @@ export default function CardCaminhao({ showMap }: CardCaminhaoProps) {
               ">
                 ${loc.address ? `<div style="margin-bottom: 4px;">${loc.address}</div>` : ''}
                 ${loc.city ? `<div style="margin-bottom: 4px;">${loc.city.name} - ${loc.city.state.name}</div>` : ''}
-                ${loc.phone ? `<div>${loc.phone}</div>` : ''}
+                ${(() => {
+                  const formatted = formatCustomerPhone(loc.phone);
+                  return formatted ? `<div>${formatted}</div>` : '';
+                })()}
               </div>
               
               <a 
