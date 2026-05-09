@@ -18,6 +18,7 @@ const formSchema = z.object({
       const digits = value.replace(/\D/g, '');
       return digits.length === 14;
     }, 'CNPJ inválido'),
+  jaTrabalhaComMimosa: z.string().min(1, 'Selecione uma opção'),
   nomeResponsavel: z.string().min(1, 'Nome do responsável é obrigatório'),
   whatsapp: z
     .string()
@@ -75,6 +76,7 @@ export function SejaUmClienteForm() {
       razaoSocial: '',
       nomeFantasia: '',
       cnpj: '',
+      jaTrabalhaComMimosa: '',
       nomeResponsavel: '',
       whatsapp: '',
       cep: '',
@@ -182,6 +184,7 @@ export function SejaUmClienteForm() {
           'Razão Social': data.razaoSocial,
           'Nome Fantasia': data.nomeFantasia,
           CNPJ: data.cnpj,
+          'Já trabalha com produtos Mimosa?': data.jaTrabalhaComMimosa === 'sim' ? 'Sim' : 'Não',
           'Nome do Responsável': data.nomeResponsavel,
           WhatsApp: data.whatsapp,
           CEP: data.cep,
@@ -285,6 +288,25 @@ export function SejaUmClienteForm() {
             )}
           />
           {errors.cnpj && <p className="mt-1 text-xs text-red-500">{errors.cnpj.message}</p>}
+        </div>
+
+        <div className="col-span-1 md:col-span-3">
+          <Controller
+            name="jaTrabalhaComMimosa"
+            control={control}
+            render={({ field }) => (
+              <select {...field} className={`input ${errors.jaTrabalhaComMimosa ? 'border-red-500' : ''}`}>
+                <option value="" disabled>
+                  Já trabalha com produtos Mimosa?
+                </option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            )}
+          />
+          {errors.jaTrabalhaComMimosa && (
+            <p className="mt-1 text-xs text-red-500">{errors.jaTrabalhaComMimosa.message}</p>
+          )}
         </div>
       </div>
 
@@ -448,6 +470,18 @@ export function SejaUmClienteForm() {
           />
           {errors.cidade && <p className="mt-1 text-xs text-red-500">{errors.cidade.message}</p>}
         </div>
+
+        {estado && estado !== 'PR' && estado !== 'MS' && (
+          <div className="col-span-1 md:col-span-6">
+            <div className="rounded-md border-l-4 border-red-800 bg-red-50 p-4 text-sm leading-5 text-red-900">
+              <p className="font-semibold">Ainda não atendemos esse estado por aqui.</p>
+              <p className="mt-1">
+                Mas pode seguir com o cadastro tranquilo! Vamos receber sua solicitação e nossa equipe vai analisar com
+                carinho. Assim que houver disponibilidade na sua região, entraremos em contato.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="mt-5 flex items-start justify-start gap-2">

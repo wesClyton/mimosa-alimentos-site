@@ -13,6 +13,7 @@ type MenuKey =
   | 'clienteComoRealizarPedidos'
   | 'denuncie'
   | 'catalogo'
+  | 'receitas'
   | 'trabalheConosco'
   | 'termoDeUso'
   | 'politicas';
@@ -65,6 +66,10 @@ export const MENU_ITEMS: Record<MenuKey, IMenuItem> = {
   catalogo: {
     label: 'Catálogo',
     href: '/catalogo',
+  },
+  receitas: {
+    label: 'Receitas',
+    href: '/receitas',
   },
   trabalheConosco: {
     label: 'Trabalhe Conosco',

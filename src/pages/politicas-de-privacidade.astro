@@ -1,0 +1,601 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import { Title } from '@components/Title';
+import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
+---
+
+<Layout
+  title="Política de Privacidade | Mimosa Alimentos"
+  description="Política de Privacidade da Mimosa Alimentos LTDA, em conformidade com a LGPD (Lei nº 13.709/2018), CDC e Marco Civil da Internet."
+>
+  <Header />
+
+  <main class="px-5 py-10 md:pb-20">
+    <div class="container-center">
+      <Title
+        title="Política de Privacidade"
+        breadcrumbs={[
+          { label: MENU_ITEMS.home.label, href: MENU_ITEMS.home.href },
+          { label: MENU_ITEMS.politicas.label, href: MENU_ITEMS.politicas.href },
+        ]}
+      />
+
+      <article class="prose-policy mt-10 rounded-2xl bg-white p-5 md:mt-15 md:p-10">
+        <section>
+          <h2>Introdução</h2>
+          <p>
+            <strong>MIMOSA ALIMENTOS LTDA</strong>, inscrita no CNPJ/MF sob o nº 04.708.593/0001-04, com sede na Avenida
+            Umuarama, nº 3416, Parque Industrial e Comercial Novo Horizonte, CEP 87.507-055, na cidade de Umuarama/PR,
+            doravante denominada <strong>MIMOSA ALIMENTOS</strong>, na qualidade de controladora de dados pessoais,
+            apresenta a presente Política de Privacidade, aplicável ao endereço eletrônico
+            <a href="https://www.mimosaalimentos.com.br/" target="_blank" rel="noopener noreferrer"
+              >https://www.mimosaalimentos.com.br/</a
+            > ("Site" ou "Plataforma").
+          </p>
+          <p>
+            A <strong>MIMOSA ALIMENTOS</strong> reafirma seu compromisso com a proteção de dados pessoais, conduzindo todo
+            e qualquer tratamento de informações em conformidade com os princípios da confidencialidade, da boa-fé e da
+            finalidade legítima, observando integralmente a legislação vigente, em especial a Lei nº 13.709/2018 (Lei
+            Geral de Proteção de Dados – LGPD), a Lei nº 8.078/1990 (Código de Defesa do Consumidor – CDC) e a Lei nº
+            12.965/2014 (Marco Civil da Internet – MCI).
+          </p>
+          <p>
+            A presente Política de Privacidade tem por finalidade informar e esclarecer aos Titulares de Dados Pessoais
+            acerca das práticas adotadas pela <strong>MIMOSA ALIMENTOS</strong> no tratamento de tais informações.
+            Recomenda-se, portanto, a atenta leitura e plena compreensão deste documento, uma vez que ele estabelece as
+            diretrizes aplicáveis à coleta, utilização, armazenamento e proteção dos dados pessoais.
+          </p>
+          <p>
+            Em caso de dúvidas ou solicitações relacionadas ao seu conteúdo, a <strong>MIMOSA ALIMENTOS</strong> coloca à
+            disposição do Titular os canais de comunicação indicados ao final deste instrumento.
+          </p>
+        </section>
+
+        <section>
+          <h2>Definições importantes</h2>
+          <p>
+            Para fins desta Política de Privacidade, adotam-se os conceitos previstos na legislação aplicável, em
+            especial aqueles dispostos no artigo 5º da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados – LGPD). Com o
+            objetivo de assegurar adequada compreensão, seguem as principais definições utilizadas neste documento:
+          </p>
+          <ul>
+            <li>
+              <strong>Controlador:</strong> pessoa natural ou jurídica, de direito público ou privado, a quem competem as
+              decisões referentes ao tratamento de dados pessoais;
+            </li>
+            <li>
+              <strong>Dado Pessoal:</strong> informação relacionada a pessoa natural identificada ou identificável,
+              incluindo dados que a identifiquem de forma direta (como nome completo, CPF, RG ou fotografia) ou indireta
+              (como endereço de e-mail, endereço IP ou localização geográfica);
+            </li>
+            <li>
+              <strong>Dado Pessoal Sensível:</strong> dado pessoal que revele informações de natureza íntima do Titular e
+              que, em razão de seu conteúdo, possa ensejar tratamento discriminatório, tais como: origem racial ou
+              étnica, convicção religiosa, opinião política, filiação sindical ou a organização de caráter religioso,
+              filosófico ou político, dados referentes à saúde, à vida sexual, bem como dados genéticos ou biométricos,
+              quando vinculados a pessoa natural;
+            </li>
+            <li>
+              <strong>Endereço de Protocolo de Internet (IP):</strong> conjunto numérico que identifica, de forma única, o
+              dispositivo do Titular em uma rede de comunicação, notadamente na Internet;
+            </li>
+            <li>
+              <strong>Operador:</strong> pessoa natural ou jurídica, de direito público ou privado, que realiza o tratamento
+              de dados pessoais em nome do Controlador;
+            </li>
+            <li><strong>Titular:</strong> pessoa natural a quem se referem os dados pessoais objeto de tratamento;</li>
+            <li>
+              <strong>Tratamento:</strong> toda operação realizada com dados pessoais, seja pelo Controlador ou pelo
+              Operador, tais como coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão,
+              distribuição, processamento, arquivamento, armazenamento, eliminação, avaliação, controle da informação,
+              modificação, comunicação, transferência, difusão ou extração.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Dados pessoais tratados e suas finalidades</h2>
+          <p>
+            A <strong>MIMOSA ALIMENTOS</strong>, via de regra, atua na qualidade de Controladora dos Dados Pessoais sob
+            sua responsabilidade, podendo, em situações específicas, proceder ao seu compartilhamento com outros
+            Controladores ou Operadores, conforme disposto nesta Política.
+          </p>
+          <p>Os Dados Pessoais tratados pela MIMOSA ALIMENTOS classificam-se, quanto à origem, nas seguintes categorias:</p>
+          <ul>
+            <li>
+              <strong>I – Dados fornecidos diretamente pelo Titular:</strong> informações prestadas de forma expressa e
+              consciente pelo próprio Titular, tais como aquelas inseridas ao solicitar orçamento por meio do site, ao
+              realizar cadastro como cliente ou ao encaminhar currículo para participação em processos seletivos;
+            </li>
+            <li>
+              <strong>II – Dados compartilhados com a MIMOSA ALIMENTOS:</strong> informações fornecidas por parceiros comerciais,
+              representantes ou terceiros que mantenham relação com o Titular, as quais poderão ser compartilhadas com a
+              MIMOSA ALIMENTOS para fins de identificação e contato;
+            </li>
+            <li>
+              <strong>III – Dados coletados ou gerados pelo Site:</strong> informações geradas de forma indireta em decorrência
+              da navegação do Titular, incluindo dados de acesso e utilização de funcionalidades, bem como registros
+              coletados por meio de cookies e tecnologias similares. Maiores detalhes acerca dessas ferramentas encontram-se
+              no item específico desta Política.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Tratamento de dados pessoais</h2>
+          <p>
+            A <strong>MIMOSA ALIMENTOS</strong> realiza o tratamento de Dados Pessoais de acordo com as finalidades
+            legítimas de suas atividades, assumindo, via de regra, a condição de Controladora. Em determinados casos, os
+            dados poderão ser compartilhados com outros Controladores ou Operadores, conforme previsto nesta Política.
+          </p>
+
+          <h3>1. Quando ocorre o tratamento</h3>
+          <p>O tratamento de Dados Pessoais ocorre nas seguintes situações:</p>
+          <ul>
+            <li>I – Utilização das Plataformas (site institucional);</li>
+            <li>II – Interações comerciais com clientes;</li>
+            <li>III – Interações comerciais com fornecedores de insumos e serviços;</li>
+            <li>IV – Marketing e promoção das atividades da MIMOSA ALIMENTOS;</li>
+            <li>V – Atendimento ao Cliente (SAC), entregadores e serviços correlatos;</li>
+            <li>VI – Interações em espaços físicos da MIMOSA ALIMENTOS.</li>
+          </ul>
+
+          <h3>2. Quais dados são tratados</h3>
+
+          <h4>I – Utilização das Plataformas (site institucional)</h4>
+          <ul>
+            <li>Nome;</li>
+            <li>E-mail;</li>
+            <li>Endereço;</li>
+            <li>Número de telefone;</li>
+            <li>Navegador utilizado;</li>
+            <li>Páginas consultadas;</li>
+            <li>Anúncios visualizados;</li>
+            <li>Tipo de dispositivo utilizado;</li>
+            <li>Endereço IP;</li>
+            <li>Tempo médio de acesso às plataformas.</li>
+          </ul>
+
+          <h4>II – Interações comerciais com clientes</h4>
+          <ul>
+            <li>Nome;</li>
+            <li>CPF;</li>
+            <li>RG;</li>
+            <li>E-mail;</li>
+            <li>Número de telefone;</li>
+            <li>WhatsApp;</li>
+            <li>Endereço;</li>
+            <li>Dados bancários e de cartão de crédito (número do cartão, bandeira).</li>
+          </ul>
+
+          <h4>III – Interações comerciais com fornecedores de insumos e serviços</h4>
+          <ul>
+            <li>Nome;</li>
+            <li>E-mail;</li>
+            <li>Profissão;</li>
+            <li>Endereço;</li>
+            <li>Número de telefone.</li>
+          </ul>
+
+          <h4>IV – Marketing e promoção das atividades da MIMOSA ALIMENTOS</h4>
+          <ul>
+            <li>Nome;</li>
+            <li>Número de telefone;</li>
+            <li>E-mail;</li>
+            <li>Endereço.</li>
+          </ul>
+
+          <h4>V – Atendimento ao Cliente (SAC), entregadores e serviços correlatos</h4>
+          <ul>
+            <li>Nome;</li>
+            <li>E-mail;</li>
+            <li>Número de telefone;</li>
+            <li>Endereço;</li>
+            <li>Histórico de atendimento e consumo.</li>
+          </ul>
+
+          <h4>VI – Interações em espaços físicos da MIMOSA ALIMENTOS</h4>
+          <ul>
+            <li>Nome;</li>
+            <li>CPF;</li>
+            <li>Imagens.</li>
+          </ul>
+
+          <h3>3. Finalidades do tratamento</h3>
+
+          <h4>I – Utilização das Plataformas (site institucional)</h4>
+          <ul>
+            <li>Possibilitar que o Titular solicite atendimento ou orçamento;</li>
+            <li>Manter comunicação com o Titular;</li>
+            <li>Proceder com trocas de mercadorias e devoluções, quando aplicável;</li>
+            <li>Traçar perfil de consumo para oferta de produtos por marketing personalizado;</li>
+            <li>Viabilizar funcionalidades das plataformas;</li>
+            <li>Realizar análises estatísticas, inteligência de mercado e desenvolvimento de produtos e campanhas.</li>
+          </ul>
+
+          <h4>II – Interações comerciais com clientes</h4>
+          <ul>
+            <li>Confirmar identidade do cliente ou representante e efetuar cadastro nos sistemas internos;</li>
+            <li>
+              Receber pedidos de compra, realizar orçamentos e cotações, analisar crédito, formalizar propostas e promover
+              vendas;
+            </li>
+            <li>
+              Celebrar e cumprir contratos de venda, incluindo configuração, entrega, instalação, assistência técnica,
+              pós-venda, cobranças e demais atos relacionados;
+            </li>
+            <li>Cumprir obrigações legais, inclusive fiscais (ex.: emissão de notas fiscais);</li>
+            <li>Exercer direitos legais, como cobrança e defesa judicial de interesses;</li>
+            <li>Identificar o Titular em retiradas de mercadorias junto a transportadoras.</li>
+          </ul>
+
+          <h4>III – Interações comerciais com fornecedores de insumos e serviços</h4>
+          <ul>
+            <li>Negociar e adquirir matérias-primas e serviços;</li>
+            <li>Realizar pesquisas, contatos iniciais, cadastramento, pedidos, monitoramento de contratos e pagamentos;</li>
+            <li>Cumprir retenções legais de ordem tributária;</li>
+            <li>Gerir contratos com fornecedores;</li>
+            <li>Fiscalizar normas de segurança e obrigações trabalhistas e previdenciárias;</li>
+            <li>Manter comunicação com fornecedores para negociações e compras de peças.</li>
+          </ul>
+
+          <h4>IV – Marketing e promoção das atividades da MIMOSA ALIMENTOS</h4>
+          <ul>
+            <li>
+              Realizar ações de marketing, incluindo envio de informativos, mensagens por aplicativos, e-mails, notícias,
+              promoções, concursos, lançamentos, depoimentos de clientes e filmagens de eventos;
+            </li>
+            <li>Executar inteligência de mercado e análises estatísticas para impulsionamento das atividades.</li>
+          </ul>
+
+          <h4>V – Atendimento ao Cliente (SAC), entregadores e serviços correlatos</h4>
+          <ul>
+            <li>Apoiar Titulares na solução de dúvidas e obtenção de informações sobre produtos;</li>
+            <li>Receber, registrar e atender solicitações, reclamações e comunicações;</li>
+            <li>Apoiar resolução de demandas do cliente (pós-venda ou dúvidas sobre produtos);</li>
+            <li>Tratar reclamações de clientes via SAC ou site "Reclame Aqui";</li>
+            <li>Identificar causas de reclamações e pontos de melhoria;</li>
+            <li>Comunicar status de entrega de mercadorias e confirmar entregas;</li>
+            <li>Identificar Titulares e disponibilizar segunda via de boletos, notas fiscais ou informações solicitadas.</li>
+          </ul>
+
+          <h4>VI – Interações em espaços físicos da MIMOSA ALIMENTOS</h4>
+          <ul>
+            <li>Monitorar a segurança em espaços físicos;</li>
+            <li>Identificar pessoas em guaritas, portarias ou recepções dos prédios da organização.</li>
+          </ul>
+
+          <h3>4. Dados fornecidos por candidatos e representantes</h3>
+          <p>
+            Quando o Titular se candidatar a uma vaga de emprego ou se tornar representante/revendedor de produtos da
+            <strong>MIMOSA ALIMENTOS</strong>, seus Dados Pessoais serão tratados conforme descrito a seguir:
+          </p>
+
+          <h4>4.1 Quando ocorre o tratamento</h4>
+          <ul>
+            <li>VII – Candidaturas a vagas de emprego na MIMOSA ALIMENTOS;</li>
+            <li>VIII – Cadastramento de Representante Comercial.</li>
+          </ul>
+
+          <h4>4.2 Quais dados são tratados</h4>
+
+          <p><strong>VII – Candidaturas a vagas de emprego:</strong></p>
+          <ul>
+            <li>Nome;</li>
+            <li>E-mail;</li>
+            <li>Número de telefone;</li>
+            <li>Demais informações constantes no currículo disponibilizado pelo Titular.</li>
+          </ul>
+
+          <p><strong>VIII – Cadastramento de Representante Comercial:</strong></p>
+          <ul>
+            <li>Nome;</li>
+            <li>CPF;</li>
+            <li>RG;</li>
+            <li>Número de telefone;</li>
+            <li>E-mail;</li>
+            <li>WhatsApp;</li>
+            <li>Endereço;</li>
+            <li>Carteira Nacional de Habilitação (CNH);</li>
+            <li>Dados financeiros.</li>
+          </ul>
+
+          <h4>4.3 Finalidades do tratamento</h4>
+
+          <p><strong>VII – Candidaturas a vagas de emprego:</strong></p>
+          <ul>
+            <li>Identificar o candidato;</li>
+            <li>Avaliar o currículo quanto à compatibilidade com os critérios da vaga e o perfil buscado pela MIMOSA ALIMENTOS;</li>
+            <li>Conduzir entrevistas, testes e, quando aplicável, exames ou laudos psicológicos.</li>
+          </ul>
+
+          <p><strong>VIII – Cadastramento de Representante Comercial:</strong></p>
+          <ul>
+            <li>Identificar, avaliar e formalizar a contratação de representantes comerciais;</li>
+            <li>
+              Celebrar e gerir contratos com revendedores, incluindo contabilização de produtos vendidos, recebimentos,
+              reembolsos e pagamentos de bonificações;
+            </li>
+            <li>Enviar materiais publicitários e felicitações em datas comemorativas, como aniversários;</li>
+            <li>Fornecer relatórios para fins de direcionamento estratégico.</li>
+          </ul>
+
+          <h4>4.4 Observações adicionais</h4>
+          <ul>
+            <li>
+              Caso o Titular participe de processos seletivos por meio de terceiros (como portais de recrutamento e
+              seleção), é imprescindível a leitura e compreensão das Políticas de Privacidade desses terceiros. A MIMOSA
+              ALIMENTOS não se responsabiliza pelos dados solicitados ou pelo tratamento realizado por tais entidades.
+            </li>
+            <li>
+              Caso o candidato não seja selecionado, seus dados serão armazenados de forma segura e eliminados após o
+              prazo de <strong>12 (doze) meses</strong> contados do término do processo seletivo.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Cookies e tecnologias similares</h2>
+          <p>
+            A <strong>MIMOSA ALIMENTOS</strong> utiliza cookies, tags, pixels e tecnologias similares (doravante
+            referidos genericamente como "Cookies") como instrumentos para otimizar a navegação e a experiência do Titular
+            em seu site. Os Cookies são pequenos arquivos enviados ao dispositivo do Titular, armazenados no navegador
+            utilizado, contendo informações sobre a interação com o site. Essas informações permitem reconhecer o Titular,
+            bem como traçar perfis comportamentais para fins de personalização de conteúdo e análise de navegação.
+          </p>
+
+          <h3>1. Finalidades dos Cookies</h3>
+          <p>Os Cookies possuem as seguintes funções:</p>
+          <ul>
+            <li>Viabilizar e personalizar a navegação;</li>
+            <li>Direcionar ações de marketing;</li>
+            <li>Realizar levantamentos estatísticos para orientar estratégias de mercado da empresa.</li>
+          </ul>
+
+          <h3>2. Classificação dos Cookies</h3>
+          <ul>
+            <li>
+              <strong>I – Cookies estritamente necessários:</strong> garantem o funcionamento adequado do site, não identificam
+              o Titular e não podem ser desativados sem comprometer funcionalidades essenciais.
+            </li>
+            <li>
+              <strong>II – Cookies de desempenho:</strong> armazenam informações anônimas sobre volume de visitas, páginas
+              mais acessadas e outros dados estatísticos de gerenciamento do site. Não identificam o Titular e podem ser
+              desativados, ainda que sua desativação possa afetar o desempenho do site.
+            </li>
+            <li>
+              <strong>III – Cookies de funcionalidade:</strong> permitem oferecer funcionalidades melhoradas e personalizadas
+              ao Titular. Podem coletar informações que o identifiquem e podem ser desativados, embora a desativação possa
+              comprometer algumas funcionalidades.
+            </li>
+            <li>
+              <strong>IV – Cookies de publicidade:</strong> utilizam informações do Titular para direcionar conteúdo personalizado
+              conforme suas preferências de navegação. Podem identificar o Titular e podem ser desativados.
+            </li>
+            <li>
+              <strong>V – Cookies de terceiros:</strong> inseridos por parceiros (ex.: Facebook, Google), coletam informações
+              do Titular durante a navegação no site para veiculação de materiais publicitários nessas plataformas. Podem
+              identificar o Titular e podem ser desativados.
+            </li>
+          </ul>
+
+          <h3>3. Gerenciamento dos Cookies</h3>
+          <p>
+            Os Cookies podem ser gerenciados por meio das configurações do navegador utilizado pelo Titular. Para tanto, a
+            <strong>MIMOSA ALIMENTOS</strong> disponibiliza links de gerenciamento para os navegadores mais utilizados,
+            sendo que os endereços podem variar conforme a versão do navegador:
+          </p>
+          <ul>
+            <li>Internet Explorer;</li>
+            <li>Microsoft Edge;</li>
+            <li>Mozilla Firefox;</li>
+            <li>Google Chrome;</li>
+            <li>Safari;</li>
+            <li>Opera.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Compartilhamento de dados com terceiros</h2>
+          <p>
+            A <strong>MIMOSA ALIMENTOS</strong> poderá compartilhar Dados Pessoais com terceiros, sempre sob sua
+            supervisão, nas seguintes hipóteses:
+          </p>
+          <ul>
+            <li>
+              <strong>I – Análises antifraude e de crédito:</strong> compartilhamento de dados como CPF, e-mail e telefone com
+              instituições financeiras e empresas especializadas para análise de crédito, confirmação de identidade do
+              Titular e prevenção de fraudes.
+            </li>
+            <li>
+              <strong>II – Logística e entrega:</strong> compartilhamento de dados como nome, endereço, e-mail e telefone com
+              despachantes, agentes de carga e transportadoras parceiras, para execução do serviço de entrega de
+              mercadorias.
+            </li>
+            <li>
+              <strong>III – Armazenamento:</strong> compartilhamento com parceiros de armazenamento e processamento de dados,
+              incluindo provedores de nuvem e softwares de gestão.
+            </li>
+            <li>
+              <strong>IV – Publicidade e marketing:</strong> compartilhamento com agências de marketing e ferramentas de
+              inteligência de mercado, para desenvolvimento de campanhas e encaminhamento de materiais aos Titulares.
+            </li>
+            <li>
+              <strong>V – Gestão das plataformas online:</strong> compartilhamento com empresas de desenvolvimento e
+              hospedagem, para manutenção da infraestrutura tecnológica e suporte à operação dos serviços e produtos
+              oferecidos.
+            </li>
+            <li>
+              <strong>VI – Suporte aos processos da MIMOSA ALIMENTOS:</strong> compartilhamento com empresas especializadas
+              em auditoria, assistência técnica, contabilidade, advocacia e demais serviços correlatos, visando viabilizar
+              o cumprimento de contratos firmados com Clientes.
+            </li>
+            <li>
+              <strong>VII – Órgãos públicos ou privados:</strong> compartilhamento de dados com órgãos públicos ou privados
+              no exercício de atividades típicas de poder público, cumprimento de obrigações legais ou atendimento a
+              solicitações judiciais e fiscais.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Direitos dos titulares de dados pessoais</h2>
+          <p>
+            O Titular poderá exercer seus direitos previstos na <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018
+              – LGPD)</strong> mediante solicitação à <strong>MIMOSA ALIMENTOS</strong> por meio do e-mail
+            <a href="mailto:lgpd@mimosaalimentos.com.br">lgpd@mimosaalimentos.com.br</a>, observando os seguintes direitos:
+          </p>
+          <ul>
+            <li>
+              <strong>I – Confirmação de Tratamento:</strong> o Titular poderá questionar se seus Dados Pessoais estão sendo
+              tratados pela MIMOSA ALIMENTOS.
+            </li>
+            <li>
+              <strong>II – Acesso aos Dados Pessoais:</strong> o Titular poderá solicitar cópia de todos os Dados Pessoais
+              tratados.
+            </li>
+            <li>
+              <strong>III – Correção de Dados:</strong> o Titular poderá requerer a atualização, correção ou complementação
+              de seus Dados Pessoais.
+            </li>
+            <li>
+              <strong>IV – Anonimização, Bloqueio e/ou Eliminação:</strong> o Titular poderá solicitar que seus Dados sejam:
+              <ul>
+                <li><strong>Anonimizados:</strong> mantidos nos bancos de dados, porém sem possibilidade de identificação;</li>
+                <li><strong>Bloqueados:</strong> mantidos nos bancos de dados, porém sem possibilidade de utilização;</li>
+                <li><strong>Eliminados:</strong> removidos dos bancos de dados.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>V – Portabilidade:</strong> o Titular poderá solicitar a transferência de seus dados a outro fornecedor
+              de serviço ou produto, observando-se os segredos comercial e industrial da MIMOSA ALIMENTOS.
+            </li>
+            <li>
+              <strong>VI – Informações sobre compartilhamento:</strong> o Titular poderá solicitar identificação das empresas
+              ou entidades públicas e privadas com as quais seus dados foram compartilhados.
+            </li>
+            <li>
+              <strong>VII – Revogação de Consentimento:</strong> quando o tratamento se basear em consentimento, o Titular
+              poderá revogá-lo.
+            </li>
+            <li>
+              <strong>VIII – Revisão de decisões automatizadas:</strong> o Titular poderá solicitar a revisão de decisões
+              tomadas exclusivamente com base em tratamento automatizado de Dados Pessoais, incluindo definição de perfil
+              pessoal, profissional, de consumo ou de crédito.
+            </li>
+          </ul>
+          <p>
+            <strong>Observação:</strong> Todas as solicitações serão atendidas dentro do prazo legal. Caso haja fundamento
+            legal, algumas solicitações poderão ser atendidas parcialmente ou negadas, mediante fornecimento de justificativas.
+          </p>
+        </section>
+
+        <section>
+          <h2>Manutenção dos dados</h2>
+          <p>
+            Os Dados Pessoais serão mantidos pela <strong>MIMOSA ALIMENTOS</strong> ou por terceiros autorizados pelo
+            período necessário ao cumprimento das finalidades previstas nesta Política.
+          </p>
+          <p>Além disso, os dados poderão ser mantidos:</p>
+          <ul>
+            <li>Para atender a <strong>interesse legítimo</strong>, nos termos da legislação aplicável;</li>
+            <li>Para cumprimento de obrigação legal ou determinação de autoridade pública.</li>
+          </ul>
+          <p>
+            A manutenção dos dados após o encerramento de relação contratual observará prazo suficiente para atingir as
+            finalidades aqui descritas e cumprir obrigações legais.
+          </p>
+        </section>
+
+        <section>
+          <h2>Orientações de segurança aos titulares</h2>
+          <p>Para assegurar maior proteção dos Dados Pessoais, recomenda-se que o Titular:</p>
+          <ul>
+            <li>Não forneça senhas bancárias ou financeiras por e-mail ou aplicativos de mensagem;</li>
+            <li>Comunique à MIMOSA ALIMENTOS qualquer suspeita ou constatação de violação desta Política;</li>
+            <li>Verifique a veracidade de comunicações sobre promoções, campanhas e pesquisas;</li>
+            <li>Forneça informações verdadeiras e atualizadas;</li>
+            <li>
+              Contate a MIMOSA ALIMENTOS para exercer seus direitos via
+              <a href="mailto:lgpd@mimosaalimentos.com.br">lgpd@mimosaalimentos.com.br</a>;
+            </li>
+            <li>Adote medidas de segurança cibernética em dispositivos utilizados, incluindo senhas fortes, atualização de antivírus e uso de firewalls;</li>
+            <li>Abstenha-se de interações ilegais envolvendo Dados Pessoais de terceiros;</li>
+            <li>
+              Verifique a autenticidade de boletos recebidos antes de efetuar pagamentos, conferindo valores, código de
+              barras, instituição financeira e beneficiário.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Atendimento referente a dados pessoais</h2>
+          <p>
+            O Titular poderá contatar o <strong>Encarregado pelo Tratamento de Dados Pessoais</strong> da MIMOSA ALIMENTOS:
+          </p>
+          <ul>
+            <li><strong>Encarregado:</strong> Felipe Henrique Moreno Silva</li>
+            <li>
+              <strong>E-mail:</strong>
+              <a href="mailto:lgpd@mimosaalimentos.com.br">lgpd@mimosaalimentos.com.br</a>
+            </li>
+            <li><strong>Telefone:</strong> (44) 3626-7484.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Foro de eleição</h2>
+          <p>
+            Quaisquer questões decorrentes da presente Política serão submetidas à jurisdição competente da Comarca de
+            <strong>Umuarama/PR</strong>.
+          </p>
+        </section>
+
+        <section>
+          <h2>Das atualizações</h2>
+          <p>
+            Esta Política foi publicada em <strong>01/09/2025</strong> e poderá ser atualizada periodicamente, sendo tais
+            alterações devidamente comunicadas aos Titulares.
+          </p>
+          <p class="mt-8 font-bold">MIMOSA ALIMENTOS LTDA.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @reference '../styles/tailwind.css';
+
+  .prose-policy section + section {
+    margin-top: 2.5rem;
+  }
+  .prose-policy h2 {
+    @apply mb-4 text-xl font-bold text-red-800 md:text-2xl;
+  }
+  .prose-policy h3 {
+    @apply mt-6 mb-3 text-lg font-bold text-red-800 md:text-xl;
+  }
+  .prose-policy h4 {
+    @apply mt-4 mb-2 text-base font-bold text-gray-700 md:text-lg;
+  }
+  .prose-policy p {
+    @apply mb-4 text-justify text-xs leading-5 text-gray-700 md:text-base xl:text-lg xl:leading-7;
+  }
+  .prose-policy ul {
+    @apply mb-4 flex list-disc flex-col gap-2 pl-6;
+  }
+  .prose-policy ul ul {
+    @apply mt-2 mb-0;
+  }
+  .prose-policy li {
+    @apply text-xs leading-5 text-gray-700 md:text-base xl:text-lg xl:leading-7;
+  }
+  .prose-policy a {
+    @apply text-red-800 underline transition hover:text-red-900;
+  }
+</style>

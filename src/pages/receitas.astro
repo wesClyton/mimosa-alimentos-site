@@ -1,0 +1,33 @@
+---
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+import Receitas from '@components/Receitas';
+import { Title } from '@components/Title';
+import Layout from '@layouts/Layout.astro';
+import { MENU_ITEMS } from '@utils/menu.contants';
+---
+
+<Layout
+  title="Receitas | Mimosa Alimentos"
+  description="Receitas em vídeo com Mimosa Alimentos: ideias práticas com linguiças Toscana, churrasquita e linha com queijo para o seu dia a dia."
+>
+  <Header />
+
+  <main class="px-5 py-10 md:pb-20">
+    <div class="container-center">
+      <Title
+        title="Receitas"
+        breadcrumbs={[
+          { label: MENU_ITEMS.home.label, href: MENU_ITEMS.home.href },
+          { label: MENU_ITEMS.receitas.label, href: MENU_ITEMS.receitas.href },
+        ]}
+      />
+
+      <div id="lista-receitas" class="mt-10 md:mt-15">
+        <Receitas client:load />
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -14,3 +14,23 @@ body {
     background-color: var(--color-yellow-200);
   }
 }
+
+.receitas-video-modal-popup {
+  overflow: visible !important;
+  border-radius: 0.5rem;
+}
+
+.receitas-video-modal-popup .swal2-html-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.receitas-video-modal-popup .swal2-close {
+  position: absolute !important;
+  top: -1.5rem;
+  right: -1.5rem;
+  color: #fff !important;
+  font-size: 2rem;
+  z-index: 10;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}

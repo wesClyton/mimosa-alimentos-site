@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"d:\\\\www\\\\mimosaalimentos\\\\site\" -Directory)",
+      "Bash(curl -s \"https://mimosa-alimentos-api.vercel.app/public/recipes?perPage=10&orderBy=DESC&orderProperty=createdAt\")",
+      "Bash(curl -s \"https://mimosa-alimentos-api.vercel.app/public/recipes?perPage=9999&orderBy=DESC&orderProperty=createdAt\")",
+      "Bash(node -e \"const r=/\\(?:youtube\\\\.com\\\\/\\(?:watch\\\\?v=|embed\\\\/|v\\\\/|shorts\\\\/\\)|youtu\\\\.be\\\\/\\)\\([\\\\w-]{11}\\)/; const u='https://youtu.be/oGu2s9_caZA?si=9mNvjaoslzjs5vk9'; console.log\\(JSON.stringify\\(u.match\\(r\\)\\)\\);\")",
+      "Bash(curl -s \"https://mimosa-alimentos-api.vercel.app/public/recipes?page=1&perPage=9&orderBy=DESC&orderProperty=createdAt\" -H \"Origin: https://mimosaalimentos.com\" -i)",
+      "Bash(curl -s -o nul -w \"HTTP %{http_code} | %{size_download} bytes | %{time_total}s\\\\n\" \"https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome\")"
+    ]
+  }
+}
